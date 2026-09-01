@@ -11,6 +11,8 @@ die Datenschutzerklärung kurz und die Seite schnell.
 |---|---|
 | `index.html` | Die ganze Seite inklusive Buchungsformular |
 | `impressum.html` · `datenschutz.html` | Pflichtseiten nach ECG, UGB, Mediengesetz |
+| `bilder/` | Alle Fotos und Videos, gebaut aus dem TikTok-Material |
+| `scripts/baue-assets.sh` | Baut `bilder/` reproduzierbar neu |
 | `site.css` | Farbwelt hell/dunkel als Variablen, plus die beiden Umschalter |
 | `site.js` | Hell/Dunkel und Deutsch/Englisch, mit dem englischen Wörterbuch |
 | `fonts.css` + `fonts/` | Saira und Inter, selbst gehostet |
@@ -37,9 +39,53 @@ grep -n 'class="tbd"' index.html
 grep -n 'PLATZHALTER' impressum.html datenschutz.html
 ```
 
-**3. Fotos einsetzen.** Die Bildplätze sind bewusst leer gelassen — das beste
-Material liegt bereits im TikTok-Account. Hero, vier Youngtimer-Kacheln,
-drei Fahrzeugkarten.
+**3. Fahrzeugdaten eintragen.** Die drei Karten unter „Fahrzeuge" zeigen echte
+Autos, aber Baujahr, Kilometer und Preis stehen als Platzhalter drin.
+
+## Bildmaterial
+
+Alle Fotos und Videos stammen aus dem eigenen TikTok-Kanal
+[@rdvc.garage](https://www.tiktok.com/@rdvc.garage) — kein Stock, kein KI-Material
+bei allem, was ein erkennbares Fahrzeug zeigt. Bei einem Youngtimer-Spezialisten
+fallen falsche Embleme und Proportionen genau der Zielgruppe auf, die er gewinnen
+will.
+
+So wird `bilder/` neu gebaut:
+
+```bash
+mkdir -p _material/roh && cd _material/roh
+yt-dlp -f "bv[height<=1920][vcodec^=avc]/bv[height<=1920]/b" \
+       -o "%(upload_date)s_%(id)s.%(ext)s" \
+       "https://www.tiktok.com/@rdvc.garage"
+cd ../.. && ./scripts/baue-assets.sh
+```
+
+`_material/` steht in `.gitignore` (316 MB Rohmaterial), nur die fertigen Assets
+liegen im Repo (5,7 MB).
+
+**Drei Dinge, die dabei im Weg stehen — alle im Skript gelöst:**
+
+1. **Oben links sitzt ein CapCut-Wasserzeichen.** Jeder Zuschnitt beginnt deshalb
+   frühestens bei 10 % der Bildhöhe.
+2. **Das Rohmaterial ist unterschiedlich groß** (1080×1920 bis 464×832). Die
+   Zuschnitte rechnen mit `in_w`/`in_h` statt mit festen Zahlen; für Standbilder
+   werden nur 1080er Quellen benutzt, alles andere müsste hochskaliert werden.
+3. **Ein Zeitpunkt hinter dem Clip-Ende** liefert kein Bild, und ffmpeg meldet das
+   nur als kryptischen Encoder-Fehler. `pruefe_zeit` bricht vorher ab und nennt den
+   Namen des Assets.
+
+**Warum der Hero geteilt ist und nicht vollflächig:** Das Material ist durchgehend
+9:16. Für einen vollflächigen 16:9-Hero müsste ein 1080×608-Streifen auf
+Desktopbreite gezogen werden — sichtbar weich. Stattdessen behält das Video sein
+Format: am Handy füllt es den Bildschirm, ab 1024 px die rechte Hälfte. Ein
+vollflächiges Breitband gibt es trotzdem, aber mit einer Nachtaufnahme, wo der
+Anschnitt nicht auffällt.
+
+**Kein Vorher/Nachher-Schieber.** Der braucht zwei Bilder aus derselben, unbewegten
+Kameraposition. Im TikTok-Material gibt es das nicht — die Kamera fährt bei jeder
+Wasch-Sequenz mit. Für den nächsten Drehtag: Stativ hinstellen, schmutziges Auto
+filmen, Kamera **nicht** bewegen, fertiges Auto filmen. Dann sind es zwei Zeilen
+in `baue-assets.sh`.
 
 ## Prüfen
 
@@ -56,6 +102,7 @@ node scripts/pruefe-seite.mjs                              # Höhe, Overflow, Ko
 node scripts/pruefe-seite.mjs http://localhost:8899/index.html#buchen   # Sprung aus der Bio
 node scripts/pruefe-handy.mjs                              # echte Handy-Metriken, 390×844
 node scripts/pruefe-formular.mjs                           # 13 Prüfungen durchs Formular
+node scripts/pruefe-medien.mjs                            # Bilder geladen, Videos stumm, Gewicht
 node scripts/pruefe-umschalter.mjs                        # Hell/Dunkel + DE/EN, alle drei Seiten
 node scripts/pruefe-umschalter.mjs http://localhost:8899/impressum.html
 ```

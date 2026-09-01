@@ -119,3 +119,123 @@ html.dark #themeBtn .ico-moon { display: none; }
 /* Der Hinweis auf die verbindliche deutsche Fassung erscheint nur auf Englisch. */
 [data-only-en] { display: none; }
 html[lang="en"] [data-only-en] { display: block; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Editorial-Umbau — Rot wird wieder zum Signal
+
+   Vorher war Rot Dekoration: Aufzaehlungspunkte, Schrittnummern, ein Glow um
+   die Ueberschrift, ein runder Sticker. Wenn alles leuchtet, leuchtet nichts.
+   Ab hier steht Rot nur noch auf Handlungsknoepfen und Preisen. Was vorher
+   ueber Farbe auffiel, faellt jetzt ueber Groesse, Kontur und Weissraum auf.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Aufzaehlungen: ein feiner Strich statt eines roten Punktes. */
+.li-mark {
+  flex: none; width: 14px; height: 1px; margin-top: .62rem;
+  background: var(--tx-soft); opacity: .55;
+}
+
+/* Ablauf-Ziffern als Kontur. Gross genug, um zu gliedern; leise genug,
+   um nicht mit dem Preis um Aufmerksamkeit zu streiten. */
+.step-num {
+  font-family: 'Saira', ui-sans-serif, system-ui, sans-serif;
+  font-size: 3.5rem; line-height: 1; font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: transparent;
+  -webkit-text-stroke: 1.25px var(--tx-soft);
+  opacity: .65;
+}
+
+/* Aus dem runden Sticker wird ein Banner an der Kartenkante. */
+.card-flag {
+  position: absolute; top: -1px; left: -1px; right: -1px;
+  padding: .5rem 0; text-align: center;
+  font-size: .66rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase;
+  color: #fff; background: var(--acc-deep);
+  border-radius: .5rem .5rem 0 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Hero und Bildstrecken
+
+   Das Rohmaterial ist hochkant (1080x1920, TikTok). Ein vollflaechiger
+   16:9-Hero muesste daraus einen schmalen Streifen schneiden und auf
+   Desktopbreite ziehen — sichtbar weich. Deshalb behaelt das Video sein
+   Format und teilt sich die Buehne mit der Schrift:
+
+     bis 1023 px  Video fuellt den Bildschirm, Schrift liegt darueber (9:16
+                  ist am Handy ohnehin das richtige Format)
+     ab 1024 px   Video rueckt in die rechte Haelfte, Schrift in die linke
+
+   Bewusst EIN <video>-Element, nicht zwei mit hidden/block: beide wuerden
+   geladen, und der Hero ist die teuerste Stelle der Seite.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.hero-medium { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+.hero-medium video,
+.hero-medium img { width: 100%; height: 100%; object-fit: cover; object-position: center 42%; }
+.hero-medium .hero-licht,
+.hero-medium .hero-vignette { z-index: 1; }
+
+@media (min-width: 1024px) {
+  .hero-medium { left: auto; right: 0; width: 53%; }
+  /* Weiche Kante nach links: das Bild laeuft in die Flaeche aus, statt an
+     einer harten Senkrechten abzureissen. */
+  .hero-medium::after {
+    content: ''; position: absolute; inset: 0; z-index: 2;
+    background: linear-gradient(90deg, #08080A 0%, rgba(8,8,10,.62) 20%, transparent 58%);
+  }
+}
+
+/* Bewegung nur, wenn der Besucher sie will. Sonst bleibt das Standbild. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-medium video, .band-video { display: none; }
+  .hero-medium .ruhebild, .band-ruhebild { display: block !important; }
+}
+
+/* ── Vollbild-Band ───────────────────────────────────────────────────────── */
+.band-schleier {
+  background:
+    linear-gradient(180deg, rgba(8,8,10,.75) 0%, rgba(8,8,10,.25) 38%, rgba(8,8,10,.88) 100%);
+}
+
+/* ── Bildrahmen ──────────────────────────────────────────────────────────────
+   Alle Fotos sitzen scharfkantig im Raster. Die Karten daneben sind leicht
+   gerundet — der Gegensatz ist gewollt und macht die Bilder zum Ereignis. */
+.foto { display: block; overflow: hidden; background: var(--pg2); position: relative; }
+.foto img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.foto-zoom img { transition: transform .7s cubic-bezier(.22,1,.36,1); }
+.foto-zoom:hover img { transform: scale(1.045); }
+
+/* Bildunterschrift, die im Bild sitzt statt darunter. */
+.foto-text {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 1.5rem 1rem .9rem;
+  font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: rgba(255,255,255,.92);
+  background: linear-gradient(180deg, transparent, rgba(8,8,10,.82));
+}
+
+/* Am Desktop trägt die weiche Kante nach links bereits den Textkontrast.
+   Licht und Vignette dürfen dort deutlich leiser sein, sonst säuft genau
+   das ab, wofür das Video da ist: das Auto. */
+@media (min-width: 1024px) {
+  .hero-medium .hero-licht    { opacity: .42; }
+  .hero-medium .hero-vignette { opacity: .45; }
+}
+
+/* Überschriften umbrechen ausgewogen statt mit einem einzelnen Wort in der
+   letzten Zeile („so." allein). Absätze vermeiden Schusterjungen. */
+h1, h2, h3 { text-wrap: balance; }
+p, li      { text-wrap: pretty; }
+
+/* Am Handy liegt die Schrift direkt auf dem Video — dort muss der Schleier
+   deutlich kräftiger sein als am Desktop, wo die weiche Kante nach links den
+   Kontrast schon trägt. Die helle Hauswand im Clip verschluckt sonst den
+   Fließtext. */
+@media (max-width: 1023px) {
+  .hero-medium .hero-licht {
+    background:
+      radial-gradient(75% 55% at 50% 118%, rgba(126,16,21,.24), transparent 72%),
+      linear-gradient(180deg, rgba(8,8,10,.82) 0%, rgba(8,8,10,.70) 45%, rgba(8,8,10,.96) 100%);
+  }
+}

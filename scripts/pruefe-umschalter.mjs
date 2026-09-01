@@ -125,7 +125,7 @@ console.log('\n── Auf Englisch deutsch geblieben ─────────
 const rest = [];
 for (let i = 0; i < de.length; i++) {
   const d = de[i], e = en[i];
-  if (d === e && /[A-Za-zÄÖÜäöüß]{4,}/.test(d) && !/^(RDVC|GARAGE|Youngtimer|Name|Polo|X5|@rdvc|\(optional\)|This is a courtesy)/.test(d)
+  if (d === e && /[A-Za-zÄÖÜäöüß]{4,}/.test(d) && !/^(RDVC|GARAGE|Youngtimer|Name|Polo|X5|@rdvc|\(optional\)|This is a courtesy|Mercedes|BMW E39)/.test(d)
       && !/^(www\.|ec\.europa)/.test(d)) rest.push(d);
 }
 if (rest.length === 0) console.log('  keine — jede Zeile mit Text hat eine englische Fassung');

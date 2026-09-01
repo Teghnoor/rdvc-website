@@ -168,8 +168,8 @@
     /* Fahrzeuge */
     'Aus unserer Halle': 'From our workshop',
     'Fahrzeuge, die wir abgeben.': 'Cars we are selling.',
-    'Wir sammeln und wir handeln. Jedes Auto, das hier steht, ist durch unsere eigene Aufbereitung gegangen. Sie sehen im Video, wie es vorher aussah.':
-      'We collect and we trade. Every car standing here has been through our own detailing. You can see in the video what it looked like before.',
+    'Wir sammeln und wir handeln. Jedes Auto, das hier steht, ist durch unsere eigene Aufbereitung gegangen. Wie es vorher aussah, sehen Sie auf unserem Kanal.':
+      'We collect and we trade. Every car standing here has been through our own detailing. What it looked like before, you can see on our channel.',
     'Fahrzeug anfragen →': 'Ask about a car →',
     'Fahrzeugfoto': 'Car photo',
     'Foto + Daten': 'photo + data',
@@ -265,7 +265,7 @@
     'Tierhaare, Nikotin, Schimmel oder Bausand kosten Zeit. Wir sehen das beim Zustandscheck vor Ort und nennen den Aufpreis, bevor wir losfahren. Sie können dann immer noch nein sagen. Nachträgliche Positionen auf der Rechnung gibt es bei uns nicht.':
       'Pet hair, nicotine, mould or building sand cost time. We see that during the condition check on site and name the surcharge before we drive off. You can still say no at that point. Items added to the invoice afterwards do not happen here.',
     'Verkauft ihr auch Autos?': 'Do you sell cars as well?',
-    'Ja. Was gerade abzugeben ist, steht oben unter „Fahrzeuge“. Jedes davon ist durch unsere eigene Aufbereitung gegangen, den Zustand vorher sehen Sie in unseren Videos. Wenn Sie etwas Bestimmtes suchen, sagen Sie Bescheid — wir haben oft mehr in der Halle, als online steht.':
+    'Ja. Was gerade abzugeben ist, steht oben unter „Fahrzeuge“. Jedes davon ist durch unsere eigene Aufbereitung gegangen, den Zustand vorher sehen Sie auf unserem Kanal. Wenn Sie etwas Bestimmtes suchen, sagen Sie Bescheid — wir haben oft mehr in der Halle, als online steht.':
       'Yes. Whatever is currently available is listed above under “Cars”. Every one of them has been through our own detailing, and you can see the condition before in our videos. If you are looking for something specific, say so — we often have more in the workshop than is listed online.',
 
     /* Fusszeile */
@@ -377,7 +377,43 @@
       'If you believe that the processing of your data infringes data protection law, you may lodge a complaint with the Austrian data protection authority: Österreichische Datenschutzbehörde, Barichgasse 40–42, 1030 Vienna,',
     '7. Stand': '7. Version',
     'Diese Datenschutzerklärung hat den Stand Juli 2026 und wird bei Änderungen der Website oder der Rechtslage aktualisiert.':
-      'This privacy policy is dated July 2026 and is updated whenever the website or the legal situation changes.'
+      'This privacy policy is dated July 2026 and is updated whenever the website or the legal situation changes.',
+
+    /* ── Bildstrecken ──────────────────────────────────────────────────── */
+    'Unsere eigenen Autos. Und die unserer Kunden.': 'Our own cars. And our customers\u2019.',
+    'Aus der Halle': 'From the workshop',
+    'AMG-Felge': 'AMG wheel',
+    'E30 Cabrio': 'E30 Convertible',
+    'BMW E30 Cabrio': 'BMW E30 Convertible',
+    'Nach der Versiegelung': 'After sealing',
+
+    /* Bildbeschreibungen. Sie stehen im alt-Attribut und werden von
+       Screenreadern vorgelesen — deshalb beschreiben sie das Motiv,
+       statt es nur zu benennen. */
+    'Hochdruckreiniger spült Schaum von einem BMW E39':
+      'Pressure washer rinsing foam off a BMW E39',
+    'Typenschild 2.3-16 am Heck eines Mercedes 190E':
+      'The 2.3-16 badge on the rear of a Mercedes 190E',
+    'Innenraum eines BMW E30 Cabrio mit hellem Leder':
+      'Interior of a BMW E30 convertible with light leather',
+    'Gereinigte AMG-Felge an einem Mercedes 190E':
+      'Cleaned AMG wheel on a Mercedes 190E',
+    'Wasserperlen auf frisch versiegeltem Lack':
+      'Water beading on freshly sealed paint',
+    'BMW E39 M5 in Avusblau in der Halle':
+      'BMW E39 M5 in Avus blue in the workshop',
+    'BMW E30 Cabrio auf einer Landstraße':
+      'BMW E30 convertible on a country road',
+    'Schwarzer Mercedes 190E von vorne':
+      'Black Mercedes 190E from the front',
+    'Staubiges Fahrzeugheck vor der Aufbereitung':
+      'A dusty car rear before detailing',
+    'BMW E30 Cabrio unterwegs zur Halle':
+      'BMW E30 convertible on its way to the workshop',
+    'Mikrofasertuch auf einer nassen Fahrzeugflanke':
+      'Microfibre cloth on a wet body panel',
+    'Fertig aufbereiteter BMW E39 M5':
+      'A finished BMW E39 M5'
   };
 
   function norm(s) { return String(s).replace(/\s+/g, ' ').trim(); }

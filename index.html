@@ -37,28 +37,13 @@
     }
   </script>
   <style>
-    /* ── Hero-Buehne ─────────────────────────────────────────────────────────
-       Sobald ein Foto vorliegt (bestes Material liegt im TikTok-Account),
-       hier eintragen und sonst nichts aendern:
-           --hero-bild: url('bilder/hero.jpg');
-       Das Licht darueber bleibt liegen und bindet das Foto ins Rot ein.      */
-    :root { --hero-bild: none; }
-
-    .hero-foto {
-      background-image: var(--hero-bild);
-      background-size: cover;
-      background-position: center 40%;
-      filter: saturate(.85) contrast(1.05);
-    }
-
-    /* Zwei rote Lichtquellen wie LED-Baender ueber der Hebebuehne, plus ein
-       kalter Rest-Schimmer, damit das Rot nicht flach wirkt. */
+    /* Frueher lagen hier drei rote Lichtquellen und trugen den leeren Hero.
+       Sobald echtes Material darunter liegt, ist das Rotlicht Stoerung statt
+       Buehne: eine ruhige Abdunklung, ein Hauch Waerme von unten, fertig. */
     .hero-licht {
       background:
-        radial-gradient(58% 44% at 18% 8%,   rgba(225,29,34,.30), transparent 70%),
-        radial-gradient(50% 40% at 88% 78%,  rgba(255,74,80,.20), transparent 72%),
-        radial-gradient(70% 55% at 50% 115%, rgba(126,16,21,.55), transparent 70%),
-        linear-gradient(180deg, rgba(10,10,12,.86) 0%, rgba(10,10,12,.58) 42%, rgba(10,10,12,.94) 100%);
+        radial-gradient(75% 55% at 50% 118%, rgba(126,16,21,.26), transparent 72%),
+        linear-gradient(180deg, rgba(8,8,10,.60) 0%, rgba(8,8,10,.26) 44%, rgba(8,8,10,.95) 100%);
     }
 
     /* Hallenboden. Bewusst knapp unter der Wahrnehmungsschwelle. */
@@ -75,10 +60,11 @@
       background: radial-gradient(78% 68% at 50% 45%, transparent 42%, rgba(0,0,0,.72) 100%);
     }
 
-    /* Das Schluesselwort glueht, statt nur eingefaerbt zu sein. */
+    /* Kein Glow mehr. Ueber dem Video traegt Weiss mit einem weichen Schatten
+       besser als Neonrot — und Rot bleibt dem Knopf und dem Preis vorbehalten. */
     .hero-akzent {
-      color: #FF4A50;
-      text-shadow: 0 0 38px rgba(225,29,34,.55), 0 0 90px rgba(225,29,34,.25);
+      color: #FFFFFF;
+      text-shadow: 0 2px 28px rgba(0,0,0,.6);
       white-space: nowrap;
     }
 
@@ -102,9 +88,9 @@
     .btn-ghost { border: 1.5px solid rgba(255,255,255,.25); color: #fff; transition: border-color .2s ease, background .2s ease; }
     .btn-ghost:hover { border-color: #E11D22; background: rgba(225,29,34,.1); }
 
-    .card { background: #fff; border: 1px solid #E4E0DA; border-radius: 1rem; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+    .card { background: #fff; border: 1px solid #E4E0DA; border-radius: .5rem; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
     .card-hover:hover { transform: translateY(-4px); box-shadow: 0 22px 44px -20px rgba(10,10,12,.28); border-color: #E11D22; }
-    .dark-card { background: #141418; border: 1px solid rgba(255,255,255,.08); border-radius: 1rem; }
+    .dark-card { background: #141418; border: 1px solid rgba(255,255,255,.08); border-radius: .5rem; }
 
     /* Feine Linie in Messing — zieht sich als Marken-Element durch */
     .rule { height: 2px; width: 44px; background: #E11D22; }
@@ -114,7 +100,7 @@
 
     .step-dot { width: 9px; height: 9px; border-radius: 9999px; background: #E4E0DA; transition: background .25s ease, transform .25s ease; }
     .step-dot.active { background: #7E1015; transform: scale(1.3); }
-    .opt-btn { border: 1.5px solid #E4E0DA; border-radius: .9rem; transition: border-color .15s ease, background .15s ease, box-shadow .15s ease; cursor: pointer; text-align: left; }
+    .opt-btn { border: 1.5px solid #E4E0DA; border-radius: .5rem; transition: border-color .15s ease, background .15s ease, box-shadow .15s ease; cursor: pointer; text-align: left; }
     .opt-btn:hover { border-color: #E11D22; }
     .opt-btn.selected { border-color: #7E1015; background: #FDF1F1; box-shadow: 0 0 0 1px #7E1015 inset; }
 
@@ -188,34 +174,41 @@
      im :root setzen, der Rest bleibt unveraendert. -->
 <section id="top" class="relative min-h-[100svh] flex items-center bg-ink text-white overflow-hidden">
 
-  <!-- Ebene 1: das Foto, sobald es gesetzt ist -->
-  <div class="hero-foto absolute inset-0"></div>
+  <!-- Das Video: 190E 2.5-16 bei der Handwäsche, echtes Material aus dem
+       eigenen Kanal. Am Handy füllt es die Bühne, ab 1024 px die rechte
+       Hälfte. Licht und Vignette liegen mit im Rahmen, damit sie das Bild
+       treffen und nicht die Textseite mit abdunkeln. -->
+  <div class="hero-medium">
+    <video poster="bilder/hero-poster.jpg" autoplay muted loop playsinline
+           preload="none" aria-hidden="true" tabindex="-1">
+      <source src="bilder/hero.mp4" type="video/mp4">
+    </video>
+    <img class="ruhebild hidden" src="bilder/hero-poster.jpg" alt=""
+         width="864" height="1382" aria-hidden="true">
+    <div class="absolute inset-0 hero-licht"></div>
+    <div class="absolute inset-0 hero-vignette"></div>
+  </div>
 
-  <!-- Ebene 2: Werkstattlicht. Zwei rote Quellen, wie LED-Bänder über der Hebebühne. -->
-  <div class="absolute inset-0 hero-licht"></div>
-
-  <!-- Ebene 3: Hallenboden-Raster, sehr fein -->
+  <!-- Hallenboden-Raster über die ganze Bühne, sehr fein -->
   <div class="absolute inset-0 hero-raster"></div>
 
-  <!-- Ebene 4: Vignette, damit die Schrift oben liegt statt zu schwimmen -->
-  <div class="absolute inset-0 hero-vignette"></div>
-
-  <div class="relative w-full max-w-5xl mx-auto px-5 pt-24 sm:pt-32 pb-28 sm:pb-32 text-center">
+  <div class="relative z-10 w-full max-w-6xl mx-auto px-5 pt-28 pb-32 lg:py-32 text-center lg:text-left">
+   <div class="lg:w-[47%] lg:pr-8">
     <p class="kicker text-red hero-in d1">Wien · Hol- und Bringservice</p>
 
-    <h1 class="hero-in d2 mt-6 text-[2.6rem] leading-[1.04] sm:text-6xl lg:text-7xl font-extrabold">
+    <h1 class="hero-in d2 mt-6 text-[2.5rem] leading-[1.07] sm:text-5xl lg:text-6xl font-extrabold tracking-[-0.02em]">
       Ihr Auto wird abgeholt,<br class="hidden sm:block">
       aufbereitet und
       <span class="hero-akzent">zurückgebracht.</span>
     </h1>
 
-    <p class="hero-in d3 mt-7 mx-auto max-w-2xl text-lg sm:text-xl text-white/70 leading-relaxed">
+    <p class="hero-in d3 mt-7 mx-auto lg:mx-0 max-w-2xl text-lg sm:text-xl text-white/70 leading-relaxed">
       Sie bleiben, wo Sie sind. Wir holen den Wagen bei Ihnen ab, arbeiten in unserer
       Halle in Wien und stellen ihn Ihnen fertig vor die Tür. Fixpreis vorher,
       kein Stundensatz, keine Überraschung.
     </p>
 
-    <div class="hero-in d4 mt-8 sm:mt-10 flex flex-wrap justify-center gap-3">
+    <div class="hero-in d4 mt-8 sm:mt-10 flex flex-wrap justify-center lg:justify-start gap-3">
       <a href="#buchen" class="btn-red px-8 py-4 rounded-full font-bold text-base">
         Fixpreis anfragen
         <svg class="inline-block ml-1 -mt-0.5" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -223,7 +216,7 @@
       <a href="#pakete" class="btn-ghost px-8 py-4 rounded-full font-semibold text-base">Leistungen ansehen</a>
     </div>
 
-    <div class="hero-in d5 mt-8 sm:mt-12 flex flex-wrap justify-center items-center gap-x-8 gap-y-2.5 text-sm text-white/55">
+    <div class="hero-in d5 mt-8 sm:mt-12 flex flex-wrap justify-center lg:justify-start items-center gap-x-8 gap-y-2.5 text-sm text-white/55">
       <span class="flex items-center gap-2">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E11D22" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
         Abholung inklusive bis 15 km
@@ -237,6 +230,7 @@
         Youngtimer willkommen
       </span>
     </div>
+   </div>
   </div>
 
   <!-- Scroll-Hinweis: zeigt, dass unter dem Bildschirmrand weitergeht -->
@@ -269,8 +263,9 @@
 </section>
 
 <!-- ══════════ PAKETE ══════════ -->
-<section id="pakete" class="py-16 md:py-24">
+<section id="pakete" class="py-20 md:py-28">
   <div class="max-w-6xl mx-auto px-5">
+    <div class="grid lg:grid-cols-[1fr_320px] gap-12 lg:gap-16 items-end">
     <div class="max-w-2xl rv">
       <p class="kicker text-blood">Leistungen</p>
       <h2 class="mt-3 text-3xl md:text-4xl font-extrabold">Preise nach Fahrzeugklasse.<br>Vorher, nicht nachher.</h2>
@@ -280,6 +275,13 @@
         Sie wissen vor der Abholung, was es kostet. Kommt beim Zustandscheck etwas dazu,
         fragen wir vorher, statt es nachher auf die Rechnung zu setzen.
       </p>
+    </div>
+      <figure class="foto foto-zoom hidden lg:block aspect-[4/5] rounded-lg rv">
+              <picture>
+                <source srcset="bilder/pakete.webp" type="image/webp">
+                <img src="bilder/pakete.jpg" alt="Hochdruckreiniger spült Schaum von einem BMW E39" width="1000" height="1250" loading="lazy" decoding="async">
+              </picture>
+            </figure>
     </div>
 
     <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -294,10 +296,10 @@
           <p class="mt-1 text-xs text-steel">einheitlich, alle Klassen</p>
         </div>
         <ul class="mt-5 space-y-2 text-sm text-slate flex-1">
-          <li class="flex gap-2"><span class="text-red font-bold">·</span> Zwei-Eimer-Handwäsche</li>
-          <li class="flex gap-2"><span class="text-red font-bold">·</span> Felgen und Reifen</li>
-          <li class="flex gap-2"><span class="text-red font-bold">·</span> Scheiben innen und außen</li>
-          <li class="flex gap-2"><span class="text-red font-bold">·</span> ca. 1,5 Stunden</li>
+          <li class="flex gap-3"><span class="li-mark"></span>Zwei-Eimer-Handwäsche</li>
+          <li class="flex gap-3"><span class="li-mark"></span>Felgen und Reifen</li>
+          <li class="flex gap-3"><span class="li-mark"></span>Scheiben innen und außen</li>
+          <li class="flex gap-3"><span class="li-mark"></span>ca. 1,5 Stunden</li>
         </ul>
         <a href="#buchen" data-paket="Handwäsche" class="btn-outline mt-6 block text-center rounded-full py-2.5 text-sm font-bold">Auswählen</a>
       </div>
@@ -312,17 +314,17 @@
           <p class="mt-1 text-xs text-steel">149 · 189 · 229 € nach Klasse</p>
         </div>
         <ul class="mt-5 space-y-2 text-sm text-slate flex-1">
-          <li class="flex gap-2"><span class="text-red font-bold">·</span> Polster- oder Lederreinigung</li>
-          <li class="flex gap-2"><span class="text-red font-bold">·</span> Teppiche nass ausgesaugt</li>
-          <li class="flex gap-2"><span class="text-red font-bold">·</span> Lüftung und Gerüche</li>
-          <li class="flex gap-2"><span class="text-red font-bold">·</span> Kunststoffe ohne Glanzfilm</li>
+          <li class="flex gap-3"><span class="li-mark"></span>Polster- oder Lederreinigung</li>
+          <li class="flex gap-3"><span class="li-mark"></span>Teppiche nass ausgesaugt</li>
+          <li class="flex gap-3"><span class="li-mark"></span>Lüftung und Gerüche</li>
+          <li class="flex gap-3"><span class="li-mark"></span>Kunststoffe ohne Glanzfilm</li>
         </ul>
         <a href="#buchen" data-paket="Innenaufbereitung" class="btn-outline mt-6 block text-center rounded-full py-2.5 text-sm font-bold">Auswählen</a>
       </div>
 
       <!-- Politur — hervorgehoben -->
-      <div class="card card-hover card-featured p-6 flex flex-col relative rv" style="--rvd:.19s">
-        <span class="absolute -top-3 left-6 bg-blood text-white text-xs font-bold px-3 py-1 rounded-full">Beliebt</span>
+      <div class="card card-hover card-featured p-6 pt-14 flex flex-col relative rv" style="--rvd:.19s">
+        <span class="card-flag">Beliebt</span>
         <p class="kicker text-steel">Lack</p>
         <h3 class="mt-2 text-xl font-extrabold">Politur &amp; Schutz</h3>
         <p class="mt-2 text-sm text-slate leading-relaxed">Swirls und matte Stellen raus, danach versiegelt. Der sichtbarste Unterschied.</p>
@@ -331,10 +333,10 @@
           <p class="mt-1 text-xs text-steel">249 · 299 · 379 € nach Klasse</p>
         </div>
         <ul class="mt-5 space-y-2 text-sm text-slate flex-1">
-          <li class="flex gap-2"><span class="text-red font-bold">·</span> Lackreinigung mit Knete</li>
-          <li class="flex gap-2"><span class="text-red font-bold">·</span> Ein-Stufen-Politur</li>
-          <li class="flex gap-2"><span class="text-red font-bold">·</span> Versiegelung, ca. 6 Monate</li>
-          <li class="flex gap-2"><span class="text-red font-bold">·</span> Handwäsche inklusive</li>
+          <li class="flex gap-3"><span class="li-mark"></span>Lackreinigung mit Knete</li>
+          <li class="flex gap-3"><span class="li-mark"></span>Ein-Stufen-Politur</li>
+          <li class="flex gap-3"><span class="li-mark"></span>Versiegelung, ca. 6 Monate</li>
+          <li class="flex gap-3"><span class="li-mark"></span>Handwäsche inklusive</li>
         </ul>
         <a href="#buchen" data-paket="Politur & Schutz" class="btn-red mt-6 block text-center rounded-full py-2.5 text-sm font-bold">Auswählen</a>
       </div>
@@ -349,10 +351,10 @@
           <p class="mt-1 text-xs text-steel">349 · 429 · 529 € nach Klasse</p>
         </div>
         <ul class="mt-5 space-y-2 text-sm text-slate flex-1">
-          <li class="flex gap-2"><span class="text-red font-bold">·</span> Innenaufbereitung komplett</li>
-          <li class="flex gap-2"><span class="text-red font-bold">·</span> Politur und Versiegelung</li>
-          <li class="flex gap-2"><span class="text-red font-bold">·</span> Motorraum auf Wunsch</li>
-          <li class="flex gap-2"><span class="text-red font-bold">·</span> ein bis zwei Tage</li>
+          <li class="flex gap-3"><span class="li-mark"></span>Innenaufbereitung komplett</li>
+          <li class="flex gap-3"><span class="li-mark"></span>Politur und Versiegelung</li>
+          <li class="flex gap-3"><span class="li-mark"></span>Motorraum auf Wunsch</li>
+          <li class="flex gap-3"><span class="li-mark"></span>ein bis zwei Tage</li>
         </ul>
         <a href="#buchen" data-paket="Komplettaufbereitung" class="btn-outline mt-6 block text-center rounded-full py-2.5 text-sm font-bold">Auswählen</a>
       </div>
@@ -382,8 +384,29 @@
   </div>
 </section>
 
+<!-- ══════════ VOLLBILD-BAND ══════════
+     Zäsur zwischen Preisen und Handwerk. Nachtaufnahme, weil der 21:9-Anschnitt
+     aus hochkantem Material hier nicht auffällt — bei Tageslicht wäre er weich. -->
+<section class="relative overflow-hidden bg-ink">
+  <video class="band-video w-full h-[38vh] md:h-[52vh] object-cover" poster="bilder/band-poster.jpg"
+         autoplay muted loop playsinline preload="none" aria-hidden="true" tabindex="-1">
+    <source src="bilder/band.mp4" type="video/mp4">
+  </video>
+  <img class="band-ruhebild hidden w-full h-[38vh] md:h-[52vh] object-cover"
+       src="bilder/band-poster.jpg" alt="" width="1360" height="584" aria-hidden="true">
+  <div class="absolute inset-0 band-schleier"></div>
+  <div class="absolute inset-x-0 bottom-0">
+    <div class="max-w-6xl mx-auto px-5 pb-8 md:pb-12">
+      <p class="kicker text-red">Aus der Halle</p>
+      <p class="mt-2 text-xl md:text-3xl font-extrabold head text-white max-w-xl leading-tight">
+        Unsere eigenen Autos. Und die unserer Kunden.
+      </p>
+    </div>
+  </div>
+</section>
+
 <!-- ══════════ YOUNGTIMER — der USP ══════════ -->
-<section id="youngtimer" class="py-16 md:py-24 bg-ink text-white relative overflow-hidden">
+<section id="youngtimer" class="py-20 md:py-28 bg-ink text-white relative overflow-hidden">
   <div class="absolute top-1/2 -left-40 h-96 w-96 rounded-full opacity-15 blur-3xl" style="background:#7E1015"></div>
 
   <div class="max-w-6xl mx-auto px-5 relative">
@@ -417,30 +440,34 @@
 
       <div class="rv" style="--rvd:.15s">
         <div class="grid grid-cols-2 gap-4">
-          <div class="aspect-square rounded-xl border border-white/10 bg-ink2 grid place-items-center text-center px-4">
-            <div>
-              <p class="text-sm text-white/40 leading-relaxed">Bildplatz<br>Youngtimer 1</p>
-              <span class="tbd mt-2 inline-block">Foto</span>
-            </div>
-          </div>
-          <div class="aspect-square rounded-xl border border-white/10 bg-ink2 grid place-items-center text-center px-4 mt-8">
-            <div>
-              <p class="text-sm text-white/40 leading-relaxed">Bildplatz<br>Detail Innenraum</p>
-              <span class="tbd mt-2 inline-block">Foto</span>
-            </div>
-          </div>
-          <div class="aspect-square rounded-xl border border-white/10 bg-ink2 grid place-items-center text-center px-4 -mt-4">
-            <div>
-              <p class="text-sm text-white/40 leading-relaxed">Bildplatz<br>Lack nachher</p>
-              <span class="tbd mt-2 inline-block">Foto</span>
-            </div>
-          </div>
-          <div class="aspect-square rounded-xl border border-white/10 bg-ink2 grid place-items-center text-center px-4 mt-4">
-            <div>
-              <p class="text-sm text-white/40 leading-relaxed">Bildplatz<br>Halle</p>
-              <span class="tbd mt-2 inline-block">Foto</span>
-            </div>
-          </div>
+          <figure class="foto foto-zoom aspect-square rounded-lg border border-white/10">
+              <picture>
+                <source srcset="bilder/yt-1.webp" type="image/webp">
+                <img src="bilder/yt-1.jpg" alt="Typenschild 2.3-16 am Heck eines Mercedes 190E" width="800" height="800" loading="lazy" decoding="async">
+              </picture>
+              <figcaption class="foto-text">190E 2.3-16</figcaption>
+            </figure>
+          <figure class="foto foto-zoom aspect-square rounded-lg border border-white/10 mt-8">
+              <picture>
+                <source srcset="bilder/yt-2.webp" type="image/webp">
+                <img src="bilder/yt-2.jpg" alt="Innenraum eines BMW E30 Cabrio mit hellem Leder" width="800" height="800" loading="lazy" decoding="async">
+              </picture>
+              <figcaption class="foto-text">E30 Cabrio</figcaption>
+            </figure>
+          <figure class="foto foto-zoom aspect-square rounded-lg border border-white/10 -mt-4">
+              <picture>
+                <source srcset="bilder/yt-3.webp" type="image/webp">
+                <img src="bilder/yt-3.jpg" alt="Gereinigte AMG-Felge an einem Mercedes 190E" width="800" height="800" loading="lazy" decoding="async">
+              </picture>
+              <figcaption class="foto-text">AMG-Felge</figcaption>
+            </figure>
+          <figure class="foto foto-zoom aspect-square rounded-lg border border-white/10 mt-4">
+              <picture>
+                <source srcset="bilder/yt-4.webp" type="image/webp">
+                <img src="bilder/yt-4.jpg" alt="Wasserperlen auf frisch versiegeltem Lack" width="800" height="800" loading="lazy" decoding="async">
+              </picture>
+              <figcaption class="foto-text">Nach der Versiegelung</figcaption>
+            </figure>
         </div>
       </div>
     </div>
@@ -448,7 +475,7 @@
 </section>
 
 <!-- ══════════ ABLAUF ══════════ -->
-<section id="ablauf" class="py-16 md:py-24 bg-linen">
+<section id="ablauf" class="py-20 md:py-28 bg-linen">
   <div class="max-w-6xl mx-auto px-5">
     <div class="max-w-2xl rv">
       <p class="kicker text-blood">Ablauf</p>
@@ -457,44 +484,76 @@
     </div>
 
     <div class="mt-12 grid md:grid-cols-4 gap-5">
-      <div class="card p-6 rv" style="--rvd:.05s">
-        <p class="price-num text-4xl font-extrabold text-red">01</p>
-        <h3 class="mt-3 text-lg font-extrabold">Anfragen</h3>
-        <p class="mt-2 text-sm text-slate leading-relaxed">
-          Formular unten oder direkt eine Nachricht. Fahrzeug, Wunsch, Adresse.
-          Sie bekommen den Fixpreis und einen Termin zurück.
-        </p>
+      <div class="card overflow-hidden rv" style="--rvd:.05s">
+        <figure class="foto foto-zoom aspect-[4/3]">
+              <picture>
+                <source srcset="bilder/ablauf-1.webp" type="image/webp">
+                <img src="bilder/ablauf-1.jpg" alt="Staubiges Fahrzeugheck vor der Aufbereitung" width="800" height="600" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+        <div class="p-6">
+          <p class="step-num">01</p>
+          <h3 class="mt-3 text-lg font-extrabold">Anfragen</h3>
+          <p class="mt-2 text-sm text-slate leading-relaxed">
+            Formular unten oder direkt eine Nachricht. Fahrzeug, Wunsch, Adresse.
+            Sie bekommen den Fixpreis und einen Termin zurück.
+          </p>
+        </div>
       </div>
-      <div class="card p-6 rv" style="--rvd:.12s">
-        <p class="price-num text-4xl font-extrabold text-red">02</p>
-        <h3 class="mt-3 text-lg font-extrabold">Wir holen ab</h3>
-        <p class="mt-2 text-sm text-slate leading-relaxed">
-          Zum vereinbarten Zeitpunkt bei Ihnen. Übergabeprotokoll mit Fotos vom Zustand,
-          damit hinterher keine Frage offen ist.
-        </p>
+      <div class="card overflow-hidden rv" style="--rvd:.12s">
+        <figure class="foto foto-zoom aspect-[4/3]">
+              <picture>
+                <source srcset="bilder/ablauf-2.webp" type="image/webp">
+                <img src="bilder/ablauf-2.jpg" alt="BMW E30 Cabrio unterwegs zur Halle" width="800" height="600" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+        <div class="p-6">
+          <p class="step-num">02</p>
+          <h3 class="mt-3 text-lg font-extrabold">Wir holen ab</h3>
+          <p class="mt-2 text-sm text-slate leading-relaxed">
+            Zum vereinbarten Zeitpunkt bei Ihnen. Übergabeprotokoll mit Fotos vom Zustand,
+            damit hinterher keine Frage offen ist.
+          </p>
+        </div>
       </div>
-      <div class="card p-6 rv" style="--rvd:.19s">
-        <p class="price-num text-4xl font-extrabold text-red">03</p>
-        <h3 class="mt-3 text-lg font-extrabold">Arbeit in der Halle</h3>
-        <p class="mt-2 text-sm text-slate leading-relaxed">
-          Licht, Wasser, Strom, keine Sonne, kein Wind. Nur so lässt sich Lack
-          beurteilen und sauber arbeiten. Sie bekommen Zwischenstände.
-        </p>
+      <div class="card overflow-hidden rv" style="--rvd:.19s">
+        <figure class="foto foto-zoom aspect-[4/3]">
+              <picture>
+                <source srcset="bilder/ablauf-3.webp" type="image/webp">
+                <img src="bilder/ablauf-3.jpg" alt="Mikrofasertuch auf einer nassen Fahrzeugflanke" width="800" height="600" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+        <div class="p-6">
+          <p class="step-num">03</p>
+          <h3 class="mt-3 text-lg font-extrabold">Arbeit in der Halle</h3>
+          <p class="mt-2 text-sm text-slate leading-relaxed">
+            Licht, Wasser, Strom, keine Sonne, kein Wind. Nur so lässt sich Lack
+            beurteilen und sauber arbeiten. Sie bekommen Zwischenstände.
+          </p>
+        </div>
       </div>
-      <div class="card p-6 rv" style="--rvd:.26s">
-        <p class="price-num text-4xl font-extrabold text-red">04</p>
-        <h3 class="mt-3 text-lg font-extrabold">Zurück vor die Tür</h3>
-        <p class="mt-2 text-sm text-slate leading-relaxed">
-          Gemeinsame Abnahme. Erst wenn es passt, wird gezahlt.
-          Bar, Karte oder Überweisung.
-        </p>
+      <div class="card overflow-hidden rv" style="--rvd:.26s">
+        <figure class="foto foto-zoom aspect-[4/3]">
+              <picture>
+                <source srcset="bilder/ablauf-4.webp" type="image/webp">
+                <img src="bilder/ablauf-4.jpg" alt="Fertig aufbereiteter BMW E39 M5" width="800" height="600" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+        <div class="p-6">
+          <p class="step-num">04</p>
+          <h3 class="mt-3 text-lg font-extrabold">Zurück vor die Tür</h3>
+          <p class="mt-2 text-sm text-slate leading-relaxed">
+            Gemeinsame Abnahme. Erst wenn es passt, wird gezahlt.
+            Bar, Karte oder Überweisung.
+          </p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ══════════ FAHRZEUGE ZUM VERKAUF ══════════ -->
-<section id="fahrzeuge" class="py-16 md:py-24">
+<section id="fahrzeuge" class="py-20 md:py-28">
   <div class="max-w-6xl mx-auto px-5">
     <div class="flex flex-wrap items-end justify-between gap-6 rv">
       <div class="max-w-2xl">
@@ -503,7 +562,7 @@
         <div class="rule mt-5"></div>
         <p class="mt-5 text-slate leading-relaxed">
           Wir sammeln und wir handeln. Jedes Auto, das hier steht, ist durch unsere
-          eigene Aufbereitung gegangen. Sie sehen im Video, wie es vorher aussah.
+          eigene Aufbereitung gegangen. Wie es vorher aussah, sehen Sie auf unserem Kanal.
         </p>
       </div>
       <a href="#buchen" class="text-sm font-bold text-blood hover:text-red transition-colors">
@@ -514,54 +573,54 @@
     <div class="mt-12 grid md:grid-cols-3 gap-6">
       <!-- Fahrzeug-Karte, dreimal als Vorlage -->
       <article class="card card-hover overflow-hidden rv" style="--rvd:.05s">
-        <div class="aspect-[4/3] bg-linen grid place-items-center border-b border-line">
-          <div class="text-center px-4">
-            <p class="text-sm text-steel">Fahrzeugfoto</p>
-            <span class="tbd mt-2 inline-block">Foto + Daten</span>
-          </div>
-        </div>
+        <figure class="foto foto-zoom aspect-[4/3] border-b border-line">
+              <picture>
+                <source srcset="bilder/auto-1.webp" type="image/webp">
+                <img src="bilder/auto-1.jpg" alt="BMW E39 M5 in Avusblau in der Halle" width="1000" height="750" loading="lazy" decoding="async">
+              </picture>
+            </figure>
         <div class="p-5">
           <p class="kicker text-steel">Youngtimer</p>
-          <h3 class="mt-1.5 text-lg font-extrabold">Fahrzeug, Modell</h3>
-          <p class="mt-1 text-sm text-slate">Baujahr · km · Zustand</p>
+          <h3 class="mt-1.5 text-lg font-extrabold">BMW E39 M5</h3>
+          <p class="mt-1 text-sm"><span class="tbd">Baujahr · km · Zustand</span></p>
           <div class="mt-4 pt-4 border-t border-line flex items-center justify-between">
-            <p class="price-num text-xl font-extrabold text-blood">Preis €</p>
+            <p class="price-num text-xl font-extrabold"><span class="tbd">Preis €</span></p>
             <a href="#buchen" class="text-sm font-bold text-blood hover:text-red transition-colors">Anfragen →</a>
           </div>
         </div>
       </article>
 
       <article class="card card-hover overflow-hidden rv" style="--rvd:.12s">
-        <div class="aspect-[4/3] bg-linen grid place-items-center border-b border-line">
-          <div class="text-center px-4">
-            <p class="text-sm text-steel">Fahrzeugfoto</p>
-            <span class="tbd mt-2 inline-block">Foto + Daten</span>
-          </div>
-        </div>
+        <figure class="foto foto-zoom aspect-[4/3] border-b border-line">
+              <picture>
+                <source srcset="bilder/auto-2.webp" type="image/webp">
+                <img src="bilder/auto-2.jpg" alt="BMW E30 Cabrio auf einer Landstraße" width="1000" height="750" loading="lazy" decoding="async">
+              </picture>
+            </figure>
         <div class="p-5">
           <p class="kicker text-steel">Youngtimer</p>
-          <h3 class="mt-1.5 text-lg font-extrabold">Fahrzeug, Modell</h3>
-          <p class="mt-1 text-sm text-slate">Baujahr · km · Zustand</p>
+          <h3 class="mt-1.5 text-lg font-extrabold">BMW E30 Cabrio</h3>
+          <p class="mt-1 text-sm"><span class="tbd">Baujahr · km · Zustand</span></p>
           <div class="mt-4 pt-4 border-t border-line flex items-center justify-between">
-            <p class="price-num text-xl font-extrabold text-blood">Preis €</p>
+            <p class="price-num text-xl font-extrabold"><span class="tbd">Preis €</span></p>
             <a href="#buchen" class="text-sm font-bold text-blood hover:text-red transition-colors">Anfragen →</a>
           </div>
         </div>
       </article>
 
       <article class="card card-hover overflow-hidden rv" style="--rvd:.19s">
-        <div class="aspect-[4/3] bg-linen grid place-items-center border-b border-line">
-          <div class="text-center px-4">
-            <p class="text-sm text-steel">Fahrzeugfoto</p>
-            <span class="tbd mt-2 inline-block">Foto + Daten</span>
-          </div>
-        </div>
+        <figure class="foto foto-zoom aspect-[4/3] border-b border-line">
+              <picture>
+                <source srcset="bilder/auto-3.webp" type="image/webp">
+                <img src="bilder/auto-3.jpg" alt="Schwarzer Mercedes 190E von vorne" width="1000" height="750" loading="lazy" decoding="async">
+              </picture>
+            </figure>
         <div class="p-5">
           <p class="kicker text-steel">Youngtimer</p>
-          <h3 class="mt-1.5 text-lg font-extrabold">Fahrzeug, Modell</h3>
-          <p class="mt-1 text-sm text-slate">Baujahr · km · Zustand</p>
+          <h3 class="mt-1.5 text-lg font-extrabold">Mercedes 190E</h3>
+          <p class="mt-1 text-sm"><span class="tbd">Baujahr · km · Zustand</span></p>
           <div class="mt-4 pt-4 border-t border-line flex items-center justify-between">
-            <p class="price-num text-xl font-extrabold text-blood">Preis €</p>
+            <p class="price-num text-xl font-extrabold"><span class="tbd">Preis €</span></p>
             <a href="#buchen" class="text-sm font-bold text-blood hover:text-red transition-colors">Anfragen →</a>
           </div>
         </div>
@@ -576,7 +635,7 @@
 </section>
 
 <!-- ══════════ BUCHEN ══════════ -->
-<section id="buchen" class="py-16 md:py-24 bg-linen">
+<section id="buchen" class="py-20 md:py-28 bg-linen">
   <div class="max-w-3xl mx-auto px-5">
     <div class="text-center rv">
       <p class="kicker text-blood">Termin</p>
@@ -650,13 +709,13 @@
           <div>
             <label for="fPlz" class="block text-sm font-semibold mb-1.5">Postleitzahl der Abholadresse</label>
             <input id="fPlz" name="plz" type="text" inputmode="numeric" required maxlength="5"
-                   class="w-full sm:w-48 border border-line rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blood" placeholder="1160">
+                   class="w-full sm:w-48 border border-line rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-blood" placeholder="1160">
             <p class="mt-1.5 text-xs text-steel">Bis 15 km ab unserer Halle ist die Abholung inklusive.</p>
           </div>
           <div>
             <label for="fDatum" class="block text-sm font-semibold mb-1.5">Wunschtermin</label>
             <input id="fDatum" name="datum" type="date" required
-                   class="w-full sm:w-64 border border-line rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blood">
+                   class="w-full sm:w-64 border border-line rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-blood">
             <p class="mt-1.5 text-xs text-steel">Unverbindlich — wir bestätigen oder schlagen etwas Nahes vor.</p>
           </div>
         </div>
@@ -669,28 +728,28 @@
           <div>
             <label for="fName" class="block text-sm font-semibold mb-1.5">Name</label>
             <input id="fName" name="name" type="text" required autocomplete="name"
-                   class="w-full border border-line rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blood" placeholder="Vor- und Nachname">
+                   class="w-full border border-line rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-blood" placeholder="Vor- und Nachname">
           </div>
           <div>
             <label for="fAuto" class="block text-sm font-semibold mb-1.5">Fahrzeug</label>
             <input id="fAuto" name="auto" type="text" required
-                   class="w-full border border-line rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blood" placeholder="z. B. BMW E36 328i, 1995">
+                   class="w-full border border-line rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-blood" placeholder="z. B. BMW E36 328i, 1995">
           </div>
           <div>
             <label for="fTel" class="block text-sm font-semibold mb-1.5">Telefon</label>
             <input id="fTel" name="telefon" type="tel" required autocomplete="tel"
-                   class="w-full border border-line rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blood" placeholder="+43 …">
+                   class="w-full border border-line rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-blood" placeholder="+43 …">
           </div>
           <div>
             <label for="fEmail" class="block text-sm font-semibold mb-1.5">E-Mail <span class="text-steel font-normal">(optional)</span></label>
             <input id="fEmail" name="email" type="email" autocomplete="email"
-                   class="w-full border border-line rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blood" placeholder="name@beispiel.at">
+                   class="w-full border border-line rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-blood" placeholder="name@beispiel.at">
           </div>
         </div>
         <div class="mt-4">
           <label for="fMsg" class="block text-sm font-semibold mb-1.5">Anmerkung <span class="text-steel font-normal">(optional)</span></label>
           <textarea id="fMsg" name="nachricht" rows="3"
-                    class="w-full border border-line rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blood"
+                    class="w-full border border-line rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-blood"
                     placeholder="Tierhaare, Flecken, empfindlicher Lack, besondere Wünsche …"></textarea>
         </div>
         <label class="mt-4 flex items-start gap-2.5 text-sm text-slate">
@@ -724,7 +783,7 @@
 </section>
 
 <!-- ══════════ FAQ ══════════ -->
-<section id="faq" class="py-16 md:py-24">
+<section id="faq" class="py-20 md:py-28">
   <div class="max-w-3xl mx-auto px-5">
     <div class="rv">
       <p class="kicker text-blood">Häufige Fragen</p>
@@ -806,7 +865,7 @@
         </summary>
         <p class="mt-3 text-sm text-slate leading-relaxed">
           Ja. Was gerade abzugeben ist, steht oben unter „Fahrzeuge“. Jedes davon ist durch
-          unsere eigene Aufbereitung gegangen, den Zustand vorher sehen Sie in unseren Videos.
+          unsere eigene Aufbereitung gegangen, den Zustand vorher sehen Sie auf unserem Kanal.
           Wenn Sie etwas Bestimmtes suchen, sagen Sie Bescheid — wir haben oft mehr in der
           Halle, als online steht.
         </p>
