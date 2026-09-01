@@ -5,23 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RDVC Garage — Fahrzeugaufbereitung Wien | Hol- und Bringservice, Fixpreis</title>
   <meta name="description" content="Fahrzeugaufbereitung in Wien mit Hol- und Bringservice: Wir holen Ihr Auto ab, bereiten es in unserer Halle auf und bringen es zurück. Fixpreis vorab. Spezialisiert auf Youngtimer und Sammlerfahrzeuge.">
-  <meta name="theme-color" content="#14161A">
+  <meta name="theme-color" content="#0A0A0C">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="fonts.css">
   <script src="tailwind.js"></script>
+  <link rel="stylesheet" href="site.css">
+  <script src="site.js"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            ink:     '#14161A',
-            ink2:    '#1D2126',
+            ink:     '#0A0A0C',
+            ink2:    '#141418',
             paper:   '#FFFFFF',
-            linen:   '#F6F4F1',
-            racing:  '#1E4D3E',
-            racing2: '#2A6B56',
-            brass:   '#C6A15B',
-            brass2:  '#E0C489',
+            linen:   '#F5F3F1',
+            blood:  '#7E1015',
+            blood2: '#A3161C',
+            red:   '#E11D22',
+            red2:  '#FF4A50',
             steel:   '#8C93A0',
             slate:   '#4A5058',
             line:    '#E4E0DA'
@@ -35,37 +37,93 @@
     }
   </script>
   <style>
+    /* ── Hero-Buehne ─────────────────────────────────────────────────────────
+       Sobald ein Foto vorliegt (bestes Material liegt im TikTok-Account),
+       hier eintragen und sonst nichts aendern:
+           --hero-bild: url('bilder/hero.jpg');
+       Das Licht darueber bleibt liegen und bindet das Foto ins Rot ein.      */
+    :root { --hero-bild: none; }
+
+    .hero-foto {
+      background-image: var(--hero-bild);
+      background-size: cover;
+      background-position: center 40%;
+      filter: saturate(.85) contrast(1.05);
+    }
+
+    /* Zwei rote Lichtquellen wie LED-Baender ueber der Hebebuehne, plus ein
+       kalter Rest-Schimmer, damit das Rot nicht flach wirkt. */
+    .hero-licht {
+      background:
+        radial-gradient(58% 44% at 18% 8%,   rgba(225,29,34,.30), transparent 70%),
+        radial-gradient(50% 40% at 88% 78%,  rgba(255,74,80,.20), transparent 72%),
+        radial-gradient(70% 55% at 50% 115%, rgba(126,16,21,.55), transparent 70%),
+        linear-gradient(180deg, rgba(10,10,12,.86) 0%, rgba(10,10,12,.58) 42%, rgba(10,10,12,.94) 100%);
+    }
+
+    /* Hallenboden. Bewusst knapp unter der Wahrnehmungsschwelle. */
+    .hero-raster {
+      background-image:
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+      background-size: 68px 68px;
+      mask-image: radial-gradient(72% 62% at 50% 46%, #000 35%, transparent 100%);
+      -webkit-mask-image: radial-gradient(72% 62% at 50% 46%, #000 35%, transparent 100%);
+    }
+
+    .hero-vignette {
+      background: radial-gradient(78% 68% at 50% 45%, transparent 42%, rgba(0,0,0,.72) 100%);
+    }
+
+    /* Das Schluesselwort glueht, statt nur eingefaerbt zu sein. */
+    .hero-akzent {
+      color: #FF4A50;
+      text-shadow: 0 0 38px rgba(225,29,34,.55), 0 0 90px rgba(225,29,34,.25);
+      white-space: nowrap;
+    }
+
+    @keyframes scrollNudge { 0%,100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 7px); } }
+    .hero-scroll { animation: scrollNudge 2.4s ease-in-out 1.6s infinite; }
+
+    /* Topbar liegt ueber dem Hero und tritt erst beim Scrollen als Flaeche auf. */
+    #topbar.solide {
+      background: rgba(10,10,12,.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom-color: rgba(255,255,255,.10);
+    }
+
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; color: #14161A; overflow-x: clip; }
+    body { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; color: #0A0A0C; overflow-x: clip; }
     h1, h2, h3, .head { font-family: 'Saira', ui-sans-serif, system-ui, sans-serif; letter-spacing: -0.015em; }
 
-    .btn-brass { background: #C6A15B; color: #14161A; transition: background .2s ease, transform .2s ease, box-shadow .2s ease; }
-    .btn-brass:hover { background: #D4B471; transform: translateY(-1px); box-shadow: 0 12px 30px -14px rgba(198,161,91,.7); }
+    .btn-red { background: #E11D22; color: #FFFFFF; transition: background .2s ease, transform .2s ease, box-shadow .2s ease; }
+    .btn-red:hover { background: #FF3B41; transform: translateY(-1px); box-shadow: 0 12px 30px -14px rgba(225,29,34,.7); }
     .btn-ghost { border: 1.5px solid rgba(255,255,255,.25); color: #fff; transition: border-color .2s ease, background .2s ease; }
-    .btn-ghost:hover { border-color: #C6A15B; background: rgba(198,161,91,.1); }
+    .btn-ghost:hover { border-color: #E11D22; background: rgba(225,29,34,.1); }
 
     .card { background: #fff; border: 1px solid #E4E0DA; border-radius: 1rem; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
-    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 22px 44px -20px rgba(20,22,26,.28); border-color: #C6A15B; }
-    .dark-card { background: #1D2126; border: 1px solid rgba(255,255,255,.08); border-radius: 1rem; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 22px 44px -20px rgba(10,10,12,.28); border-color: #E11D22; }
+    .dark-card { background: #141418; border: 1px solid rgba(255,255,255,.08); border-radius: 1rem; }
 
     /* Feine Linie in Messing — zieht sich als Marken-Element durch */
-    .rule { height: 2px; width: 44px; background: #C6A15B; }
+    .rule { height: 2px; width: 44px; background: #E11D22; }
 
     .price-num { font-family: 'Saira', sans-serif; font-variant-numeric: tabular-nums; }
     .kicker { font-size: .74rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; }
 
     .step-dot { width: 9px; height: 9px; border-radius: 9999px; background: #E4E0DA; transition: background .25s ease, transform .25s ease; }
-    .step-dot.active { background: #1E4D3E; transform: scale(1.3); }
+    .step-dot.active { background: #7E1015; transform: scale(1.3); }
     .opt-btn { border: 1.5px solid #E4E0DA; border-radius: .9rem; transition: border-color .15s ease, background .15s ease, box-shadow .15s ease; cursor: pointer; text-align: left; }
-    .opt-btn:hover { border-color: #C6A15B; }
-    .opt-btn.selected { border-color: #1E4D3E; background: #F0F5F2; box-shadow: 0 0 0 1px #1E4D3E inset; }
+    .opt-btn:hover { border-color: #E11D22; }
+    .opt-btn.selected { border-color: #7E1015; background: #FDF1F1; box-shadow: 0 0 0 1px #7E1015 inset; }
 
     details.faq summary { cursor: pointer; list-style: none; }
     details.faq summary::-webkit-details-marker { display: none; }
     details.faq[open] .faq-chevron { transform: rotate(180deg); }
     .faq-chevron { transition: transform .25s ease; }
 
-    .tbd { background: #FBF3E2; color: #7A5E1E; border: 1px dashed #C6A15B; border-radius: .35rem; padding: 0 .4rem; font-size: .72rem; font-weight: 600; white-space: nowrap; }
+    .tbd { background: #FBF3E2; color: #7A5E1E; border: 1px dashed #E11D22; border-radius: .35rem; padding: 0 .4rem; font-size: .72rem; font-weight: 600; white-space: nowrap; }
 
     .rv { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; transition-delay: var(--rvd, 0s); }
     .rv.on { opacity: 1; transform: none; }
@@ -76,7 +134,7 @@
     @keyframes stepIn { from { opacity: 0; transform: translateX(24px); } to { opacity: 1; transform: none; } }
     .step-enter { animation: stepIn .36s ease both; }
     @keyframes ctaUp { from { transform: translateY(110%); } to { transform: none; } }
-    @media (max-width: 767px) { .sticky-cta { box-shadow: 0 -8px 30px -12px rgba(20,22,26,.4); animation: ctaUp .6s .7s cubic-bezier(.22,1,.36,1) both; } }
+    @media (max-width: 767px) { .sticky-cta { box-shadow: 0 -8px 30px -12px rgba(10,10,12,.4); animation: ctaUp .6s .7s cubic-bezier(.22,1,.36,1) both; } }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -92,107 +150,119 @@
 <body class="bg-paper antialiased">
 
 <!-- ══════════ NAVIGATION ══════════ -->
-<header class="fixed inset-x-0 top-0 z-50 bg-ink/95 backdrop-blur border-b border-white/10">
+<header id="topbar" class="fixed inset-x-0 top-0 z-50 transition-all duration-300 border-b border-transparent">
   <nav class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
     <a href="#top" class="flex items-center gap-2.5 text-white">
-      <span class="grid place-items-center h-8 w-8 rounded-md bg-racing text-brass head font-extrabold text-sm">R</span>
-      <span class="head font-extrabold tracking-tight text-lg">RDVC<span class="text-brass">.</span>GARAGE</span>
+      <span class="grid place-items-center h-8 w-8 rounded-md bg-blood text-red head font-extrabold text-sm">R</span>
+      <span class="head font-extrabold tracking-tight text-lg">RDVC<span class="text-red">.</span>GARAGE</span>
     </a>
-    <div class="hidden md:flex items-center gap-7 text-sm font-medium text-white/80">
-      <a href="#pakete" class="hover:text-brass transition-colors">Leistungen</a>
-      <a href="#youngtimer" class="hover:text-brass transition-colors">Youngtimer</a>
-      <a href="#ablauf" class="hover:text-brass transition-colors">Ablauf</a>
-      <a href="#fahrzeuge" class="hover:text-brass transition-colors">Fahrzeuge</a>
-      <a href="#buchen" class="btn-brass px-5 py-2 rounded-full text-sm font-bold">Termin anfragen</a>
-    </div>
-    <button id="menuBtn" class="md:hidden p-2 -mr-2 text-white" aria-label="Menü öffnen" aria-expanded="false">
+    <div class="flex items-center gap-3">
+      <div class="hidden md:flex items-center gap-7 text-sm font-medium text-white/80">
+        <a href="#pakete" class="hover:text-red transition-colors">Leistungen</a>
+        <a href="#youngtimer" class="hover:text-red transition-colors">Youngtimer</a>
+        <a href="#ablauf" class="hover:text-red transition-colors">Ablauf</a>
+        <a href="#fahrzeuge" class="hover:text-red transition-colors">Fahrzeuge</a>
+        <a href="#buchen" class="btn-red px-5 py-2 rounded-full text-sm font-bold">Termin anfragen</a>
+      </div>
+      <div class="flex items-center gap-2" data-nt>
+        <button id="themeBtn" type="button" class="hdr-btn"><svg class="ico-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg><svg class="ico-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+        <button id="langBtn" type="button" class="hdr-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18"/></svg><span class="lang-code">DE</span></button>
+      </div>
+      <button id="menuBtn" class="md:hidden p-2 -mr-2 text-white" aria-label="Menü öffnen" aria-expanded="false">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-    </button>
+      </button>
+    </div>
   </nav>
   <div id="mobileMenu" class="hidden md:hidden border-t border-white/10 bg-ink px-5 py-4 flex flex-col gap-4 text-sm font-medium text-white/85">
     <a href="#pakete">Leistungen</a>
     <a href="#youngtimer">Youngtimer</a>
     <a href="#ablauf">Ablauf</a>
     <a href="#fahrzeuge">Fahrzeuge</a>
-    <a href="#buchen" class="btn-brass px-5 py-2.5 rounded-full text-center font-bold">Termin anfragen</a>
+    <a href="#buchen" class="btn-red px-5 py-2.5 rounded-full text-center font-bold">Termin anfragen</a>
   </div>
 </header>
 
 <!-- ══════════ HERO ══════════ -->
-<section id="top" class="pt-28 md:pt-36 pb-16 md:pb-24 bg-ink text-white relative overflow-hidden">
-  <!-- Racing-Green-Schimmer im Hintergrund -->
-  <div class="absolute -top-32 -right-24 h-96 w-96 rounded-full opacity-20 blur-3xl" style="background:#1E4D3E"></div>
-  <div class="absolute -bottom-40 -left-32 h-96 w-96 rounded-full opacity-10 blur-3xl" style="background:#C6A15B"></div>
+<!-- Vollflaechig wie eine Studioaufnahme. Solange kein Foto da ist, traegt das
+     Licht-Setup aus CSS die Buehne; sobald eines vorliegt, nur --hero-bild oben
+     im :root setzen, der Rest bleibt unveraendert. -->
+<section id="top" class="relative min-h-[100svh] flex items-center bg-ink text-white overflow-hidden">
 
-  <div class="max-w-6xl mx-auto px-5 relative">
-    <div class="grid lg:grid-cols-[1.15fr,1fr] gap-12 lg:gap-16 items-center">
-      <div>
-        <p class="kicker text-brass hero-in d1">Wien · Hol- und Bringservice</p>
-        <h1 class="hero-in d2 mt-4 text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05]">
-          Ihr Auto wird abgeholt,<br>
-          aufbereitet und<br>
-          <span class="text-brass">zurückgebracht.</span>
-        </h1>
-        <p class="hero-in d3 mt-6 text-lg text-white/70 max-w-xl leading-relaxed">
-          Sie bleiben, wo Sie sind. Wir holen den Wagen bei Ihnen ab, arbeiten in unserer
-          Halle in Wien und stellen ihn Ihnen fertig vor die Tür. Fixpreis vorher, kein
-          Stundensatz, keine Überraschung.
-        </p>
+  <!-- Ebene 1: das Foto, sobald es gesetzt ist -->
+  <div class="hero-foto absolute inset-0"></div>
 
-        <div class="hero-in d4 mt-8 flex flex-wrap gap-3">
-          <a href="#buchen" class="btn-brass px-7 py-3.5 rounded-full font-bold">Fixpreis anfragen</a>
-          <a href="#pakete" class="btn-ghost px-7 py-3.5 rounded-full font-semibold">Leistungen ansehen</a>
-        </div>
+  <!-- Ebene 2: Werkstattlicht. Zwei rote Quellen, wie LED-Bänder über der Hebebühne. -->
+  <div class="absolute inset-0 hero-licht"></div>
 
-        <div class="hero-in d5 mt-10 flex flex-wrap items-center gap-x-7 gap-y-3 text-sm text-white/60">
-          <span class="flex items-center gap-2">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C6A15B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            Abholung inklusive bis 15 km
-          </span>
-          <span class="flex items-center gap-2">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C6A15B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            Fixpreis nach Fahrzeugklasse
-          </span>
-          <span class="flex items-center gap-2">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C6A15B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            Youngtimer willkommen
-          </span>
-        </div>
-      </div>
+  <!-- Ebene 3: Hallenboden-Raster, sehr fein -->
+  <div class="absolute inset-0 hero-raster"></div>
 
-      <!-- Bild-Slot -->
-      <div class="hero-in d3 relative">
-        <div class="aspect-[4/5] rounded-2xl overflow-hidden border border-white/10 bg-ink2 grid place-items-center">
-          <div class="text-center px-6">
-            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#C6A15B" stroke-width="1.4" class="mx-auto opacity-70"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-            <p class="mt-3 text-sm text-white/45 leading-relaxed">
-              Bildplatz: bestes Vorher/Nachher<br>aus dem TikTok-Material
-            </p>
-            <span class="tbd mt-3 inline-block">Foto einsetzen</span>
-          </div>
-        </div>
-      </div>
+  <!-- Ebene 4: Vignette, damit die Schrift oben liegt statt zu schwimmen -->
+  <div class="absolute inset-0 hero-vignette"></div>
+
+  <div class="relative w-full max-w-5xl mx-auto px-5 pt-24 sm:pt-32 pb-28 sm:pb-32 text-center">
+    <p class="kicker text-red hero-in d1">Wien · Hol- und Bringservice</p>
+
+    <h1 class="hero-in d2 mt-6 text-[2.6rem] leading-[1.04] sm:text-6xl lg:text-7xl font-extrabold">
+      Ihr Auto wird abgeholt,<br class="hidden sm:block">
+      aufbereitet und
+      <span class="hero-akzent">zurückgebracht.</span>
+    </h1>
+
+    <p class="hero-in d3 mt-7 mx-auto max-w-2xl text-lg sm:text-xl text-white/70 leading-relaxed">
+      Sie bleiben, wo Sie sind. Wir holen den Wagen bei Ihnen ab, arbeiten in unserer
+      Halle in Wien und stellen ihn Ihnen fertig vor die Tür. Fixpreis vorher,
+      kein Stundensatz, keine Überraschung.
+    </p>
+
+    <div class="hero-in d4 mt-8 sm:mt-10 flex flex-wrap justify-center gap-3">
+      <a href="#buchen" class="btn-red px-8 py-4 rounded-full font-bold text-base">
+        Fixpreis anfragen
+        <svg class="inline-block ml-1 -mt-0.5" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#pakete" class="btn-ghost px-8 py-4 rounded-full font-semibold text-base">Leistungen ansehen</a>
+    </div>
+
+    <div class="hero-in d5 mt-8 sm:mt-12 flex flex-wrap justify-center items-center gap-x-8 gap-y-2.5 text-sm text-white/55">
+      <span class="flex items-center gap-2">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E11D22" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        Abholung inklusive bis 15 km
+      </span>
+      <span class="flex items-center gap-2">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E11D22" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        Fixpreis nach Fahrzeugklasse
+      </span>
+      <span class="flex items-center gap-2">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E11D22" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        Youngtimer willkommen
+      </span>
     </div>
   </div>
+
+  <!-- Scroll-Hinweis: zeigt, dass unter dem Bildschirmrand weitergeht -->
+  <a href="#pakete" aria-label="Weiter zu den Leistungen"
+     class="hero-scroll absolute bottom-7 left-1/2 -translate-x-1/2 hidden sm:grid place-items-center h-11 w-11 rounded-full border border-white/20 text-white/60 hover:text-red hover:border-red transition-colors">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+  </a>
 </section>
 
 <!-- ══════════ VERTRAUENSLEISTE ══════════ -->
 <section class="bg-linen border-b border-line">
   <div class="max-w-6xl mx-auto px-5 py-7 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
     <div>
-      <p class="head text-2xl font-extrabold text-racing">Fixpreis</p>
+      <p class="head text-2xl font-extrabold text-blood">Fixpreis</p>
       <p class="mt-1 text-sm text-slate">vor der Abholung</p>
     </div>
     <div>
-      <p class="head text-2xl font-extrabold text-racing">15 km</p>
+      <p class="head text-2xl font-extrabold text-blood">15 km</p>
       <p class="mt-1 text-sm text-slate">Abholung inklusive</p>
     </div>
     <div>
-      <p class="head text-2xl font-extrabold text-racing">Eigene Halle</p>
+      <p class="head text-2xl font-extrabold text-blood">Eigene Halle</p>
       <p class="mt-1 text-sm text-slate">nicht auf der Straße</p>
     </div>
     <div>
-      <p class="head text-2xl font-extrabold text-racing">Youngtimer</p>
+      <p class="head text-2xl font-extrabold text-blood">Youngtimer</p>
       <p class="mt-1 text-sm text-slate">unsere Spezialität</p>
     </div>
   </div>
@@ -202,7 +272,7 @@
 <section id="pakete" class="py-16 md:py-24">
   <div class="max-w-6xl mx-auto px-5">
     <div class="max-w-2xl rv">
-      <p class="kicker text-racing">Leistungen</p>
+      <p class="kicker text-blood">Leistungen</p>
       <h2 class="mt-3 text-3xl md:text-4xl font-extrabold">Preise nach Fahrzeugklasse.<br>Vorher, nicht nachher.</h2>
       <div class="rule mt-5"></div>
       <p class="mt-5 text-slate leading-relaxed">
@@ -220,16 +290,16 @@
         <h3 class="mt-2 text-xl font-extrabold">Handwäsche</h3>
         <p class="mt-2 text-sm text-slate leading-relaxed">Außen von Hand, Felgen, Reifen, Scheiben, Türeinstiege abgetrocknet.</p>
         <div class="mt-5 pt-5 border-t border-line">
-          <p class="price-num text-3xl font-extrabold text-racing">69 €</p>
+          <p class="price-num text-3xl font-extrabold text-blood">69 €</p>
           <p class="mt-1 text-xs text-steel">einheitlich, alle Klassen</p>
         </div>
         <ul class="mt-5 space-y-2 text-sm text-slate flex-1">
-          <li class="flex gap-2"><span class="text-brass font-bold">·</span> Zwei-Eimer-Handwäsche</li>
-          <li class="flex gap-2"><span class="text-brass font-bold">·</span> Felgen und Reifen</li>
-          <li class="flex gap-2"><span class="text-brass font-bold">·</span> Scheiben innen und außen</li>
-          <li class="flex gap-2"><span class="text-brass font-bold">·</span> ca. 1,5 Stunden</li>
+          <li class="flex gap-2"><span class="text-red font-bold">·</span> Zwei-Eimer-Handwäsche</li>
+          <li class="flex gap-2"><span class="text-red font-bold">·</span> Felgen und Reifen</li>
+          <li class="flex gap-2"><span class="text-red font-bold">·</span> Scheiben innen und außen</li>
+          <li class="flex gap-2"><span class="text-red font-bold">·</span> ca. 1,5 Stunden</li>
         </ul>
-        <a href="#buchen" data-paket="Handwäsche" class="mt-6 block text-center border-1.5 border-line rounded-full py-2.5 text-sm font-bold hover:border-brass transition-colors" style="border:1.5px solid #E4E0DA">Auswählen</a>
+        <a href="#buchen" data-paket="Handwäsche" class="btn-outline mt-6 block text-center rounded-full py-2.5 text-sm font-bold">Auswählen</a>
       </div>
 
       <!-- Innen -->
@@ -238,35 +308,35 @@
         <h3 class="mt-2 text-xl font-extrabold">Innenaufbereitung</h3>
         <p class="mt-2 text-sm text-slate leading-relaxed">Alles, was Sie anfassen und riechen. Polster, Teppiche, Leder, Lüftung.</p>
         <div class="mt-5 pt-5 border-t border-line">
-          <p class="price-num text-3xl font-extrabold text-racing">ab 149 €</p>
+          <p class="price-num text-3xl font-extrabold text-blood">ab 149 €</p>
           <p class="mt-1 text-xs text-steel">149 · 189 · 229 € nach Klasse</p>
         </div>
         <ul class="mt-5 space-y-2 text-sm text-slate flex-1">
-          <li class="flex gap-2"><span class="text-brass font-bold">·</span> Polster- oder Lederreinigung</li>
-          <li class="flex gap-2"><span class="text-brass font-bold">·</span> Teppiche nass ausgesaugt</li>
-          <li class="flex gap-2"><span class="text-brass font-bold">·</span> Lüftung und Gerüche</li>
-          <li class="flex gap-2"><span class="text-brass font-bold">·</span> Kunststoffe ohne Glanzfilm</li>
+          <li class="flex gap-2"><span class="text-red font-bold">·</span> Polster- oder Lederreinigung</li>
+          <li class="flex gap-2"><span class="text-red font-bold">·</span> Teppiche nass ausgesaugt</li>
+          <li class="flex gap-2"><span class="text-red font-bold">·</span> Lüftung und Gerüche</li>
+          <li class="flex gap-2"><span class="text-red font-bold">·</span> Kunststoffe ohne Glanzfilm</li>
         </ul>
-        <a href="#buchen" data-paket="Innenaufbereitung" class="mt-6 block text-center rounded-full py-2.5 text-sm font-bold hover:border-brass transition-colors" style="border:1.5px solid #E4E0DA">Auswählen</a>
+        <a href="#buchen" data-paket="Innenaufbereitung" class="btn-outline mt-6 block text-center rounded-full py-2.5 text-sm font-bold">Auswählen</a>
       </div>
 
       <!-- Politur — hervorgehoben -->
-      <div class="card card-hover p-6 flex flex-col relative rv" style="--rvd:.19s; border-color:#1E4D3E; box-shadow:0 0 0 1px #1E4D3E inset">
-        <span class="absolute -top-3 left-6 bg-racing text-white text-xs font-bold px-3 py-1 rounded-full">Beliebt</span>
+      <div class="card card-hover card-featured p-6 flex flex-col relative rv" style="--rvd:.19s">
+        <span class="absolute -top-3 left-6 bg-blood text-white text-xs font-bold px-3 py-1 rounded-full">Beliebt</span>
         <p class="kicker text-steel">Lack</p>
         <h3 class="mt-2 text-xl font-extrabold">Politur &amp; Schutz</h3>
         <p class="mt-2 text-sm text-slate leading-relaxed">Swirls und matte Stellen raus, danach versiegelt. Der sichtbarste Unterschied.</p>
         <div class="mt-5 pt-5 border-t border-line">
-          <p class="price-num text-3xl font-extrabold text-racing">ab 249 €</p>
+          <p class="price-num text-3xl font-extrabold text-blood">ab 249 €</p>
           <p class="mt-1 text-xs text-steel">249 · 299 · 379 € nach Klasse</p>
         </div>
         <ul class="mt-5 space-y-2 text-sm text-slate flex-1">
-          <li class="flex gap-2"><span class="text-brass font-bold">·</span> Lackreinigung mit Knete</li>
-          <li class="flex gap-2"><span class="text-brass font-bold">·</span> Ein-Stufen-Politur</li>
-          <li class="flex gap-2"><span class="text-brass font-bold">·</span> Versiegelung, ca. 6 Monate</li>
-          <li class="flex gap-2"><span class="text-brass font-bold">·</span> Handwäsche inklusive</li>
+          <li class="flex gap-2"><span class="text-red font-bold">·</span> Lackreinigung mit Knete</li>
+          <li class="flex gap-2"><span class="text-red font-bold">·</span> Ein-Stufen-Politur</li>
+          <li class="flex gap-2"><span class="text-red font-bold">·</span> Versiegelung, ca. 6 Monate</li>
+          <li class="flex gap-2"><span class="text-red font-bold">·</span> Handwäsche inklusive</li>
         </ul>
-        <a href="#buchen" data-paket="Politur & Schutz" class="btn-brass mt-6 block text-center rounded-full py-2.5 text-sm font-bold">Auswählen</a>
+        <a href="#buchen" data-paket="Politur & Schutz" class="btn-red mt-6 block text-center rounded-full py-2.5 text-sm font-bold">Auswählen</a>
       </div>
 
       <!-- Komplett -->
@@ -275,23 +345,23 @@
         <h3 class="mt-2 text-xl font-extrabold">Komplett</h3>
         <p class="mt-2 text-sm text-slate leading-relaxed">Innen und außen in einem Durchgang. Für Verkauf, Rückgabe oder einmal im Jahr.</p>
         <div class="mt-5 pt-5 border-t border-line">
-          <p class="price-num text-3xl font-extrabold text-racing">ab 349 €</p>
+          <p class="price-num text-3xl font-extrabold text-blood">ab 349 €</p>
           <p class="mt-1 text-xs text-steel">349 · 429 · 529 € nach Klasse</p>
         </div>
         <ul class="mt-5 space-y-2 text-sm text-slate flex-1">
-          <li class="flex gap-2"><span class="text-brass font-bold">·</span> Innenaufbereitung komplett</li>
-          <li class="flex gap-2"><span class="text-brass font-bold">·</span> Politur und Versiegelung</li>
-          <li class="flex gap-2"><span class="text-brass font-bold">·</span> Motorraum auf Wunsch</li>
-          <li class="flex gap-2"><span class="text-brass font-bold">·</span> ein bis zwei Tage</li>
+          <li class="flex gap-2"><span class="text-red font-bold">·</span> Innenaufbereitung komplett</li>
+          <li class="flex gap-2"><span class="text-red font-bold">·</span> Politur und Versiegelung</li>
+          <li class="flex gap-2"><span class="text-red font-bold">·</span> Motorraum auf Wunsch</li>
+          <li class="flex gap-2"><span class="text-red font-bold">·</span> ein bis zwei Tage</li>
         </ul>
-        <a href="#buchen" data-paket="Komplettaufbereitung" class="mt-6 block text-center rounded-full py-2.5 text-sm font-bold hover:border-brass transition-colors" style="border:1.5px solid #E4E0DA">Auswählen</a>
+        <a href="#buchen" data-paket="Komplettaufbereitung" class="btn-outline mt-6 block text-center rounded-full py-2.5 text-sm font-bold">Auswählen</a>
       </div>
     </div>
 
     <!-- Keramik als Zusatz -->
     <div class="mt-6 dark-card p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-6 rv" style="--rvd:.33s">
       <div class="flex-1">
-        <p class="kicker text-brass">Zusatz</p>
+        <p class="kicker text-red">Zusatz</p>
         <h3 class="mt-2 text-xl font-extrabold text-white">Keramikversiegelung</h3>
         <p class="mt-2 text-sm text-white/60 leading-relaxed max-w-xl">
           Zwei bis fünf Jahre Schutz statt sechs Monaten. Nur sinnvoll auf korrigiertem Lack,
@@ -299,7 +369,7 @@
         </p>
       </div>
       <div class="md:text-right shrink-0">
-        <p class="price-num text-3xl font-extrabold text-brass">690 · 890 €</p>
+        <p class="price-num text-3xl font-extrabold text-red">690 · 890 €</p>
         <p class="mt-1 text-xs text-white/45">je nach Fahrzeuggröße und System</p>
       </div>
     </div>
@@ -314,12 +384,12 @@
 
 <!-- ══════════ YOUNGTIMER — der USP ══════════ -->
 <section id="youngtimer" class="py-16 md:py-24 bg-ink text-white relative overflow-hidden">
-  <div class="absolute top-1/2 -left-40 h-96 w-96 rounded-full opacity-15 blur-3xl" style="background:#1E4D3E"></div>
+  <div class="absolute top-1/2 -left-40 h-96 w-96 rounded-full opacity-15 blur-3xl" style="background:#7E1015"></div>
 
   <div class="max-w-6xl mx-auto px-5 relative">
     <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
       <div class="rv">
-        <p class="kicker text-brass">Unsere Spezialität</p>
+        <p class="kicker text-red">Unsere Spezialität</p>
         <h2 class="mt-3 text-3xl md:text-4xl font-extrabold leading-tight">
           Ein 190er ist kein Neuwagen.<br>
           Wir behandeln ihn auch nicht so.
@@ -342,7 +412,7 @@
           <span class="text-xs font-semibold px-3 py-1.5 rounded-full border border-white/15 text-white/70">Standzeit-Vorbereitung</span>
         </div>
 
-        <a href="#buchen" class="btn-brass mt-9 inline-block px-7 py-3.5 rounded-full font-bold">Fahrzeug besprechen</a>
+        <a href="#buchen" class="btn-red mt-9 inline-block px-7 py-3.5 rounded-full font-bold">Fahrzeug besprechen</a>
       </div>
 
       <div class="rv" style="--rvd:.15s">
@@ -381,14 +451,14 @@
 <section id="ablauf" class="py-16 md:py-24 bg-linen">
   <div class="max-w-6xl mx-auto px-5">
     <div class="max-w-2xl rv">
-      <p class="kicker text-racing">Ablauf</p>
+      <p class="kicker text-blood">Ablauf</p>
       <h2 class="mt-3 text-3xl md:text-4xl font-extrabold">Sie müssen nirgendwo hinfahren.</h2>
       <div class="rule mt-5"></div>
     </div>
 
     <div class="mt-12 grid md:grid-cols-4 gap-5">
       <div class="card p-6 rv" style="--rvd:.05s">
-        <p class="price-num text-4xl font-extrabold text-brass">01</p>
+        <p class="price-num text-4xl font-extrabold text-red">01</p>
         <h3 class="mt-3 text-lg font-extrabold">Anfragen</h3>
         <p class="mt-2 text-sm text-slate leading-relaxed">
           Formular unten oder direkt eine Nachricht. Fahrzeug, Wunsch, Adresse.
@@ -396,7 +466,7 @@
         </p>
       </div>
       <div class="card p-6 rv" style="--rvd:.12s">
-        <p class="price-num text-4xl font-extrabold text-brass">02</p>
+        <p class="price-num text-4xl font-extrabold text-red">02</p>
         <h3 class="mt-3 text-lg font-extrabold">Wir holen ab</h3>
         <p class="mt-2 text-sm text-slate leading-relaxed">
           Zum vereinbarten Zeitpunkt bei Ihnen. Übergabeprotokoll mit Fotos vom Zustand,
@@ -404,7 +474,7 @@
         </p>
       </div>
       <div class="card p-6 rv" style="--rvd:.19s">
-        <p class="price-num text-4xl font-extrabold text-brass">03</p>
+        <p class="price-num text-4xl font-extrabold text-red">03</p>
         <h3 class="mt-3 text-lg font-extrabold">Arbeit in der Halle</h3>
         <p class="mt-2 text-sm text-slate leading-relaxed">
           Licht, Wasser, Strom, keine Sonne, kein Wind. Nur so lässt sich Lack
@@ -412,7 +482,7 @@
         </p>
       </div>
       <div class="card p-6 rv" style="--rvd:.26s">
-        <p class="price-num text-4xl font-extrabold text-brass">04</p>
+        <p class="price-num text-4xl font-extrabold text-red">04</p>
         <h3 class="mt-3 text-lg font-extrabold">Zurück vor die Tür</h3>
         <p class="mt-2 text-sm text-slate leading-relaxed">
           Gemeinsame Abnahme. Erst wenn es passt, wird gezahlt.
@@ -428,7 +498,7 @@
   <div class="max-w-6xl mx-auto px-5">
     <div class="flex flex-wrap items-end justify-between gap-6 rv">
       <div class="max-w-2xl">
-        <p class="kicker text-racing">Aus unserer Halle</p>
+        <p class="kicker text-blood">Aus unserer Halle</p>
         <h2 class="mt-3 text-3xl md:text-4xl font-extrabold">Fahrzeuge, die wir abgeben.</h2>
         <div class="rule mt-5"></div>
         <p class="mt-5 text-slate leading-relaxed">
@@ -436,7 +506,7 @@
           eigene Aufbereitung gegangen. Sie sehen im Video, wie es vorher aussah.
         </p>
       </div>
-      <a href="#buchen" class="text-sm font-bold text-racing hover:text-brass transition-colors">
+      <a href="#buchen" class="text-sm font-bold text-blood hover:text-red transition-colors">
         Fahrzeug anfragen →
       </a>
     </div>
@@ -455,8 +525,8 @@
           <h3 class="mt-1.5 text-lg font-extrabold">Fahrzeug, Modell</h3>
           <p class="mt-1 text-sm text-slate">Baujahr · km · Zustand</p>
           <div class="mt-4 pt-4 border-t border-line flex items-center justify-between">
-            <p class="price-num text-xl font-extrabold text-racing">Preis €</p>
-            <a href="#buchen" class="text-sm font-bold text-racing hover:text-brass transition-colors">Anfragen →</a>
+            <p class="price-num text-xl font-extrabold text-blood">Preis €</p>
+            <a href="#buchen" class="text-sm font-bold text-blood hover:text-red transition-colors">Anfragen →</a>
           </div>
         </div>
       </article>
@@ -473,8 +543,8 @@
           <h3 class="mt-1.5 text-lg font-extrabold">Fahrzeug, Modell</h3>
           <p class="mt-1 text-sm text-slate">Baujahr · km · Zustand</p>
           <div class="mt-4 pt-4 border-t border-line flex items-center justify-between">
-            <p class="price-num text-xl font-extrabold text-racing">Preis €</p>
-            <a href="#buchen" class="text-sm font-bold text-racing hover:text-brass transition-colors">Anfragen →</a>
+            <p class="price-num text-xl font-extrabold text-blood">Preis €</p>
+            <a href="#buchen" class="text-sm font-bold text-blood hover:text-red transition-colors">Anfragen →</a>
           </div>
         </div>
       </article>
@@ -491,8 +561,8 @@
           <h3 class="mt-1.5 text-lg font-extrabold">Fahrzeug, Modell</h3>
           <p class="mt-1 text-sm text-slate">Baujahr · km · Zustand</p>
           <div class="mt-4 pt-4 border-t border-line flex items-center justify-between">
-            <p class="price-num text-xl font-extrabold text-racing">Preis €</p>
-            <a href="#buchen" class="text-sm font-bold text-racing hover:text-brass transition-colors">Anfragen →</a>
+            <p class="price-num text-xl font-extrabold text-blood">Preis €</p>
+            <a href="#buchen" class="text-sm font-bold text-blood hover:text-red transition-colors">Anfragen →</a>
           </div>
         </div>
       </article>
@@ -509,14 +579,14 @@
 <section id="buchen" class="py-16 md:py-24 bg-linen">
   <div class="max-w-3xl mx-auto px-5">
     <div class="text-center rv">
-      <p class="kicker text-racing">Termin</p>
+      <p class="kicker text-blood">Termin</p>
       <h2 class="mt-3 text-3xl md:text-4xl font-extrabold">Fixpreis in vier Schritten.</h2>
       <p class="mt-4 text-slate">Keine Anmeldung, keine Vorauszahlung. Antwort meist am selben Tag.</p>
     </div>
 
     <form id="bookForm" class="card p-6 md:p-9 mt-10 shadow-xl shadow-ink/5 rv" style="--rvd:.1s" novalidate>
       <div class="flex items-center justify-between mb-7">
-        <p class="text-sm font-bold text-slate"><span id="stepLabel">Schritt 1 von 4</span></p>
+        <p class="text-sm font-bold text-slate"><span id="stepLabel" data-nt>Schritt 1 von 4</span></p>
         <div class="flex gap-2" id="stepDots" aria-hidden="true">
           <span class="step-dot active"></span><span class="step-dot"></span><span class="step-dot"></span><span class="step-dot"></span>
         </div>
@@ -580,13 +650,13 @@
           <div>
             <label for="fPlz" class="block text-sm font-semibold mb-1.5">Postleitzahl der Abholadresse</label>
             <input id="fPlz" name="plz" type="text" inputmode="numeric" required maxlength="5"
-                   class="w-full sm:w-48 border border-line rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-racing" placeholder="1160">
+                   class="w-full sm:w-48 border border-line rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blood" placeholder="1160">
             <p class="mt-1.5 text-xs text-steel">Bis 15 km ab unserer Halle ist die Abholung inklusive.</p>
           </div>
           <div>
             <label for="fDatum" class="block text-sm font-semibold mb-1.5">Wunschtermin</label>
             <input id="fDatum" name="datum" type="date" required
-                   class="w-full sm:w-64 border border-line rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-racing">
+                   class="w-full sm:w-64 border border-line rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blood">
             <p class="mt-1.5 text-xs text-steel">Unverbindlich — wir bestätigen oder schlagen etwas Nahes vor.</p>
           </div>
         </div>
@@ -599,41 +669,41 @@
           <div>
             <label for="fName" class="block text-sm font-semibold mb-1.5">Name</label>
             <input id="fName" name="name" type="text" required autocomplete="name"
-                   class="w-full border border-line rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-racing" placeholder="Vor- und Nachname">
+                   class="w-full border border-line rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blood" placeholder="Vor- und Nachname">
           </div>
           <div>
             <label for="fAuto" class="block text-sm font-semibold mb-1.5">Fahrzeug</label>
             <input id="fAuto" name="auto" type="text" required
-                   class="w-full border border-line rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-racing" placeholder="z. B. BMW E36 328i, 1995">
+                   class="w-full border border-line rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blood" placeholder="z. B. BMW E36 328i, 1995">
           </div>
           <div>
             <label for="fTel" class="block text-sm font-semibold mb-1.5">Telefon</label>
             <input id="fTel" name="telefon" type="tel" required autocomplete="tel"
-                   class="w-full border border-line rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-racing" placeholder="+43 …">
+                   class="w-full border border-line rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blood" placeholder="+43 …">
           </div>
           <div>
             <label for="fEmail" class="block text-sm font-semibold mb-1.5">E-Mail <span class="text-steel font-normal">(optional)</span></label>
             <input id="fEmail" name="email" type="email" autocomplete="email"
-                   class="w-full border border-line rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-racing" placeholder="name@beispiel.at">
+                   class="w-full border border-line rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blood" placeholder="name@beispiel.at">
           </div>
         </div>
         <div class="mt-4">
           <label for="fMsg" class="block text-sm font-semibold mb-1.5">Anmerkung <span class="text-steel font-normal">(optional)</span></label>
           <textarea id="fMsg" name="nachricht" rows="3"
-                    class="w-full border border-line rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-racing"
+                    class="w-full border border-line rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blood"
                     placeholder="Tierhaare, Flecken, empfindlicher Lack, besondere Wünsche …"></textarea>
         </div>
         <label class="mt-4 flex items-start gap-2.5 text-sm text-slate">
-          <input id="fDsgvo" type="checkbox" required class="mt-1" style="accent-color:#1E4D3E">
+          <input id="fDsgvo" type="checkbox" required class="mt-1" style="accent-color:#7E1015">
           <span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Anfrage
-            gespeichert werden. <a href="datenschutz.html" class="text-racing underline">Datenschutz</a></span>
+            gespeichert werden. <a href="datenschutz.html" class="text-blood underline">Datenschutz</a></span>
         </label>
       </div>
 
       <!-- Erfolg -->
       <div id="formSuccess" class="hidden text-center py-8">
-        <div class="mx-auto grid place-items-center h-14 w-14 rounded-full bg-racing/10">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1E4D3E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        <div class="mx-auto grid place-items-center h-14 w-14 rounded-full bg-blood/10">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7E1015" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
         </div>
         <h3 class="mt-4 text-xl font-extrabold">Anfrage ist da.</h3>
         <p class="mt-2 text-slate">Wir melden uns meist noch am selben Tag mit Fixpreis und Termin.</p>
@@ -641,13 +711,13 @@
 
       <div id="formNav" class="flex items-center justify-between mt-8 pt-6 border-t border-line">
         <button type="button" id="btnBack" class="text-sm font-bold text-slate hover:text-ink px-4 py-2.5 invisible">← Zurück</button>
-        <p id="formError" class="text-sm text-red-600 font-medium hidden mx-3"></p>
-        <button type="button" id="btnNext" class="btn-brass text-sm font-bold px-7 py-3 rounded-full">Weiter →</button>
+        <p id="formError" data-nt class="text-sm text-red-600 font-medium hidden mx-3"></p>
+        <button type="button" id="btnNext" data-nt class="btn-red text-sm font-bold px-7 py-3 rounded-full">Weiter →</button>
       </div>
     </form>
 
     <p class="mt-5 text-center text-sm text-slate">
-      Lieber direkt? <a href="https://www.tiktok.com/@rdvc.garage" class="text-racing font-bold underline">Schreiben Sie uns auf TikTok</a>
+      Lieber direkt? <a href="https://www.tiktok.com/@rdvc.garage" class="text-blood font-bold underline">Schreiben Sie uns auf TikTok</a>
       oder rufen Sie an: <span class="tbd">Telefonnummer</span>
     </p>
   </div>
@@ -657,7 +727,7 @@
 <section id="faq" class="py-16 md:py-24">
   <div class="max-w-3xl mx-auto px-5">
     <div class="rv">
-      <p class="kicker text-racing">Häufige Fragen</p>
+      <p class="kicker text-blood">Häufige Fragen</p>
       <h2 class="mt-3 text-3xl md:text-4xl font-extrabold">Was Kunden vorher wissen wollen.</h2>
       <div class="rule mt-5"></div>
     </div>
@@ -751,14 +821,14 @@
     <div class="grid md:grid-cols-3 gap-10">
       <div>
         <div class="flex items-center gap-2.5">
-          <span class="grid place-items-center h-8 w-8 rounded-md bg-racing text-brass head font-extrabold text-sm">R</span>
-          <span class="head font-extrabold tracking-tight text-lg">RDVC<span class="text-brass">.</span>GARAGE</span>
+          <span class="grid place-items-center h-8 w-8 rounded-md bg-blood text-red head font-extrabold text-sm">R</span>
+          <span class="head font-extrabold tracking-tight text-lg">RDVC<span class="text-red">.</span>GARAGE</span>
         </div>
         <p class="mt-4 text-sm text-white/55 leading-relaxed max-w-xs">
           Fahrzeugaufbereitung mit Hol- und Bringservice in Wien.
           Youngtimer, Sammlerfahrzeuge und alles, was gepflegt gehört.
         </p>
-        <a href="https://www.tiktok.com/@rdvc.garage" class="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brass hover:text-brass2 transition-colors">
+        <a href="https://www.tiktok.com/@rdvc.garage" class="mt-5 inline-flex items-center gap-2 text-sm font-bold text-red hover:text-red2 transition-colors">
           @rdvc.garage auf TikTok →
         </a>
       </div>
@@ -766,11 +836,11 @@
       <div>
         <p class="kicker text-white/40">Leistungen</p>
         <ul class="mt-4 space-y-2.5 text-sm text-white/70">
-          <li><a href="#pakete" class="hover:text-brass transition-colors">Handwäsche</a></li>
-          <li><a href="#pakete" class="hover:text-brass transition-colors">Innenaufbereitung</a></li>
-          <li><a href="#pakete" class="hover:text-brass transition-colors">Politur &amp; Schutz</a></li>
-          <li><a href="#pakete" class="hover:text-brass transition-colors">Komplettaufbereitung</a></li>
-          <li><a href="#youngtimer" class="hover:text-brass transition-colors">Youngtimer-Pflege</a></li>
+          <li><a href="#pakete" class="hover:text-red transition-colors">Handwäsche</a></li>
+          <li><a href="#pakete" class="hover:text-red transition-colors">Innenaufbereitung</a></li>
+          <li><a href="#pakete" class="hover:text-red transition-colors">Politur &amp; Schutz</a></li>
+          <li><a href="#pakete" class="hover:text-red transition-colors">Komplettaufbereitung</a></li>
+          <li><a href="#youngtimer" class="hover:text-red transition-colors">Youngtimer-Pflege</a></li>
         </ul>
       </div>
 
@@ -788,8 +858,8 @@
     <div class="mt-12 pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-sm text-white/45">
       <p>© <span id="jahr">2026</span> RDVC Garage</p>
       <div class="flex gap-6">
-        <a href="impressum.html" class="hover:text-brass transition-colors">Impressum</a>
-        <a href="datenschutz.html" class="hover:text-brass transition-colors">Datenschutz</a>
+        <a href="impressum.html" class="hover:text-red transition-colors">Impressum</a>
+        <a href="datenschutz.html" class="hover:text-red transition-colors">Datenschutz</a>
       </div>
     </div>
   </div>
@@ -797,12 +867,15 @@
 
 <!-- Sticky-CTA am Handy -->
 <div class="sticky-cta md:hidden fixed inset-x-0 bottom-0 z-40 bg-ink/95 backdrop-blur border-t border-white/10 px-4 py-3">
-  <a href="#buchen" class="btn-brass block text-center py-3 rounded-full font-bold">Fixpreis anfragen</a>
+  <a href="#buchen" class="btn-red block text-center py-3 rounded-full font-bold">Fixpreis anfragen</a>
 </div>
 
 <script>
 (function () {
   'use strict';
+
+  /* Uebersetzung fuer alles, was dieses Skript selbst schreibt. */
+  var T = (window.RDVC && window.RDVC.t) || function (s) { return s; };
 
   /* ── Jahr im Footer ─────────────────────────────────── */
   var jahr = document.getElementById('jahr');
@@ -824,6 +897,16 @@
         menuBtn.setAttribute('aria-expanded', 'false');
       });
     });
+  }
+
+  /* ── Topbar: erst ueber dem Hero schweben, dann Flaeche werden ── */
+  var topbar = document.getElementById('topbar');
+  if (topbar) {
+    var setzeTopbar = function () {
+      topbar.classList.toggle('solide', window.scrollY > 40);
+    };
+    setzeTopbar();                                   // auch bei Reload mitten auf der Seite
+    window.addEventListener('scroll', setzeTopbar, { passive: true });
   }
 
   /* ── Einblenden beim Scrollen ───────────────────────── */
@@ -901,36 +984,37 @@
       }
     });
     punkte.forEach(function (p, i) { p.classList.toggle('active', i <= index); });
-    label.textContent = 'Schritt ' + (index + 1) + ' von ' + schritte.length;
+    label.textContent = T('Schritt {a} von {b}')
+      .replace('{a}', index + 1).replace('{b}', schritte.length);
     btnBack.classList.toggle('invisible', index === 0);
-    btnNext.textContent = index === schritte.length - 1 ? 'Anfrage senden' : 'Weiter →';
+    btnNext.textContent = T(index === schritte.length - 1 ? 'Anfrage senden' : 'Weiter →');
     fehlerAus();
   }
 
   function gueltig(index) {
-    if (index === 0 && !auswahl.paket)  { fehlerAn('Bitte eine Leistung wählen.'); return false; }
-    if (index === 1 && !auswahl.klasse) { fehlerAn('Bitte die Fahrzeugklasse wählen.'); return false; }
+    if (index === 0 && !auswahl.paket)  { fehlerAn(T('Bitte eine Leistung wählen.')); return false; }
+    if (index === 1 && !auswahl.klasse) { fehlerAn(T('Bitte die Fahrzeugklasse wählen.')); return false; }
     if (index === 2) {
       var plz = document.getElementById('fPlz');
       var dat = document.getElementById('fDatum');
-      if (!/^\d{4,5}$/.test(plz.value.trim())) { fehlerAn('Bitte eine gültige Postleitzahl eintragen.'); plz.focus(); return false; }
-      if (!dat.value) { fehlerAn('Bitte einen Wunschtermin wählen.'); dat.focus(); return false; }
+      if (!/^\d{4,5}$/.test(plz.value.trim())) { fehlerAn(T('Bitte eine gültige Postleitzahl eintragen.')); plz.focus(); return false; }
+      if (!dat.value) { fehlerAn(T('Bitte einen Wunschtermin wählen.')); dat.focus(); return false; }
     }
     if (index === 3) {
       var pflicht = [
-        [document.getElementById('fName'), 'Bitte Ihren Namen eintragen.'],
-        [document.getElementById('fAuto'), 'Bitte das Fahrzeug angeben.'],
-        [document.getElementById('fTel'),  'Bitte eine Telefonnummer eintragen.']
+        [document.getElementById('fName'), T('Bitte Ihren Namen eintragen.')],
+        [document.getElementById('fAuto'), T('Bitte das Fahrzeug angeben.')],
+        [document.getElementById('fTel'),  T('Bitte eine Telefonnummer eintragen.')]
       ];
       for (var i = 0; i < pflicht.length; i++) {
         if (!pflicht[i][0].value.trim()) { fehlerAn(pflicht[i][1]); pflicht[i][0].focus(); return false; }
       }
       var mail = document.getElementById('fEmail');
       if (mail.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mail.value.trim())) {
-        fehlerAn('Die E-Mail-Adresse sieht nicht richtig aus.'); mail.focus(); return false;
+        fehlerAn(T('Die E-Mail-Adresse sieht nicht richtig aus.')); mail.focus(); return false;
       }
       if (!document.getElementById('fDsgvo').checked) {
-        fehlerAn('Bitte der Datenverarbeitung zustimmen.'); return false;
+        fehlerAn(T('Bitte der Datenverarbeitung zustimmen.')); return false;
       }
     }
     return true;
@@ -983,7 +1067,7 @@
   function absenden() {
     var d = daten();
     btnNext.disabled = true;
-    btnNext.textContent = 'Wird gesendet …';
+    btnNext.textContent = T('Wird gesendet …');
 
     if (ENDPUNKT) {
       fetch(ENDPUNKT, {
@@ -995,8 +1079,8 @@
         zeigeErfolg();
       }).catch(function () {
         btnNext.disabled = false;
-        btnNext.textContent = 'Anfrage senden';
-        fehlerAn('Das Senden hat nicht geklappt. Bitte per TikTok-Nachricht melden.');
+        btnNext.textContent = T('Anfrage senden');
+        fehlerAn(T('Das Senden hat nicht geklappt. Bitte per TikTok-Nachricht melden.'));
       });
       return;
     }
@@ -1021,9 +1105,13 @@
     }
 
     btnNext.disabled = false;
-    btnNext.textContent = 'Anfrage senden';
-    fehlerAn('Der Versand ist noch nicht eingerichtet. Bitte per TikTok-Nachricht melden.');
+    btnNext.textContent = T('Anfrage senden');
+    fehlerAn(T('Der Versand ist noch nicht eingerichtet. Bitte per TikTok-Nachricht melden.'));
   }
+
+  /* Die Beschriftungen des Formulars stehen nicht im HTML, sondern hier —
+     beim Sprachwechsel muessen sie deshalb neu gezeichnet werden. */
+  document.addEventListener('rdvc:lang', function () { zeige(aktuell); });
 
   zeige(0);
 })();

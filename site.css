@@ -1,0 +1,121 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   site.css — Farbwelt fuer Hell und Dunkel, plus die beiden Umschalter.
+
+   Prinzip: jede Farbe, die sich zwischen den Modi aendert, steht als Variable
+   auf :root. Der dunkle Modus setzt nur diese Variablen neu, die Regeln
+   darunter bleiben unveraendert. Wer eine Farbe aendern will, aendert sie an
+   genau einer Stelle.
+
+   Das !important ist Absicht: Tailwind haengt sein Stylesheet zur Laufzeit
+   hinter dieses hier, sonst gewaenne bei gleicher Spezifitaet Tailwind.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --pg:       #FFFFFF;   /* Seitengrund                        */
+  --pg2:      #F5F3F1;   /* abgesetzte Baender (Leinen)        */
+  --card:     #FFFFFF;   /* Karten                             */
+  --tx:       #0A0A0C;   /* Fliesstext, Ueberschriften         */
+  --tx-mid:   #4A5058;   /* zweite Ebene                       */
+  --tx-soft:  #8C93A0;   /* dritte Ebene, Beschriftungen       */
+  --brd:      #E4E0DA;   /* Linien und Rahmen                  */
+  --acc:      #E11D22;   /* Signalrot, in beiden Modi gleich   */
+  --acc-deep: #7E1015;   /* dunkles Rot auf hellem Grund       */
+  --sel:      #FDF1F1;   /* gewaehlte Formularkachel           */
+  --tbd-bg:   #FBF3E2;   /* Platzhalter-Markierung             */
+  --tbd-tx:   #7A5E1E;
+  --shadow:   rgba(10,10,12,.28);
+}
+
+html.dark {
+  --pg:       #08080A;
+  --pg2:      #0E0F12;
+  --card:     #141418;
+  --tx:       #F2F3F5;
+  --tx-mid:   #A7ADB8;
+  --tx-soft:  #7C838E;
+  --brd:      rgba(255,255,255,.11);
+  --acc:      #E11D22;
+  --acc-deep: #FF4A50;   /* #7E1015 waere auf Schwarz unlesbar */
+  --sel:      rgba(225,29,34,.13);
+  --tbd-bg:   rgba(225,29,34,.10);
+  --tbd-tx:   #E2B879;
+  --shadow:   rgba(0,0,0,.6);
+}
+
+/* ── Grundflaechen ───────────────────────────────────────────────────────── */
+body                { background-color: var(--pg) !important; color: var(--tx) !important; }
+.bg-paper           { background-color: var(--pg)  !important; }
+.bg-linen           { background-color: var(--pg2) !important; }
+
+/* ── Schrift-Ebenen ──────────────────────────────────────────────────────── */
+.text-slate         { color: var(--tx-mid)   !important; }
+.text-steel         { color: var(--tx-soft)  !important; }
+.text-blood         { color: var(--acc-deep) !important; }
+.text-ink,
+.hover\:text-ink:hover { color: var(--tx) !important; }
+
+/* ── Linien ──────────────────────────────────────────────────────────────── */
+.border-line        { border-color: var(--brd) !important; }
+.focus\:border-blood:focus { border-color: var(--acc-deep) !important; }
+
+/* ── Bauteile ────────────────────────────────────────────────────────────── */
+.card               { background: var(--card) !important; border-color: var(--brd) !important; }
+.card-hover:hover   { box-shadow: 0 22px 44px -20px var(--shadow) !important; }
+.card-featured      { border-color: var(--acc-deep) !important;
+                      box-shadow: 0 0 0 1px var(--acc-deep) inset !important; }
+.btn-outline        { border: 1.5px solid var(--brd) !important; }
+.btn-outline:hover  { border-color: var(--acc) !important; }
+.opt-btn            { border-color: var(--brd) !important; }
+.opt-btn:hover      { border-color: var(--acc) !important; }
+.opt-btn.selected   { border-color: var(--acc-deep) !important; background: var(--sel) !important;
+                      box-shadow: 0 0 0 1px var(--acc-deep) inset !important; }
+.step-dot           { background: var(--brd) !important; }
+.step-dot.active    { background: var(--acc-deep) !important; }
+.tbd                { background: var(--tbd-bg) !important; color: var(--tbd-tx) !important;
+                      border-color: var(--acc) !important; }
+
+/* Eingabefelder erben den Seitengrund, nicht das Weiss des Browsers. */
+input, textarea, select { background-color: transparent; color: var(--tx); }
+input::placeholder, textarea::placeholder { color: var(--tx-soft); }
+input[type="date"]  { color-scheme: light; }
+html.dark input[type="date"] { color-scheme: dark; }
+
+/* Rechtsseiten */
+.legal p, .legal li { color: var(--tx-mid) !important; }
+.legal a            { color: var(--acc-deep) !important; }
+.legal h1, .legal h2 { color: var(--tx) !important; }
+.placeholder-flag   { background: var(--tbd-bg) !important; color: var(--tbd-tx) !important;
+                      border-color: var(--acc) !important; }
+
+/* Im dunklen Modus verliert die weisse Karte ihren Rahmen — die Flaeche
+   allein traegt die Abgrenzung nicht, deshalb bleibt die Linie sichtbar. */
+html.dark .card,
+html.dark .dark-card { border-color: rgba(255,255,255,.10) !important; }
+
+/* ── Die beiden Umschalter in der Kopfleiste ─────────────────────────────────
+   Die Kopfleiste ist in beiden Modi dunkel, deshalb sind die Knoepfe fest
+   hell gezeichnet statt ueber Variablen. */
+.hdr-btn {
+  display: inline-grid; place-items: center;
+  height: 34px; border-radius: 9999px;
+  border: 1px solid rgba(255,255,255,.18);
+  color: rgba(255,255,255,.82);
+  background: rgba(255,255,255,.04);
+  transition: border-color .18s ease, color .18s ease, background .18s ease;
+  cursor: pointer; flex: none;
+}
+.hdr-btn:hover { border-color: var(--acc); color: #fff; background: rgba(225,29,34,.12); }
+.hdr-btn:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
+#themeBtn { width: 34px; }
+#langBtn  { gap: 5px; padding: 0 11px; grid-auto-flow: column;
+            font-size: .72rem; font-weight: 800; letter-spacing: .08em; }
+
+/* Sonne im dunklen Modus, Mond im hellen — der Knopf zeigt das Ziel, nicht
+   den Zustand. Genau ein Symbol ist jeweils sichtbar. */
+#themeBtn .ico-sun  { display: none; }
+html.dark #themeBtn .ico-sun  { display: block; }
+html.dark #themeBtn .ico-moon { display: none; }
+
+/* Der Hinweis auf die verbindliche deutsche Fassung erscheint nur auf Englisch. */
+[data-only-en] { display: none; }
+html[lang="en"] [data-only-en] { display: block; }
