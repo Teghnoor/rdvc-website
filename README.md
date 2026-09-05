@@ -48,16 +48,53 @@ fällt in dem Fall durch.
 
 ## Vor dem Live-Gang — ohne diese drei Dinge geht keine Anfrage ein
 
-**1. Versandweg eintragen.** In `index.html`, im Skriptblock am Ende:
+**1. WhatsApp-Nummer eintragen.** In `kontakt.js`:
+
+```js
+window.RDVC_KONTAKT = {
+  whatsapp: '',    // 0664 1234567 wird zu '436641234567'
+  telefon:  '',
+  ...
+};
+```
+
+Das ist die einzige Stelle. Von dort ziehen das Formular, der Fragenhelfer,
+die Fußzeile und der Satz unter dem Formular ihre Nummer. Solange sie leer
+ist, blendet die Seite jeden WhatsApp-Weg aus, statt einen Knopf zu zeigen,
+der nichts tut.
+
+Alternative Versandwege stehen in `index.html` im Skriptblock am Ende. Sie
+greifen in dieser Reihenfolge: **WhatsApp → `ENDPUNKT` → `MAILTO`**.
 
 ```js
 var ENDPUNKT = '';    // z. B. https://formspree.io/f/xxxxxxx
 var MAILTO   = '';    // z. B. termin@rdvcgarage.at
 ```
 
-Solange beide leer sind, meldet das Formular ehrlich „Versand noch nicht
+Ist keiner der drei gesetzt, meldet das Formular ehrlich „Versand noch nicht
 eingerichtet" statt einen Erfolg vorzutäuschen. Das ist Absicht: eine Anfrage,
 die ins Leere läuft, ist schlimmer als gar kein Formular.
+
+## Fragenhelfer (`bot.js`)
+
+Beantwortet die zehn häufigsten Fragen sofort und schiebt den Rest zu
+WhatsApp. **Bewusst ohne Sprachmodell** — die Seite ist statisch, ein
+API-Schlüssel im Frontend wäre öffentlich lesbar. Er trifft über Schlagworte,
+gewichtet nach Wortlänge, und sagt unterhalb der Trefferschwelle ehrlich, dass
+er es nicht weiß, statt zu raten. Eine falsche Preisauskunft im Chat kostet
+mehr als eine ehrliche Weiterleitung.
+
+⚠️ **Die Preise stehen zweimal**: in den Paketkarten und in der Antwort
+`preise` in `bot.js`. Wer die einen ändert, muss die anderen mitändern —
+`scripts/pruefe-bot.mjs` vergleicht beide und fällt durch, wenn sie
+auseinanderlaufen.
+
+⚠️ Neue Schlagworte immer gegen `pruefe-bot.mjs` prüfen. Das Skript stellt
+jede hinterlegte Frage und verlangt, dass sie **ihren eigenen** Eintrag
+trifft. Zwei Einträge, die sich ein Wort teilen, führen sonst dazu, dass der
+Helfer selbstbewusst falsch antwortet. Beim Bau sind genau so drei Fehler
+aufgefallen: „alte Autos" blieb unter der Schwelle, und „wie ist das Wetter
+morgen" landete wegen des Wortes „morgen" beim Termin-Eintrag.
 
 **2. Alle `tbd`-Markierungen abarbeiten.** Gelb gestrichelt auf der Seite:
 
@@ -131,6 +168,7 @@ node scripts/pruefe-handy.mjs                              # echte Handy-Metrike
 node scripts/pruefe-formular.mjs                           # 13 Prüfungen durchs Formular
 node scripts/pruefe-medien.mjs                            # Bilder geladen, Videos stumm, Gewicht
 node scripts/pruefe-umschalter.mjs                        # Hell/Dunkel + DE/EN, alle drei Seiten
+node scripts/pruefe-bot.mjs                               # Fragenhelfer: Treffer, Preis-Abgleich, WhatsApp
 node scripts/pruefe-umschalter.mjs http://localhost:8899/impressum.html
 ```
 

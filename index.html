@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="fonts.css">
   <script src="tailwind.js"></script>
   <link rel="stylesheet" href="site.css">
+  <script src="kontakt.js"></script>
   <script src="site.js"></script>
   <script>
     tailwind.config = {
@@ -277,12 +278,13 @@
     <div class="grid lg:grid-cols-[1fr_320px] gap-12 lg:gap-16 items-end">
     <div class="max-w-2xl rv">
       <p class="kicker text-blood">Leistungen</p>
-      <h2 class="mt-3 text-3xl md:text-4xl font-extrabold">Preise nach Fahrzeugklasse.<br>Vorher, nicht nachher.</h2>
+      <h2 class="mt-3 text-3xl md:text-4xl font-extrabold">Vier Pakete.<br>Preis vorher, nicht nachher.</h2>
       <div class="rule mt-5"></div>
       <p class="mt-5 text-slate leading-relaxed">
-        Jedes Paket hat drei Preise: Kleinwagen, Limousine und Kombi, SUV und Van.
-        Sie wissen vor der Abholung, was es kostet. Kommt beim Zustandscheck etwas dazu,
-        fragen wir vorher, statt es nachher auf die Rechnung zu setzen.
+        Außen ist bei jedem Paket gleich gründlich: Handwäsche, Fenster, Felgen.
+        Der Unterschied liegt im Innenraum und im Lack. Sie wissen vor der Abholung,
+        was es kostet. Kommt beim Zustandscheck etwas dazu, fragen wir vorher,
+        statt es nachher auf die Rechnung zu setzen.
       </p>
     </div>
       <figure class="foto foto-zoom hidden lg:block aspect-[4/5] rounded-lg rv">
@@ -297,36 +299,36 @@
 
       <!-- Basis -->
       <div class="card card-hover p-6 flex flex-col rv" style="--rvd:.05s">
-        <p class="kicker text-steel">Handwäsche</p>
+        <p class="kicker text-steel">Außen und Innen</p>
         <h3 class="mt-2 text-xl font-extrabold">RDVC Basic Care</h3>
-        <p class="mt-2 text-sm text-slate leading-relaxed">Außen von Hand, Felgen, Reifen, Scheiben, Türeinstiege abgetrocknet.</p>
+        <p class="mt-2 text-sm text-slate leading-relaxed">Die regelmäßige Pflege. Außen von Hand, innen gesaugt und abgestaubt.</p>
         <div class="mt-5 pt-5 border-t border-line">
-          <p class="price-num text-3xl font-extrabold text-blood">69 €</p>
-          <p class="mt-1 text-xs text-steel">einheitlich, alle Klassen</p>
+          <p class="price-num text-3xl font-extrabold text-blood">70 €</p>
+          <p class="mt-1 text-xs text-steel">Fixpreis</p>
         </div>
         <ul class="mt-5 space-y-2 text-sm text-slate flex-1">
-          <li class="flex gap-3"><span class="li-mark"></span>Zwei-Eimer-Handwäsche</li>
-          <li class="flex gap-3"><span class="li-mark"></span>Felgen und Reifen</li>
-          <li class="flex gap-3"><span class="li-mark"></span>Scheiben innen und außen</li>
-          <li class="flex gap-3"><span class="li-mark"></span>ca. 1,5 Stunden</li>
+          <li class="flex gap-3"><span class="li-mark"></span>Handwäsche außen</li>
+          <li class="flex gap-3"><span class="li-mark"></span>Fenster und Felgen</li>
+          <li class="flex gap-3"><span class="li-mark"></span>Innen saugen und abstauben</li>
+          <li class="flex gap-3"><span class="li-mark"></span>Innenspiegel und Scheiben innen</li>
         </ul>
         <a href="#buchen" data-paket="RDVC Basic Care" class="btn-outline mt-6 block text-center rounded-full py-2.5 text-sm font-bold">Auswählen</a>
       </div>
 
-      <!-- Innen -->
+      <!-- Innen intensiv -->
       <div class="card card-hover p-6 flex flex-col rv" style="--rvd:.12s">
-        <p class="kicker text-steel">Innenaufbereitung</p>
+        <p class="kicker text-steel">Innen intensiv</p>
         <h3 class="mt-2 text-xl font-extrabold">RDVC Interior Care</h3>
-        <p class="mt-2 text-sm text-slate leading-relaxed">Alles, was Sie anfassen und riechen. Polster, Teppiche, Leder, Lüftung.</p>
+        <p class="mt-2 text-sm text-slate leading-relaxed">Wenn der Innenraum wirklich sauber werden soll. Polster, Teppiche, Leder.</p>
         <div class="mt-5 pt-5 border-t border-line">
-          <p class="price-num text-3xl font-extrabold text-blood">ab 149 €</p>
-          <p class="mt-1 text-xs text-steel">149 · 189 · 229 € nach Klasse</p>
+          <p class="price-num text-3xl font-extrabold text-blood">ab 120 €</p>
+          <p class="mt-1 text-xs text-steel">je nach Zustand des Innenraums</p>
         </div>
         <ul class="mt-5 space-y-2 text-sm text-slate flex-1">
-          <li class="flex gap-3"><span class="li-mark"></span>Polster- oder Lederreinigung</li>
-          <li class="flex gap-3"><span class="li-mark"></span>Teppiche nass ausgesaugt</li>
-          <li class="flex gap-3"><span class="li-mark"></span>Lüftung und Gerüche</li>
-          <li class="flex gap-3"><span class="li-mark"></span>Kunststoffe ohne Glanzfilm</li>
+          <li class="flex gap-3"><span class="li-mark"></span>Alles aus Basic Care</li>
+          <li class="flex gap-3"><span class="li-mark"></span>Intensivreinigung innen</li>
+          <li class="flex gap-3"><span class="li-mark"></span>Polster, Teppiche, Leder</li>
+          <li class="flex gap-3"><span class="li-mark"></span>Preis nach Zustandscheck</li>
         </ul>
         <a href="#buchen" data-paket="RDVC Interior Care" class="btn-outline mt-6 block text-center rounded-full py-2.5 text-sm font-bold">Auswählen</a>
       </div>
@@ -334,62 +336,63 @@
       <!-- Politur — hervorgehoben -->
       <div class="card card-hover card-featured p-6 pt-14 flex flex-col relative rv" style="--rvd:.19s">
         <span class="card-flag">Beliebt</span>
-        <p class="kicker text-steel">Politur &amp; Schutz</p>
+        <p class="kicker text-steel">Lack und Innen</p>
         <h3 class="mt-2 text-xl font-extrabold">RDVC Paint Care</h3>
-        <p class="mt-2 text-sm text-slate leading-relaxed">Swirls und matte Stellen raus, danach versiegelt. Der sichtbarste Unterschied.</p>
+        <p class="mt-2 text-sm text-slate leading-relaxed">Zwei Durchgänge Politur. Swirls und matte Stellen raus, innen intensiv dazu.</p>
         <div class="mt-5 pt-5 border-t border-line">
-          <p class="price-num text-3xl font-extrabold text-blood">ab 249 €</p>
-          <p class="mt-1 text-xs text-steel">249 · 299 · 379 € nach Klasse</p>
+          <p class="price-num text-3xl font-extrabold text-blood">250 €</p>
+          <p class="mt-1 text-xs text-steel">Fixpreis</p>
         </div>
         <ul class="mt-5 space-y-2 text-sm text-slate flex-1">
-          <li class="flex gap-3"><span class="li-mark"></span>Lackreinigung mit Knete</li>
-          <li class="flex gap-3"><span class="li-mark"></span>Ein-Stufen-Politur</li>
-          <li class="flex gap-3"><span class="li-mark"></span>Versiegelung, ca. 6 Monate</li>
-          <li class="flex gap-3"><span class="li-mark"></span>Handwäsche inklusive</li>
+          <li class="flex gap-3"><span class="li-mark"></span>Handwäsche, Fenster, Felgen</li>
+          <li class="flex gap-3"><span class="li-mark"></span>Politur in zwei Durchgängen</li>
+          <li class="flex gap-3"><span class="li-mark"></span>Intensivreinigung innen</li>
+          <li class="flex gap-3"><span class="li-mark"></span>Der sichtbarste Unterschied</li>
         </ul>
         <a href="#buchen" data-paket="RDVC Paint Care" class="btn-red mt-6 block text-center rounded-full py-2.5 text-sm font-bold">Auswählen</a>
       </div>
 
-      <!-- Komplett -->
+      <!-- Premium mit Keramik -->
       <div class="card card-hover p-6 flex flex-col rv" style="--rvd:.26s">
-        <p class="kicker text-steel">Komplettaufbereitung</p>
+        <p class="kicker text-steel">Mit Keramik</p>
         <h3 class="mt-2 text-xl font-extrabold">RDVC Premium Care</h3>
-        <p class="mt-2 text-sm text-slate leading-relaxed">Innen und außen in einem Durchgang. Für Verkauf, Rückgabe oder einmal im Jahr.</p>
+        <p class="mt-2 text-sm text-slate leading-relaxed">Politur und Keramikversiegelung. Für Fahrzeuge, die bleiben sollen.</p>
         <div class="mt-5 pt-5 border-t border-line">
-          <p class="price-num text-3xl font-extrabold text-blood">ab 349 €</p>
-          <p class="mt-1 text-xs text-steel">349 · 429 · 529 € nach Klasse</p>
+          <p class="price-num text-3xl font-extrabold text-blood">699 €</p>
+          <p class="mt-1 text-xs text-steel">Fixpreis, Keramik inklusive</p>
         </div>
         <ul class="mt-5 space-y-2 text-sm text-slate flex-1">
-          <li class="flex gap-3"><span class="li-mark"></span>Innenaufbereitung komplett</li>
-          <li class="flex gap-3"><span class="li-mark"></span>Politur und Versiegelung</li>
-          <li class="flex gap-3"><span class="li-mark"></span>Motorraum auf Wunsch</li>
+          <li class="flex gap-3"><span class="li-mark"></span>Alles aus Paint Care</li>
+          <li class="flex gap-3"><span class="li-mark"></span>Keramikversiegelung</li>
+          <li class="flex gap-3"><span class="li-mark"></span>Intensivreinigung innen</li>
           <li class="flex gap-3"><span class="li-mark"></span>ein bis zwei Tage</li>
         </ul>
         <a href="#buchen" data-paket="RDVC Premium Care" class="btn-outline mt-6 block text-center rounded-full py-2.5 text-sm font-bold">Auswählen</a>
       </div>
     </div>
 
-    <!-- Keramik als Zusatz -->
+    <!-- Keramik erklaert, ohne eigenen Preis: sie steckt in Premium Care -->
     <div class="mt-6 dark-card p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-6 rv" style="--rvd:.33s">
       <div class="flex-1">
-        <p class="kicker text-red">Zusatz · Keramikversiegelung</p>
-        <h3 class="mt-2 text-xl font-extrabold text-white">RDVC Ceramic Care</h3>
+        <p class="kicker text-red">Warum Keramik</p>
+        <h3 class="mt-2 text-xl font-extrabold text-white">Zwei bis fünf Jahre statt sechs Monaten</h3>
         <p class="mt-2 text-sm text-white/60 leading-relaxed max-w-xl">
-          Zwei bis fünf Jahre Schutz statt sechs Monaten. Nur sinnvoll auf korrigiertem Lack,
-          deshalb immer zusammen mit einer Politur. Für Fahrzeuge, die bleiben sollen.
+          Eine normale Versiegelung hält ein halbes Jahr, eine Keramikversiegelung
+          Jahre. Sinnvoll ist sie nur auf korrigiertem Lack, deshalb gibt es sie bei
+          uns nicht einzeln, sondern zusammen mit der Politur in RDVC Premium Care.
         </p>
       </div>
       <div class="md:text-right shrink-0">
-        <p class="price-num text-3xl font-extrabold text-red">690 · 890 €</p>
-        <p class="mt-1 text-xs text-white/45">je nach Fahrzeuggröße und System</p>
-        <a href="#buchen" data-paket="RDVC Ceramic Care" class="btn-red mt-4 inline-block text-center rounded-full px-6 py-2.5 text-sm font-bold">Auswählen</a>
+        <p class="price-num text-3xl font-extrabold text-red">699 €</p>
+        <p class="mt-1 text-xs text-white/45">Politur und Keramik zusammen</p>
+        <a href="#buchen" data-paket="RDVC Premium Care" class="btn-red mt-4 inline-block text-center rounded-full px-6 py-2.5 text-sm font-bold">Auswählen</a>
       </div>
     </div>
 
     <p class="mt-6 text-xs text-steel">
       Alle Preise in Euro inklusive Umsatzsteuer, gültig für Fahrzeuge in üblichem Zustand.
       Starke Verschmutzung, Tierhaare oder Nikotin besprechen wir vorher und halten den Aufpreis
-      schriftlich fest. <span class="tbd">Preise final freigeben</span>
+      schriftlich fest.
     </p>
   </div>
 </section>
@@ -667,23 +670,19 @@
         <div class="mt-5 grid sm:grid-cols-2 gap-3">
           <button type="button" class="opt-btn p-4" data-field="paket" data-value="RDVC Basic Care">
             <span class="block font-bold">RDVC Basic Care</span>
-            <span class="block text-sm text-slate mt-0.5">Handwäsche · 69 €</span>
+            <span class="block text-sm text-slate mt-0.5">Außen und innen · 70 €</span>
           </button>
           <button type="button" class="opt-btn p-4" data-field="paket" data-value="RDVC Interior Care">
             <span class="block font-bold">RDVC Interior Care</span>
-            <span class="block text-sm text-slate mt-0.5">Innenaufbereitung · ab 149 €</span>
+            <span class="block text-sm text-slate mt-0.5">Innen intensiv · ab 120 €</span>
           </button>
           <button type="button" class="opt-btn p-4" data-field="paket" data-value="RDVC Paint Care">
             <span class="block font-bold">RDVC Paint Care</span>
-            <span class="block text-sm text-slate mt-0.5">Politur &amp; Schutz · ab 249 €</span>
+            <span class="block text-sm text-slate mt-0.5">Politur zwei Durchgänge · 250 €</span>
           </button>
           <button type="button" class="opt-btn p-4" data-field="paket" data-value="RDVC Premium Care">
             <span class="block font-bold">RDVC Premium Care</span>
-            <span class="block text-sm text-slate mt-0.5">Komplettaufbereitung · ab 349 €</span>
-          </button>
-          <button type="button" class="opt-btn p-4" data-field="paket" data-value="RDVC Ceramic Care">
-            <span class="block font-bold">RDVC Ceramic Care</span>
-            <span class="block text-sm text-slate mt-0.5">Keramikversiegelung · ab 690 €</span>
+            <span class="block text-sm text-slate mt-0.5">Politur und Keramik · 699 €</span>
           </button>
           <button type="button" class="opt-btn p-4" data-field="paket" data-value="Beratung / unklar">
             <span class="block font-bold">Weiß ich noch nicht</span>
@@ -695,7 +694,7 @@
       <!-- Schritt 2: Fahrzeugklasse -->
       <div class="fstep hidden" data-step="2">
         <h3 class="text-lg font-extrabold">Welche Fahrzeugklasse?</h3>
-        <p class="mt-1 text-sm text-slate">Danach richtet sich der Preis.</p>
+        <p class="mt-1 text-sm text-slate">Damit wir Zeit und Material einplanen können.</p>
         <div class="mt-5 grid sm:grid-cols-3 gap-3">
           <button type="button" class="opt-btn p-4" data-field="klasse" data-value="Kleinwagen">
             <span class="block font-bold">Kleinwagen</span>
@@ -785,9 +784,12 @@
       </div>
     </form>
 
-    <p class="mt-5 text-center text-sm text-slate">
-      Lieber direkt? <a href="https://www.tiktok.com/@rdvc.garage" class="text-blood font-bold underline">Schreiben Sie uns auf TikTok</a>
-      oder rufen Sie an: <span class="tbd">Telefonnummer</span>
+    <p class="mt-5 text-center text-sm text-slate" data-wa-zeile hidden>
+      Lieber direkt? <a href="#" data-wa class="text-blood font-bold underline">Schreiben Sie uns auf WhatsApp</a>
+      oder auf <a href="https://www.tiktok.com/@rdvc.garage" class="text-blood font-bold underline">TikTok</a>.
+    </p>
+    <p class="mt-5 text-center text-sm text-slate" data-ohne-wa>
+      Lieber direkt? <a href="https://www.tiktok.com/@rdvc.garage" class="text-blood font-bold underline">Schreiben Sie uns auf TikTok</a>.
     </p>
   </div>
 </section>
@@ -823,10 +825,10 @@
           <svg class="faq-chevron shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8C93A0" stroke-width="2.5" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
         </summary>
         <p class="mt-3 text-sm text-slate leading-relaxed">
-          Handwäsche und Innenaufbereitung schaffen wir am selben Tag. Politur meist auch,
-          bei starker Verschmutzung einen Tag. Komplettaufbereitung und Keramik brauchen
-          ein bis zwei Tage. Den genauen Zeitraum sagen wir bei der Zusage, nicht erst
-          bei der Abholung.
+          Basic Care schaffen wir am selben Tag, Interior Care meist auch, bei starker
+          Verschmutzung einen Tag. Paint Care braucht einen Tag, Premium Care mit Keramik
+          ein bis zwei. Den genauen Zeitraum sagen wir bei der Zusage, nicht erst bei
+          der Abholung.
         </p>
       </details>
 
@@ -917,6 +919,7 @@
         <p class="kicker text-white/40">Kontakt</p>
         <ul class="mt-4 space-y-2.5 text-sm text-white/70">
           <li>Wien <span class="tbd">Bezirk + Adresse</span></li>
+          <li data-wa-zeile hidden><a href="#" data-wa class="hover:text-red transition-colors">WhatsApp</a></li>
           <li><span class="tbd">Telefonnummer</span></li>
           <li><span class="tbd">E-Mail</span></li>
           <li class="pt-2 text-white/45">Termine nach Vereinbarung</li>
@@ -1105,8 +1108,12 @@
   });
 
   /* ── Versand ─────────────────────────────────────────
-     ENDPUNKT eintragen, sonst faellt die Anfrage auf mailto zurueck.
-     Ohne einen der beiden Wege geht jede Anfrage verloren.           */
+     Drei Wege, in dieser Reihenfolge: WhatsApp, dann ein POST-Endpunkt,
+     dann das Mailprogramm. WhatsApp steht vorn, weil die Anfrage dort im
+     selben Postfach landet wie die Nachrichten aus TikTok, statt in einem
+     zweiten, das keiner oeffnet. Die Nummer steht in kontakt.js.
+     Ist keiner der drei Wege gesetzt, sagt das Formular das ehrlich —
+     eine Anfrage, die ins Leere laeuft, ist schlimmer als kein Formular. */
   var ENDPUNKT = '';                        // z. B. https://formspree.io/f/xxxxxxx
   var MAILTO   = '';                        // z. B. termin@rdvcgarage.at
 
@@ -1122,6 +1129,25 @@
       email:     document.getElementById('fEmail').value.trim(),
       nachricht: document.getElementById('fMsg').value.trim()
     };
+  }
+
+  /* Eine Zeile pro Feld, leere Felder weggelassen — in WhatsApp liest
+     niemand acht Zeilen, von denen die Haelfte leer ist. */
+  function waNachricht(d) {
+    var zeilen = [T('Terminanfrage über die Website') + ':'];
+    var felder = [
+      [T('Leistung'),     d.paket],
+      [T('Fahrzeugklasse'), d.klasse],
+      [T('Fahrzeug'),     d.auto],
+      [T('PLZ'),          d.plz],
+      [T('Wunschtermin'), d.datum],
+      [T('Name'),         d.name],
+      [T('Telefon'),      d.telefon],
+      [T('E-Mail'),       d.email]
+    ];
+    felder.forEach(function (f) { if (f[1]) zeilen.push(f[0] + ': ' + f[1]); });
+    if (d.nachricht) zeilen.push('', d.nachricht);
+    return zeilen.join('\n');
   }
 
   function zeigeErfolg() {
@@ -1151,6 +1177,17 @@
         btnNext.textContent = T('Anfrage senden');
         fehlerAn(T('Das Senden hat nicht geklappt. Bitte per TikTok-Nachricht melden.'));
       });
+      return;
+    }
+
+    /* WhatsApp: dieselben Felder als Text, den der Kunde vor dem Senden
+       noch sieht. Neues Fenster, damit die ausgefuellte Seite bestehen
+       bleibt, falls WhatsApp nicht installiert ist. */
+    var wa = window.RDVC_KONTAKT && window.RDVC_KONTAKT.waLink &&
+             window.RDVC_KONTAKT.waLink(waNachricht(d));
+    if (wa) {
+      window.open(wa, '_blank', 'noopener');
+      zeigeErfolg();
       return;
     }
 
@@ -1185,6 +1222,8 @@
   zeige(0);
 })();
 </script>
+
+<script src="bot.js"></script>
 
 </body>
 </html>

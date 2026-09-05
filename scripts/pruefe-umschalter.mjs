@@ -94,8 +94,8 @@ pruefe('Seitentitel uebersetzt', await ev('document.title'), (v) => v.startsWith
 pruefe('Beschreibung uebersetzt', await ev('document.querySelector(\'meta[name="description"]\').content'), (v) => v.startsWith('Car detailing in Vienna'), true);
 pruefe('Burger-Beschriftung uebersetzt', await ev('document.getElementById("menuBtn").getAttribute("aria-label")'), 'Open menu', true);
 pruefe('Leerraum um Links erhalten',
-  await ev('document.querySelector("#buchen p.mt-5").textContent.replace(/\\s+/g," ").trim()'),
-  (v) => v.includes('Prefer direct? Message us on TikTok or give us a call:'), true);
+  await ev('[...document.querySelectorAll("#buchen p.mt-5")].filter(p => p.offsetParent).map(p => p.textContent.replace(/\\s+/g," ").trim()).join(" ")'),
+  (v) => /Prefer direct\? Message us on (WhatsApp or on TikTok|TikTok)\./.test(v), true);
 
 if (!nurStartseite) {
   pruefe('Rechtstext uebersetzt', await ev('document.querySelector(".legal h2").textContent'), (v) => !/[äöüß]|gemäß|Daten(schutz)?erkl/.test(v));
@@ -125,7 +125,7 @@ console.log('\n── Auf Englisch deutsch geblieben ─────────
 const rest = [];
 for (let i = 0; i < de.length; i++) {
   const d = de[i], e = en[i];
-  if (d === e && /[A-Za-zÄÖÜäöüß]{4,}/.test(d) && !/^(RDVC|GARAGE|Youngtimer|Name|Polo|X5|@rdvc|\(optional\)|This is a courtesy|Mercedes|BMW E39|Website:|rdvcgarage)/.test(d)
+  if (d === e && /[A-Za-zÄÖÜäöüß]{4,}/.test(d) && !/^(RDVC|GARAGE|Youngtimer|Name|Polo|X5|@rdvc|\(optional\)|This is a courtesy|Mercedes|BMW E39|Website:|rdvcgarage|TikTok)/.test(d)
       && !/^(www\.|ec\.europa)/.test(d)) rest.push(d);
 }
 if (rest.length === 0) console.log('  keine — jede Zeile mit Text hat eine englische Fassung');

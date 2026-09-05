@@ -77,6 +77,56 @@
     'unsere Spezialität': 'our speciality',
 
     /* Pakete */
+    /* Preise nach Darios Liste vom 05.09.: vier Pakete, keine Klassenstaffelung.
+       Aussen ist ueberall gleich, der Unterschied liegt innen und im Lack. */
+    'Vier Pakete.': 'Four packages.',
+    'Preis vorher, nicht nachher.': 'Price up front, not afterwards.',
+    'Außen ist bei jedem Paket gleich gründlich: Handwäsche, Fenster, Felgen. Der Unterschied liegt im Innenraum und im Lack. Sie wissen vor der Abholung, was es kostet. Kommt beim Zustandscheck etwas dazu, fragen wir vorher, statt es nachher auf die Rechnung zu setzen.':
+      'The exterior is done just as thoroughly in every package: hand wash, windows, wheels. The difference is the interior and the paint. You know what it costs before we pick the car up. If something comes up during the condition check, we ask first instead of putting it on the invoice afterwards.',
+    'Außen und Innen': 'Exterior and interior',
+    'Die regelmäßige Pflege. Außen von Hand, innen gesaugt und abgestaubt.':
+      'Regular upkeep. Exterior by hand, vacuumed and dusted inside.',
+    'Fixpreis': 'Fixed price',
+    'Handwäsche außen': 'Hand wash, exterior',
+    'Fenster und Felgen': 'Windows and wheels',
+    'Innen saugen und abstauben': 'Vacuumed and dusted inside',
+    'Innenspiegel und Scheiben innen': 'Interior mirror and inner glass',
+    'Innen intensiv': 'Deep interior',
+    'Wenn der Innenraum wirklich sauber werden soll. Polster, Teppiche, Leder.':
+      'For when the interior really has to come clean. Upholstery, carpets, leather.',
+    'ab 120 €': 'from 120 €',
+    'je nach Zustand des Innenraums': 'depending on the state of the interior',
+    'Alles aus Basic Care': 'Everything in Basic Care',
+    'Intensivreinigung innen': 'Deep interior clean',
+    'Polster, Teppiche, Leder': 'Upholstery, carpets, leather',
+    'Preis nach Zustandscheck': 'Price after the condition check',
+    'Lack und Innen': 'Paint and interior',
+    'Zwei Durchgänge Politur. Swirls und matte Stellen raus, innen intensiv dazu.':
+      'Two passes of machine polish. Swirls and dull patches out, deep interior clean included.',
+    'Handwäsche, Fenster, Felgen': 'Hand wash, windows, wheels',
+    'Politur in zwei Durchgängen': 'Polish in two passes',
+    'Der sichtbarste Unterschied': 'The most visible difference',
+    'Mit Keramik': 'With ceramic',
+    'Politur und Keramikversiegelung. Für Fahrzeuge, die bleiben sollen.':
+      'Machine polish and a ceramic coating. For cars that are meant to stay.',
+    'Fixpreis, Keramik inklusive': 'Fixed price, ceramic included',
+    'Alles aus Paint Care': 'Everything in Paint Care',
+    'Warum Keramik': 'Why ceramic',
+    'Zwei bis fünf Jahre statt sechs Monaten': 'Two to five years instead of six months',
+    'Eine normale Versiegelung hält ein halbes Jahr, eine Keramikversiegelung Jahre. Sinnvoll ist sie nur auf korrigiertem Lack, deshalb gibt es sie bei uns nicht einzeln, sondern zusammen mit der Politur in RDVC Premium Care.':
+      'A normal sealant lasts about six months, a ceramic coating lasts years. It only makes sense on corrected paint, which is why we do not sell it on its own but together with the polish in RDVC Premium Care.',
+    'Politur und Keramik zusammen': 'Polish and ceramic together',
+    'Alle Preise in Euro inklusive Umsatzsteuer, gültig für Fahrzeuge in üblichem Zustand. Starke Verschmutzung, Tierhaare oder Nikotin besprechen wir vorher und halten den Aufpreis schriftlich fest.':
+      'All prices in euros including VAT, valid for cars in normal condition. Heavy soiling, pet hair or nicotine is discussed beforehand and the surcharge is put in writing.',
+    /* Formular, erster Schritt */
+    'Außen und innen · 70 €': 'Exterior and interior · 70 €',
+    'Innen intensiv · ab 120 €': 'Deep interior · from 120 €',
+    'Politur zwei Durchgänge · 250 €': 'Polish, two passes · 250 €',
+    'Politur und Keramik · 699 €': 'Polish and ceramic · 699 €',
+    'Damit wir Zeit und Material einplanen können.': 'So we can plan time and materials.',
+    /* Haeufige Fragen */
+    'Basic Care schaffen wir am selben Tag, Interior Care meist auch, bei starker Verschmutzung einen Tag. Paint Care braucht einen Tag, Premium Care mit Keramik ein bis zwei. Den genauen Zeitraum sagen wir bei der Zusage, nicht erst bei der Abholung.':
+      'Basic Care is done the same day, Interior Care usually too, a day if the car is heavily soiled. Paint Care takes a day, Premium Care with ceramic one to two. We tell you the exact window when we confirm, not when we collect the car.',
     'Preise nach Fahrzeugklasse.': 'Prices by vehicle class.',
     'Vorher, nicht nachher.': 'Up front, not afterwards.',
     'Jedes Paket hat drei Preise: Kleinwagen, Limousine und Kombi, SUV und Van. Sie wissen vor der Abholung, was es kostet. Kommt beim Zustandscheck etwas dazu, fragen wir vorher, statt es nachher auf die Rechnung zu setzen.':
@@ -228,8 +278,18 @@
       'We usually get back to you the same day with a fixed price and a date.',
     '← Zurück': '← Back',
     'Lieber direkt?': 'Prefer direct?',
+    'Schreiben Sie uns auf WhatsApp': 'Message us on WhatsApp',
     'Schreiben Sie uns auf TikTok': 'Message us on TikTok',
+    'oder auf': 'or on',
     'oder rufen Sie an:': 'or give us a call:',
+    /* Zeilen, die das Formular selbst in die WhatsApp-Nachricht schreibt */
+    'Terminanfrage über die Website': 'Booking enquiry from the website',
+    'Leistung': 'Service',
+    'Fahrzeugklasse': 'Vehicle class',
+    'Fahrzeug': 'Vehicle',
+    'PLZ': 'Postcode',
+    'Wunschtermin': 'Preferred date',
+    'Telefon': 'Phone',
     'Telefonnummer': 'phone number',
 
     /* Formular-Meldungen (aus dem Skript) */
