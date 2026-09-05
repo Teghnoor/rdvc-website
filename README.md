@@ -19,13 +19,40 @@ die Datenschutzerklärung kurz und die Seite schnell.
 | `tailwind.js` | Tailwind, lokal statt CDN |
 | `scripts/` | Prüfskripte, siehe unten |
 
+## Domain
+
+Die Seite läuft auf **rdvcgarage.at**. Die Datei `CNAME` im Wurzelverzeichnis sagt
+GitHub Pages, unter welcher Domain ausgeliefert wird — sie darf nur diese eine
+Zeile enthalten und muss bei jedem Deploy mitkommen.
+
+Beim Registrar müssen dafür stehen:
+
+| Typ | Name | Wert |
+|---|---|---|
+| A | `@` | `185.199.108.153` |
+| A | `@` | `185.199.109.153` |
+| A | `@` | `185.199.110.153` |
+| A | `@` | `185.199.111.153` |
+| CNAME | `www` | `teghnoor.github.io.` |
+
+Danach in GitHub unter *Settings → Pages* die Domain eintragen und
+**Enforce HTTPS** anhaken, sobald das Zertifikat ausgestellt ist (dauert nach
+dem DNS-Eintrag bis zu einer Stunde).
+
+Die Paketnamen sind Eigennamen (`RDVC Basic Care` … `RDVC Ceramic Care`) und
+stehen in beiden Sprachen gleich. Übersetzt wird die Gattung im Kicker darüber.
+Wer einen Paketnamen ändert, muss ihn an **drei** Stellen ändern: Karte (`<h3>`
+plus `data-paket`), Formular-Knopf (`data-value` plus Beschriftung) und
+Fußzeile — sonst findet das Skript die Auswahl nicht mehr. `scripts/pruefe-formular.mjs`
+fällt in dem Fall durch.
+
 ## Vor dem Live-Gang — ohne diese drei Dinge geht keine Anfrage ein
 
 **1. Versandweg eintragen.** In `index.html`, im Skriptblock am Ende:
 
 ```js
 var ENDPUNKT = '';    // z. B. https://formspree.io/f/xxxxxxx
-var MAILTO   = '';    // z. B. termin@rdvc.at
+var MAILTO   = '';    // z. B. termin@rdvcgarage.at
 ```
 
 Solange beide leer sind, meldet das Formular ehrlich „Versand noch nicht

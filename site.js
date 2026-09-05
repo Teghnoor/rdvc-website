@@ -82,6 +82,14 @@
     'Jedes Paket hat drei Preise: Kleinwagen, Limousine und Kombi, SUV und Van. Sie wissen vor der Abholung, was es kostet. Kommt beim Zustandscheck etwas dazu, fragen wir vorher, statt es nachher auf die Rechnung zu setzen.':
       'Every package has three prices: small car, saloon and estate, SUV and van. You know what it costs before we pick the car up. If something comes up during the condition check, we ask first instead of putting it on the invoice afterwards.',
     'Basis': 'Basic',
+    /* Paketnamen sind Eigennamen und bleiben in beiden Sprachen gleich;
+       uebersetzt wird die Gattung darueber und die Zeile im Formular. */
+    'Zusatz · Keramikversiegelung': 'Add-on · Ceramic coating',
+    'Handwäsche · 69 €': 'Hand wash · 69 €',
+    'Innenaufbereitung · ab 149 €': 'Interior detailing · from 149 €',
+    'Politur & Schutz · ab 249 €': 'Polish & protection · from 249 €',
+    'Komplettaufbereitung · ab 349 €': 'Full detailing · from 349 €',
+    'Keramikversiegelung · ab 690 €': 'Ceramic coating · from 690 €',
     'Handwäsche': 'Hand wash',
     'Außen von Hand, Felgen, Reifen, Scheiben, Türeinstiege abgetrocknet.':
       'Exterior by hand, wheels, tyres, glass, door sills dried off.',
@@ -358,8 +366,8 @@
     '3. Hosting und Server-Logfiles': '3. Hosting and server log files',
     'Beim Aufruf dieser Website verarbeitet unser Hosting-Anbieter automatisch technische Zugriffsdaten (IP-Adresse, Datum und Uhrzeit, aufgerufene Seite, Browsertyp), die zur Auslieferung und zur Sicherheit der Website erforderlich sind. Rechtsgrundlage ist unser berechtigtes Interesse am sicheren und stabilen Betrieb der Website (Art. 6 Abs. 1 lit. f DSGVO).':
       'When you open this website, our hosting provider automatically processes technical access data (IP address, date and time, page requested, browser type) that is required to deliver and secure the website. The legal basis is our legitimate interest in the secure and stable operation of the website (Art. 6(1)(f) GDPR).',
-    '[PLATZHALTER Hosting: Bei GitHub Pages — „Hosting-Anbieter ist GitHub, Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA. GitHub ist nach dem EU-U.S. Data Privacy Framework zertifiziert; mit der Verarbeitung in den USA kann eine Datenübermittlung in ein Drittland verbunden sein." — bei anderem Hoster entsprechend ersetzen und ggf. Auftragsverarbeitungsvertrag (Art. 28 DSGVO) abschließen.]':
-      '[PLACEHOLDER hosting: for GitHub Pages — „The hosting provider is GitHub, Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA. GitHub is certified under the EU-U.S. Data Privacy Framework; processing in the USA may involve a transfer to a third country." — replace this for any other host and conclude a data processing agreement (Art. 28 GDPR) where required.]',
+    'Hosting-Anbieter dieser Website ist GitHub, Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA (GitHub Pages). GitHub ist nach dem EU-U.S. Data Privacy Framework zertifiziert; mit der Verarbeitung in den USA kann eine Datenübermittlung in ein Drittland verbunden sein.':
+      'The hosting provider for this website is GitHub, Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA (GitHub Pages). GitHub is certified under the EU-U.S. Data Privacy Framework; processing in the USA may involve a transfer to a third country.',
     '4. Anfrage-Formular und Kontaktaufnahme': '4. Enquiry form and contact',
     'Wenn Sie unser Anfrage-Formular nutzen oder uns per E-Mail bzw. Telefon kontaktieren, verarbeiten wir die von Ihnen angegebenen Daten (Name, Telefonnummer, optional E-Mail-Adresse, Fahrzeugdaten wie Marke/Modell und Fahrzeugklasse, Wunschtermin und Ihre Nachricht) zur Bearbeitung Ihrer Anfrage und zur Erstellung eines Angebots. Rechtsgrundlage ist die Durchführung vorvertraglicher Maßnahmen (Art. 6 Abs. 1 lit. b DSGVO) sowie Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO).':
       'If you use our enquiry form or contact us by email or phone, we process the data you provide (name, phone number, optionally email address, vehicle data such as make/model and vehicle class, preferred date and your message) in order to handle your enquiry and prepare a quote. The legal basis is the performance of pre-contractual measures (Art. 6(1)(b) GDPR) and your consent (Art. 6(1)(a) GDPR).',

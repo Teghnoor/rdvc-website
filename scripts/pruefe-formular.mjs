@@ -24,7 +24,7 @@ pruef(await ev("document.getElementById('stepLabel').textContent") === 'Schritt 
       'Bleibt auf Schritt 1');
 
 // 2. Leistung waehlen, weiter
-await ev("document.querySelector('.opt-btn[data-value=\"Politur & Schutz\"]').click()");
+await ev("document.querySelector('.opt-btn[data-value=\"RDVC Paint Care\"]').click()");
 await ev("document.getElementById('btnNext').click()"); await warte(300);
 pruef(await ev("document.getElementById('stepLabel').textContent")==='Schritt 2 von 4','Schritt 2 erreicht');
 
