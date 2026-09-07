@@ -15,6 +15,18 @@
   var sprache = function () { return document.documentElement.lang === 'en' ? 'en' : 'de'; };
   var t = function (paar) { return paar[sprache()]; };
 
+  /* Antworttext einer Wissens-Zeile. Ersetzt {GOOGLE} durch den Hinweis auf
+     das Unternehmensprofil — oder durch nichts, solange in kontakt.js keines
+     hinterlegt ist. Ein Satz ueber Bewertungen ohne Link ist immer noch wahr;
+     ein Link ins Leere waere es nicht. */
+  var antwortText = function (e) {
+    var s = t(e.antwort);
+    if (s.indexOf('{GOOGLE}') === -1) return s;
+    var k = window.RDVC_KONTAKT || {};
+    var url = k.google || k.googleReview || '';
+    return s.replace('{GOOGLE}', url ? '\n\n' + url : '');
+  };
+
   /* ── Wissen ───────────────────────────────────────────────────────────
      Preise stehen hier ein zweites Mal. Wer sie auf der Seite aendert,
      muss sie hier mitaendern — pruefe-bot.mjs vergleicht beide und faellt
@@ -26,17 +38,17 @@
               en: ['price','prices','cost','costs','how much','expensive','rate'] },
       frage:  { de: 'Was kostet das?', en: 'What does it cost?' },
       antwort:{ de: 'Vier Pakete, alle mit Handwäsche, Fenster und Felgen außen:\n\n' +
-                    '• RDVC Basic Care — 70 €, innen gesaugt und abgestaubt\n' +
+                    '• RDVC Basic Care — ab 70 €, innen gesaugt und abgestaubt\n' +
                     '• RDVC Interior Care — ab 120 €, Innenraum intensiv\n' +
-                    '• RDVC Paint Care — 250 €, Politur in zwei Durchgängen plus Innen intensiv\n' +
-                    '• RDVC Premium Care — 699 €, dazu Keramikversiegelung\n\n' +
+                    '• RDVC Paint Care — ab 250 €, Politur in zwei Durchgängen plus Innen intensiv\n' +
+                    '• RDVC Premium Care — ab 699 €, dazu Keramikversiegelung\n\n' +
                     'Bei Interior Care hängt der Preis vom Zustand ab, den sehen wir beim Zustandscheck. ' +
                     'Was dazukommt, sagen wir vorher.',
                 en: 'Four packages, each with a hand wash, windows and wheels on the outside:\n\n' +
-                    '• RDVC Basic Care — 70 €, vacuumed and dusted inside\n' +
+                    '• RDVC Basic Care — from 70 €, vacuumed and dusted inside\n' +
                     '• RDVC Interior Care — from 120 €, deep interior clean\n' +
-                    '• RDVC Paint Care — 250 €, two passes of polish plus deep interior\n' +
-                    '• RDVC Premium Care — 699 €, ceramic coating on top\n\n' +
+                    '• RDVC Paint Care — from 250 €, two passes of polish plus deep interior\n' +
+                    '• RDVC Premium Care — from 699 €, ceramic coating on top\n\n' +
                     'For Interior Care the price depends on the condition, which we see at the check. ' +
                     'Anything extra we tell you beforehand.' }
     },
@@ -83,10 +95,10 @@
       frage:  { de: 'Was bringt Keramik?', en: 'What does a ceramic coating do?' },
       antwort:{ de: 'Eine normale Versiegelung hält ein halbes Jahr, Keramik zwei bis fünf Jahre. ' +
                     'Sinnvoll ist sie nur auf korrigiertem Lack, deshalb gibt es sie nicht einzeln, ' +
-                    'sondern zusammen mit der Politur in RDVC Premium Care für 699 €.',
+                    'sondern zusammen mit der Politur in RDVC Premium Care ab 699 €.',
                 en: 'A normal sealant lasts about six months, ceramic two to five years. ' +
                     'It only makes sense on corrected paint, so we do not sell it separately — ' +
-                    'it comes with the polish in RDVC Premium Care at 699 €.' }
+                    'it comes with the polish in RDVC Premium Care from 699 €.' }
     },
     {
       id: 'youngtimer',
@@ -147,6 +159,20 @@
                     'verbindliche Antwort statt einer allgemeinen.',
                 en: 'We sort that out with your enquiry — message us and you get a binding answer instead ' +
                     'of a general one.' }
+    },
+    {
+      /* {GOOGLE} wird beim Ausgeben ersetzt: steht in kontakt.js ein Profil,
+         kommt der Link dazu, sonst faellt der Platzhalter ersatzlos weg. */
+      id: 'bewertungen',
+      wort: { de: ['bewertung','bewertungen','rezension','rezensionen','google','sterne','referenzen',
+                   'kundenstimmen','erfahrungen','zufrieden','empfehlung','seriös','vertrauen'],
+              en: ['review','reviews','rating','ratings','google','stars','testimonial','testimonials',
+                   'references','feedback','trustworthy'] },
+      frage:  { de: 'Habt ihr Bewertungen?', en: 'Do you have reviews?' },
+      antwort:{ de: 'Ja, auf Google. Wir fragen nach jeder Übergabe einmal freundlich nach, mehr nicht — ' +
+                    'es gibt keinen Rabatt dafür und keine Vorgabe, was jemand schreiben soll.{GOOGLE}',
+                en: 'Yes, on Google. We ask once, politely, after we hand the car back — that is all. ' +
+                    'No discount for it and no script for what anyone should write.{GOOGLE}' }
     }
   ];
 
@@ -268,7 +294,7 @@
     var e = treffer || suche(text);
     if (e) {
       gesagt.push({ wer: 'bot', eintrag: e });
-      blase('bot', t(e.antwort));
+      blase('bot', antwortText(e));
     } else {
       gesagt.push({ wer: 'bot', text: 'nichts' });
       blase('bot', t(TEXTE.nichts));
@@ -307,7 +333,7 @@
     blase('bot', t(TEXTE.gruss));
     gesagt.forEach(function (g) {
       if (g.wer === 'ich') blase('ich', g.text);
-      else if (g.eintrag) blase('bot', t(g.eintrag.antwort));
+      else if (g.eintrag) blase('bot', antwortText(g.eintrag));
       else blase('bot', t(TEXTE.nichts));
     });
     vorschlaege();

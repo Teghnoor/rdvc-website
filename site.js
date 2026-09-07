@@ -50,6 +50,7 @@
       'Car detailing in Vienna with pick-up and delivery: we collect your car, detail it in our workshop and bring it back. Fixed price up front. Specialised in youngtimers and collector cars.',
     'Leistungen': 'Services',
     'Ablauf': 'How it works',
+    'Bewertungen': 'Reviews',
     'Fahrzeuge': 'Cars',
     'Termin anfragen': 'Book a slot',
     'Menü öffnen': 'Open menu',
@@ -65,7 +66,7 @@
     'Fixpreis anfragen': 'Get a fixed price',
     'Leistungen ansehen': 'See services',
     'Abholung inklusive bis 15 km': 'Pick-up included up to 15 km',
-    'Fixpreis nach Fahrzeugklasse': 'Fixed price by vehicle class',
+    'Fixpreis nach dem Zustandscheck': 'Fixed price after the condition check',
     'Youngtimer willkommen': 'Youngtimers welcome',
 
     /* Vertrauensleiste */
@@ -94,7 +95,10 @@
     'Innen intensiv': 'Deep interior',
     'Wenn der Innenraum wirklich sauber werden soll. Polster, Teppiche, Leder.':
       'For when the interior really has to come clean. Upholstery, carpets, leather.',
+    'ab 70 €': 'from 70 €',
     'ab 120 €': 'from 120 €',
+    'ab 250 €': 'from 250 €',
+    'ab 699 €': 'from 699 €',
     'je nach Zustand des Innenraums': 'depending on the state of the interior',
     'Alles aus Basic Care': 'Everything in Basic Care',
     'Intensivreinigung innen': 'Deep interior clean',
@@ -109,7 +113,7 @@
     'Mit Keramik': 'With ceramic',
     'Politur und Keramikversiegelung. Für Fahrzeuge, die bleiben sollen.':
       'Machine polish and a ceramic coating. For cars that are meant to stay.',
-    'Fixpreis, Keramik inklusive': 'Fixed price, ceramic included',
+    'Keramik inklusive': 'Ceramic included',
     'Alles aus Paint Care': 'Everything in Paint Care',
     'Warum Keramik': 'Why ceramic',
     'Zwei bis fünf Jahre statt sechs Monaten': 'Two to five years instead of six months',
@@ -119,10 +123,10 @@
     'Alle Preise in Euro inklusive Umsatzsteuer, gültig für Fahrzeuge in üblichem Zustand. Starke Verschmutzung, Tierhaare oder Nikotin besprechen wir vorher und halten den Aufpreis schriftlich fest.':
       'All prices in euros including VAT, valid for cars in normal condition. Heavy soiling, pet hair or nicotine is discussed beforehand and the surcharge is put in writing.',
     /* Formular, erster Schritt */
-    'Außen und innen · 70 €': 'Exterior and interior · 70 €',
+    'Außen und innen · ab 70 €': 'Exterior and interior · from 70 €',
     'Innen intensiv · ab 120 €': 'Deep interior · from 120 €',
-    'Politur zwei Durchgänge · 250 €': 'Polish, two passes · 250 €',
-    'Politur und Keramik · 699 €': 'Polish and ceramic · 699 €',
+    'Politur zwei Durchgänge · ab 250 €': 'Polish, two passes · from 250 €',
+    'Politur und Keramik · ab 699 €': 'Polish and ceramic · from 699 €',
     'Damit wir Zeit und Material einplanen können.': 'So we can plan time and materials.',
     /* Haeufige Fragen */
     'Basic Care schaffen wir am selben Tag, Interior Care meist auch, bei starker Verschmutzung einen Tag. Paint Care braucht einen Tag, Premium Care mit Keramik ein bis zwei. Den genauen Zeitraum sagen wir bei der Zusage, nicht erst bei der Abholung.':
@@ -210,6 +214,13 @@
 
     /* Ablauf */
     'Sie müssen nirgendwo hinfahren.': 'You do not have to drive anywhere.',
+
+    /* Bewertungen. Die Kundenzitate selbst stehen in kontakt.js und tragen
+       data-nt — sie werden bewusst nicht uebersetzt. */
+    'Was Kunden nach der Übergabe geschrieben haben.':
+      'What customers wrote after we handed the car back.',
+    'Alle Bewertungen auf Google': 'All reviews on Google',
+    'Selbst eine schreiben': 'Write one yourself',
     'Anfragen': 'Enquire',
     'Formular unten oder direkt eine Nachricht. Fahrzeug, Wunsch, Adresse. Sie bekommen den Fixpreis und einen Termin zurück.':
       'The form below or simply a message. Car, what you want, address. You get the fixed price and a date back.',

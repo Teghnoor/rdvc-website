@@ -43,6 +43,10 @@ await warte(3000);
 const SNAP = `(() => { const a=[]; const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,
   { acceptNode(n){ const p=n.parentElement; if(!p) return 2;
     const t=p.nodeName; if(t==='SCRIPT'||t==='STYLE'||t==='NOSCRIPT') return 2;
+    /* [data-nt] ueberspringt site.js beim Uebersetzen ebenfalls. Hier steht
+       Fremdtext, den niemand uebersetzen darf — etwa Kundenbewertungen im
+       Wortlaut. Ohne diese Zeile meldet der Test sie als "deutsch geblieben". */
+    if(p.closest('[data-nt]')) return 2;
     return n.nodeValue.replace(/\\s+/g,' ').trim() ? 1 : 2; } });
   let n; while ((n=w.nextNode())) a.push(n.nodeValue.replace(/\\s+/g,' ').trim()); return a; })()`;
 

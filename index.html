@@ -157,6 +157,7 @@
         <a href="#pakete" class="hover:text-red transition-colors">Leistungen</a>
         <a href="#youngtimer" class="hover:text-red transition-colors">Youngtimer</a>
         <a href="#ablauf" class="hover:text-red transition-colors">Ablauf</a>
+        <a href="#bewertungen" data-bw-nav class="hover:text-red transition-colors">Bewertungen</a>
         <a href="#fahrzeuge" class="hover:text-red transition-colors">Fahrzeuge</a>
         <a href="#buchen" class="btn-red px-5 py-2 rounded-full text-sm font-bold">Termin anfragen</a>
       </div>
@@ -173,6 +174,7 @@
     <a href="#pakete">Leistungen</a>
     <a href="#youngtimer">Youngtimer</a>
     <a href="#ablauf">Ablauf</a>
+    <a href="#bewertungen" data-bw-nav>Bewertungen</a>
     <a href="#fahrzeuge">Fahrzeuge</a>
     <a href="#buchen" class="btn-red px-5 py-2.5 rounded-full text-center font-bold">Termin anfragen</a>
   </div>
@@ -233,7 +235,7 @@
       </span>
       <span class="flex items-center gap-2">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E11D22" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-        Fixpreis nach Fahrzeugklasse
+        Fixpreis nach dem Zustandscheck
       </span>
       <span class="flex items-center gap-2">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E11D22" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -303,8 +305,8 @@
         <h3 class="mt-2 text-xl font-extrabold">RDVC Basic Care</h3>
         <p class="mt-2 text-sm text-slate leading-relaxed">Die regelmäßige Pflege. Außen von Hand, innen gesaugt und abgestaubt.</p>
         <div class="mt-5 pt-5 border-t border-line">
-          <p class="price-num text-3xl font-extrabold text-blood">70 €</p>
-          <p class="mt-1 text-xs text-steel">Fixpreis</p>
+          <p class="price-num text-3xl font-extrabold text-blood">ab 70 €</p>
+          <p class="mt-1 text-xs text-steel">Fixpreis nach dem Zustandscheck</p>
         </div>
         <ul class="mt-5 space-y-2 text-sm text-slate flex-1">
           <li class="flex gap-3"><span class="li-mark"></span>Handwäsche außen</li>
@@ -340,8 +342,8 @@
         <h3 class="mt-2 text-xl font-extrabold">RDVC Paint Care</h3>
         <p class="mt-2 text-sm text-slate leading-relaxed">Zwei Durchgänge Politur. Swirls und matte Stellen raus, innen intensiv dazu.</p>
         <div class="mt-5 pt-5 border-t border-line">
-          <p class="price-num text-3xl font-extrabold text-blood">250 €</p>
-          <p class="mt-1 text-xs text-steel">Fixpreis</p>
+          <p class="price-num text-3xl font-extrabold text-blood">ab 250 €</p>
+          <p class="mt-1 text-xs text-steel">Fixpreis nach dem Zustandscheck</p>
         </div>
         <ul class="mt-5 space-y-2 text-sm text-slate flex-1">
           <li class="flex gap-3"><span class="li-mark"></span>Handwäsche, Fenster, Felgen</li>
@@ -358,8 +360,8 @@
         <h3 class="mt-2 text-xl font-extrabold">RDVC Premium Care</h3>
         <p class="mt-2 text-sm text-slate leading-relaxed">Politur und Keramikversiegelung. Für Fahrzeuge, die bleiben sollen.</p>
         <div class="mt-5 pt-5 border-t border-line">
-          <p class="price-num text-3xl font-extrabold text-blood">699 €</p>
-          <p class="mt-1 text-xs text-steel">Fixpreis, Keramik inklusive</p>
+          <p class="price-num text-3xl font-extrabold text-blood">ab 699 €</p>
+          <p class="mt-1 text-xs text-steel">Keramik inklusive</p>
         </div>
         <ul class="mt-5 space-y-2 text-sm text-slate flex-1">
           <li class="flex gap-3"><span class="li-mark"></span>Alles aus Paint Care</li>
@@ -383,7 +385,7 @@
         </p>
       </div>
       <div class="md:text-right shrink-0">
-        <p class="price-num text-3xl font-extrabold text-red">699 €</p>
+        <p class="price-num text-3xl font-extrabold text-red">ab 699 €</p>
         <p class="mt-1 text-xs text-white/45">Politur und Keramik zusammen</p>
         <a href="#buchen" data-paket="RDVC Premium Care" class="btn-red mt-4 inline-block text-center rounded-full px-6 py-2.5 text-sm font-bold">Auswählen</a>
       </div>
@@ -565,6 +567,37 @@
   </div>
 </section>
 
+<!-- ══════════ BEWERTUNGEN ══════════
+     Das Geruest steht leer im HTML. Gefuellt wird es aus kontakt.js
+     (RDVC_KONTAKT.stimmen). Sind dort keine echten Bewertungen hinterlegt,
+     entfernt kontakt.js den ganzen Abschnitt samt Navigationspunkt.
+     Nichts hier hineinschreiben, was nicht wirklich jemand geschrieben hat. -->
+<section id="bewertungen" class="py-20 md:py-28" hidden>
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="max-w-2xl rv">
+      <p class="kicker text-blood">Bewertungen</p>
+      <h2 class="mt-3 text-3xl md:text-4xl font-extrabold">Was Kunden nach der Übergabe geschrieben haben.</h2>
+      <div class="rule mt-5"></div>
+      <p class="mt-5 text-sm text-slate leading-relaxed" data-bw-schnitt hidden></p>
+    </div>
+
+    <div class="mt-12 grid md:grid-cols-3 gap-5" data-bw-liste></div>
+
+    <div class="mt-10 flex flex-wrap gap-3 rv">
+      <a data-bw-profil href="#" class="btn-outline px-6 py-3 rounded-full text-sm font-bold" hidden>
+        Alle Bewertungen auf Google
+      </a>
+      <!-- Kein btn-ghost: der ist auf weisse Schrift festgelegt und verschwindet
+           im Hellmodus auf hellem Grund. Ein Textlink erbt die Schriftfarbe und
+           haelt in beiden Fassungen. -->
+      <a data-bw-schreiben href="#"
+         class="px-2 py-3 text-sm font-semibold underline underline-offset-4 hover:text-red transition-colors" hidden>
+        Selbst eine schreiben
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ══════════ FAHRZEUGE ZUM VERKAUF ══════════ -->
 <section id="fahrzeuge" class="py-20 md:py-28">
   <div class="max-w-6xl mx-auto px-5">
@@ -670,7 +703,7 @@
         <div class="mt-5 grid sm:grid-cols-2 gap-3">
           <button type="button" class="opt-btn p-4" data-field="paket" data-value="RDVC Basic Care">
             <span class="block font-bold">RDVC Basic Care</span>
-            <span class="block text-sm text-slate mt-0.5">Außen und innen · 70 €</span>
+            <span class="block text-sm text-slate mt-0.5">Außen und innen · ab 70 €</span>
           </button>
           <button type="button" class="opt-btn p-4" data-field="paket" data-value="RDVC Interior Care">
             <span class="block font-bold">RDVC Interior Care</span>
@@ -678,11 +711,11 @@
           </button>
           <button type="button" class="opt-btn p-4" data-field="paket" data-value="RDVC Paint Care">
             <span class="block font-bold">RDVC Paint Care</span>
-            <span class="block text-sm text-slate mt-0.5">Politur zwei Durchgänge · 250 €</span>
+            <span class="block text-sm text-slate mt-0.5">Politur zwei Durchgänge · ab 250 €</span>
           </button>
           <button type="button" class="opt-btn p-4" data-field="paket" data-value="RDVC Premium Care">
             <span class="block font-bold">RDVC Premium Care</span>
-            <span class="block text-sm text-slate mt-0.5">Politur und Keramik · 699 €</span>
+            <span class="block text-sm text-slate mt-0.5">Politur und Keramik · ab 699 €</span>
           </button>
           <button type="button" class="opt-btn p-4" data-field="paket" data-value="Beratung / unklar">
             <span class="block font-bold">Weiß ich noch nicht</span>
@@ -988,6 +1021,11 @@
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.rv').forEach(function (el) { beobachter.observe(el); });
+
+  /* Nachtraeglich erzeugte .rv-Elemente melden sich hier an. Ohne das bleiben
+     sie auf opacity:0 stehen, weil die Schleife oben nur einmal laeuft —
+     genau das ist bei den Bewertungskarten aus kontakt.js passiert. */
+  window.RDVC_REVEAL = function (el) { beobachter.observe(el); };
 
   // Sicherheitsnetz: Bei einem Sprung auf #anker scrollt die Seite ohne
   // Zwischenschritte, der Observer erfasst die uebersprungenen Abschnitte nicht
