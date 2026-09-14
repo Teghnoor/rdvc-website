@@ -94,8 +94,15 @@ pruefe('Ueberschrift uebersetzt', await ev('document.querySelector("h1").textCon
 pruefe('Formular-Knopf uebersetzt', await ev('document.getElementById("btnNext").textContent'), 'Next →', true);
 pruefe('Schrittzaehler uebersetzt', await ev('document.getElementById("stepLabel").textContent'), 'Step 1 of 4', true);
 pruefe('Platzhalter uebersetzt', await ev('document.getElementById("fName").placeholder'), 'First and last name', true);
-pruefe('Seitentitel uebersetzt', await ev('document.title'), (v) => v.startsWith('RDVC Garage — Car Detailing Vienna'), true);
-pruefe('Beschreibung uebersetzt', await ev('document.querySelector(\'meta[name="description"]\').content'), (v) => v.startsWith('Car detailing in Vienna'), true);
+/* Titel und Beschreibung stehen fuer die Suche und werden oefter umformuliert
+   als der Rest der Seite. Deshalb nicht auf den genauen Wortlaut pruefen —
+   das haelt nur bis zur naechsten SEO-Runde. Geprueft wird, was wirklich
+   schiefgehen kann: der Eintrag fehlt in EN und die deutsche Fassung bleibt
+   stehen. Marker ist ein deutsches Wort, das in keiner englischen Fassung
+   vorkommen darf. */
+const nichtDeutsch = (v) => /Vienna/i.test(v) && !/Autoaufbereitung|Hol- und Bringservice|Fahrzeugpflege/i.test(v);
+pruefe('Seitentitel uebersetzt', await ev('document.title'), nichtDeutsch, true);
+pruefe('Beschreibung uebersetzt', await ev('document.querySelector(\'meta[name="description"]\').content'), nichtDeutsch, true);
 pruefe('Burger-Beschriftung uebersetzt', await ev('document.getElementById("menuBtn").getAttribute("aria-label")'), 'Open menu', true);
 pruefe('Leerraum um Links erhalten',
   await ev('[...document.querySelectorAll("#buchen p.mt-5")].filter(p => p.offsetParent).map(p => p.textContent.replace(/\\s+/g," ").trim()).join(" ")'),

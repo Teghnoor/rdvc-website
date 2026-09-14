@@ -1,0 +1,12 @@
+# RDVC Garage — rdvcgarage.at
+# Die Seite ist eine einzige oeffentliche Seite. Impressum und Datenschutz
+# tragen selbst ein noindex im HTML und werden hier NICHT gesperrt: gesperrt
+# koennte Google das noindex nie lesen und wuerde sie trotzdem als URL listen.
+
+User-agent: *
+Allow: /
+
+# Rohmaterial und Pruefartefakte gehoeren nicht in den Index.
+Disallow: /_material/
+
+Sitemap: https://rdvcgarage.at/sitemap.xml

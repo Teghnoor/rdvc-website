@@ -3,17 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RDVC Garage — Fahrzeugaufbereitung Wien | Hol- und Bringservice, Fixpreis</title>
-  <meta name="description" content="Fahrzeugaufbereitung in Wien mit Hol- und Bringservice: Wir holen Ihr Auto ab, bereiten es in unserer Halle auf und bringen es zurück. Fixpreis vorab. Spezialisiert auf Youngtimer und Sammlerfahrzeuge.">
+  <!-- Titel: das gesuchte Wort steht vorn, die Marke hinten. „Autoaufbereitung"
+       ist der Begriff, den Privatkunden in Oesterreich tippen; „Fahrzeugaufbereitung"
+       ist der Gewerbewortlaut und steht deshalb in der Beschreibung und im Text.
+       Wer den Titel aendert, muss den EN-Eintrag in site.js mitaendern — dort ist
+       der deutsche Titel der Schluessel. -->
+  <title>Autoaufbereitung Wien mit Hol- und Bringservice | RDVC Garage</title>
+  <meta name="description" content="Autoaufbereitung und Fahrzeugpflege in Wien: Wir holen Ihr Auto ab, bereiten es in unserer Halle auf und bringen es zurück. Fixpreis vorab, ab 70 €.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <meta name="theme-color" content="#0A0A0C">
   <link rel="canonical" href="https://rdvcgarage.at/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://rdvcgarage.at/">
   <meta property="og:site_name" content="RDVC Garage">
   <meta property="og:locale" content="de_AT">
-  <meta property="og:title" content="RDVC Garage — Fahrzeugaufbereitung Wien | Hol- und Bringservice, Fixpreis">
-  <meta property="og:description" content="Wir holen Ihr Auto ab, bereiten es in unserer Halle auf und bringen es zurück. Fixpreis vorab. Spezialisiert auf Youngtimer und Sammlerfahrzeuge.">
-  <meta property="og:image" content="https://rdvcgarage.at/bilder/pakete.jpg">
+  <meta property="og:title" content="Autoaufbereitung Wien mit Hol- und Bringservice | RDVC Garage">
+  <meta property="og:description" content="Wir holen Ihr Auto ab, bereiten es in unserer Halle auf und bringen es zurück. Fixpreis vorab, ab 70 €. Spezialisiert auf Youngtimer und Sammlerfahrzeuge.">
+  <!-- Teilvorschau: band-poster ist das einzige Asset im Querformat und ueber
+       1200 px breit. pakete.jpg stand hier vorher, ist aber 1000x1250 — hochkant
+       wird von WhatsApp, Facebook und X hart mittig beschnitten. -->
+  <meta property="og:image" content="https://rdvcgarage.at/bilder/band-poster.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1512">
+  <meta property="og:image:height" content="648">
+  <meta property="og:image:alt" content="Aufbereitetes Fahrzeug bei Nacht vor der Halle von RDVC Garage in Wien">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="fonts.css">
@@ -142,6 +155,192 @@
          halbe Seite unsichtbar — fuer Besucher wie fuer Suchmaschinen. -->
     <style>.rv, .hero-in { opacity: 1 !important; transform: none !important; animation: none !important; }</style>
   </noscript>
+
+  <!-- ══════════ STRUKTURIERTE DATEN ══════════════════════════════════════════
+       Hier steht NUR, was auf der Seite belegt ist. Bewusst NICHT drin, weil die
+       Angaben fehlen — jede erfundene Zeile faellt spaetestens beim Abgleich mit
+       dem Google-Unternehmensprofil auf und kostet dort Vertrauen:
+
+         telephone          → sobald die Nummer in kontakt.js steht
+         address.streetAddress + postalCode → echte Halle-Adresse
+         geo                → erst mit der Adresse, sonst geraten
+         openingHoursSpecification → Oeffnungszeiten von Dario
+         aggregateRating / review  → erst mit echten Google-Bewertungen.
+                              Bewertungs-Markup ohne echte Bewertungen ist ein
+                              Verstoss gegen Googles Richtlinien UND gegen das UWG.
+
+       Im FAQ-Knoten unten fehlt bewusst die Frage nach dem Transportschaden. Ihre
+       Antwort auf der Seite sagt „sind wir versichert" und traegt zugleich einen
+       tbd-Marker — die Betriebshaftpflicht mit Obhutsschaden ist noch offen. Eine
+       unbelegte Zusage gehoert nicht zusaetzlich in strukturierte Daten. Sobald
+       die Police steht, kann die Frage hier mit rein.
+
+       addressLocality "Wien" steht drin, weil die Halle belegt in Wien ist
+       (Hero, Fusszeile, Impressum-Geruest). Ohne streetAddress ist das noch kein
+       vollstaendiges LocalBusiness-Markup — es traegt den Ortsbezug, holt aber
+       noch keine Karten-Darstellung. Die kommt ueber das Unternehmensprofil.
+
+       Typ: AutoWash ist in schema.org der Betrieb, der Fahrzeuge reinigt und
+       aufbereitet; AutoRepair steht zusaetzlich drin, weil Google dafuer die
+       bessere Branchen-Zuordnung hat. Der Fahrzeughandel bekommt spaeter ein
+       eigenes Profil (AutoDealer) und gehoert deshalb NICHT in diesen Knoten.
+       ═══════════════════════════════════════════════════════════════════════ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://rdvcgarage.at/#website",
+        "url": "https://rdvcgarage.at/",
+        "name": "RDVC Garage",
+        "inLanguage": "de-AT",
+        "publisher": { "@id": "https://rdvcgarage.at/#betrieb" }
+      },
+      {
+        "@type": ["AutoWash", "AutoRepair"],
+        "@id": "https://rdvcgarage.at/#betrieb",
+        "name": "RDVC Garage",
+        "alternateName": "RDVC Garage Autoaufbereitung",
+        "url": "https://rdvcgarage.at/",
+        "description": "Autoaufbereitung und Fahrzeugpflege in Wien mit Hol- und Bringservice. Das Fahrzeug wird abgeholt, in der eigenen Halle aufbereitet und zurueckgebracht. Spezialisiert auf Youngtimer und Sammlerfahrzeuge.",
+        "image": "https://rdvcgarage.at/bilder/band-poster.jpg",
+        "logo": "https://rdvcgarage.at/favicon.svg",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Wien",
+          "addressRegion": "Wien",
+          "addressCountry": "AT"
+        },
+        "areaServed": { "@type": "City", "name": "Wien", "sameAs": "https://www.wikidata.org/wiki/Q1741" },
+        "currenciesAccepted": "EUR",
+        "priceRange": "€70–€699",
+        "sameAs": ["https://www.tiktok.com/@rdvc.garage"],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Autoaufbereitung",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "name": "RDVC Basic Care",
+              "url": "https://rdvcgarage.at/#pakete",
+              "priceSpecification": {
+                "@type": "PriceSpecification",
+                "minPrice": 70,
+                "priceCurrency": "EUR",
+                "valueAddedTaxIncluded": true
+              },
+              "itemOffered": {
+                "@type": "Service",
+                "name": "RDVC Basic Care",
+                "serviceType": "Handwaesche aussen und Innenreinigung",
+                "description": "Handwaesche aussen, Fenster und Felgen, innen saugen und abstauben, Innenspiegel und Scheiben innen."
+              }
+            },
+            {
+              "@type": "Offer",
+              "name": "RDVC Interior Care",
+              "url": "https://rdvcgarage.at/#pakete",
+              "priceSpecification": {
+                "@type": "PriceSpecification",
+                "minPrice": 120,
+                "priceCurrency": "EUR",
+                "valueAddedTaxIncluded": true
+              },
+              "itemOffered": {
+                "@type": "Service",
+                "name": "RDVC Interior Care",
+                "serviceType": "Innenreinigung Auto",
+                "description": "Alles aus Basic Care plus Intensivreinigung innen: Polster, Teppiche und Leder. Preis nach Zustandscheck."
+              }
+            },
+            {
+              "@type": "Offer",
+              "name": "RDVC Paint Care",
+              "url": "https://rdvcgarage.at/#pakete",
+              "priceSpecification": {
+                "@type": "PriceSpecification",
+                "minPrice": 250,
+                "priceCurrency": "EUR",
+                "valueAddedTaxIncluded": true
+              },
+              "itemOffered": {
+                "@type": "Service",
+                "name": "RDVC Paint Care",
+                "serviceType": "Lackpolitur",
+                "description": "Handwaesche, Fenster und Felgen, Politur in zwei Durchgaengen gegen Swirls und matte Stellen, dazu Intensivreinigung innen."
+              }
+            },
+            {
+              "@type": "Offer",
+              "name": "RDVC Premium Care",
+              "url": "https://rdvcgarage.at/#pakete",
+              "priceSpecification": {
+                "@type": "PriceSpecification",
+                "minPrice": 699,
+                "priceCurrency": "EUR",
+                "valueAddedTaxIncluded": true
+              },
+              "itemOffered": {
+                "@type": "Service",
+                "name": "RDVC Premium Care",
+                "serviceType": "Keramikversiegelung",
+                "description": "Alles aus Paint Care plus Keramikversiegelung und Intensivreinigung innen. Schutzdauer zwei bis fuenf Jahre statt sechs Monaten."
+              }
+            }
+          ]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://rdvcgarage.at/#faq",
+        "isPartOf": { "@id": "https://rdvcgarage.at/#website" },
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Warum arbeitet ihr nicht direkt bei mir vor der Tuer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Zwei Gruende. Erstens rechtlich: In Wien darf auf oeffentlichem Grund nicht gewaschen werden, weil das Waschwasser nicht in Boden oder Strassenkanal gelangen darf. Zweitens fachlich: Politur und Versiegelung brauchen gleichmaessiges Licht, Windstille und Temperatur. In der Sonne trocknet Politur an, bevor sie wirkt. Deshalb holen wir den Wagen ab."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wie lange ist mein Auto weg?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Basic Care schaffen wir am selben Tag, Interior Care meist auch, bei starker Verschmutzung einen Tag. Paint Care braucht einen Tag, Premium Care mit Keramik ein bis zwei. Den genauen Zeitraum sagen wir bei der Zusage, nicht erst bei der Abholung."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Mein Auto ist alt und der Lack empfindlich. Geht das trotzdem?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Das ist genau unser Fall. Bei Fahrzeugen ab den Achtzigern messen wir vorher die Lackstaerke und entscheiden danach, ob und wie weit poliert wird. Bei nachlackierten oder duennen Stellen lassen wir bewusst etwas stehen, statt durchzugehen. Was nicht geht, sagen wir vorher."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Was kostet es, wenn das Auto staerker verschmutzt ist?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tierhaare, Nikotin, Schimmel oder Bausand kosten Zeit. Wir sehen das beim Zustandscheck vor Ort und nennen den Aufpreis, bevor wir losfahren. Sie koennen dann immer noch nein sagen. Nachtraegliche Positionen auf der Rechnung gibt es bei uns nicht."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Verkauft ihr auch Autos?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja. Was gerade abzugeben ist, steht auf der Seite unter Fahrzeuge. Jedes davon ist durch unsere eigene Aufbereitung gegangen, den Zustand vorher sieht man auf unserem Kanal."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body class="bg-paper antialiased">
 
@@ -206,7 +405,11 @@
 
   <div class="relative z-10 w-full max-w-6xl mx-auto px-5 pt-28 pb-32 lg:py-32 text-center lg:text-left">
    <div class="lg:w-[47%] lg:pr-8">
-    <p class="kicker text-red hero-in d1">Wien · Hol- und Bringservice</p>
+    <!-- Erste Textzeile der Seite, deshalb steht hier der Begriff, der gesucht
+         wird. „Hol- und Bringservice" stand frueher mit drin und brach am Handy
+         auf zwei Zeilen um — die Zusage steht ohnehin eine Zeile tiefer in der
+         Ueberschrift und noch einmal in der Vertrauensleiste. -->
+    <p class="kicker text-red hero-in d1">Autoaufbereitung Wien</p>
 
     <h1 class="hero-in d2 mt-6 text-[2.5rem] leading-[1.07] sm:text-5xl lg:text-6xl font-extrabold tracking-[-0.02em]">
       Ihr Auto wird abgeholt,<br class="hidden sm:block">

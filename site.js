@@ -44,10 +44,10 @@
   /* ── 2. Woerterbuch ────────────────────────────────────────────────────── */
   var EN = {
     /* Kopf und Navigation */
-    'RDVC Garage — Fahrzeugaufbereitung Wien | Hol- und Bringservice, Fixpreis':
-      'RDVC Garage — Car Detailing Vienna | Pick-up and Delivery, Fixed Price',
-    'Fahrzeugaufbereitung in Wien mit Hol- und Bringservice: Wir holen Ihr Auto ab, bereiten es in unserer Halle auf und bringen es zurück. Fixpreis vorab. Spezialisiert auf Youngtimer und Sammlerfahrzeuge.':
-      'Car detailing in Vienna with pick-up and delivery: we collect your car, detail it in our workshop and bring it back. Fixed price up front. Specialised in youngtimers and collector cars.',
+    'Autoaufbereitung Wien mit Hol- und Bringservice | RDVC Garage':
+      'Car Detailing Vienna with Pick-up and Delivery | RDVC Garage',
+    'Autoaufbereitung und Fahrzeugpflege in Wien: Wir holen Ihr Auto ab, bereiten es in unserer Halle auf und bringen es zurück. Fixpreis vorab, ab 70 €.':
+      'Car detailing and car care in Vienna: we collect your car, detail it in our workshop and bring it back. Fixed price up front, from 70 €.',
     'Leistungen': 'Services',
     'Ablauf': 'How it works',
     'Bewertungen': 'Reviews',
@@ -57,7 +57,7 @@
     'Weiter zu den Leistungen': 'Go to services',
 
     /* Hero */
-    'Wien · Hol- und Bringservice': 'Vienna · Pick-up and delivery',
+    'Autoaufbereitung Wien': 'Car detailing Vienna',
     'Ihr Auto wird abgeholt,': 'We pick up your car,',
     'aufbereitet und': 'detail it and',
     'zurückgebracht.': 'bring it back.',
@@ -362,6 +362,8 @@
     /* ── Impressum ─────────────────────────────────────────────────────── */
     'Impressum | RDVC Garage Fahrzeugaufbereitung Wien':
       'Legal notice | RDVC Garage Car Detailing Vienna',
+    'Impressum der RDVC Garage, Autoaufbereitung mit Hol- und Bringservice in Wien. Offenlegung nach ECG, UGB und Mediengesetz.':
+      'Legal notice of RDVC Garage, car detailing with pick-up and delivery in Vienna. Disclosure under ECG, UGB and the Austrian Media Act.',
     'RDVC Garage Startseite': 'RDVC Garage home',
     '← Zurück zur Startseite': '← Back to the homepage',
     'Startseite': 'Home',
@@ -415,6 +417,8 @@
     /* ── Datenschutz ───────────────────────────────────────────────────── */
     'Datenschutzerklärung | RDVC Garage Fahrzeugaufbereitung Wien':
       'Privacy policy | RDVC Garage Car Detailing Vienna',
+    'Datenschutzerklärung der RDVC Garage, Wien. Welche Daten beim Anfrage-Formular anfallen, wie lange sie bleiben und welche Rechte Sie haben.':
+      'Privacy policy of RDVC Garage, Vienna. Which data the enquiry form collects, how long it is kept and what rights you have.',
     'Datenschutzerklärung': 'Privacy policy',
     'Information gemäß Art. 13 f. Datenschutz-Grundverordnung (DSGVO)':
       'Information under Art. 13 f. of the General Data Protection Regulation (GDPR)',

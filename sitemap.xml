@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Nur indexierbare Seiten. impressum.html und datenschutz.html stehen auf
+     noindex und gehoeren deshalb nicht hierher. Beim naechsten inhaltlichen
+     Update das lastmod mitziehen. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://rdvcgarage.at/</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
