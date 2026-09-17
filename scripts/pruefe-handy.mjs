@@ -13,16 +13,21 @@ const cmd=(method,params={})=>new Promise(res=>{const mid=++id;offen.set(mid,res
 await cmd('Runtime.enable'); await cmd('Page.enable');
 // Echte Handy-Metriken — --window-size reicht dafuer nicht aus
 await cmd('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:3,mobile:true});
-await cmd('Page.navigate',{url:'http://localhost:8899/index.html'}); await warte(3500);
+// URL als Argument, damit auch die Leistungsseiten geprueft werden koennen.
+// Ohne Argument bleibt es die Startseite wie bisher.
+const url = process.argv[2] ?? 'http://localhost:8899/index.html';
+await cmd('Page.navigate',{url}); await warte(3500);
 const ev=async x=>(await cmd('Runtime.evaluate',{expression:x,returnByValue:true})).result?.value;
 console.log('Viewport:        ', await ev('window.innerWidth')+'x'+await ev('window.innerHeight'));
 console.log('scrollWidth:     ', await ev('document.documentElement.scrollWidth'));
 console.log('Horiz. Overflow: ', await ev('document.documentElement.scrollWidth > window.innerWidth ? "JA - FEHLER" : "nein"'));
 console.log('Ueberbreite El.: ', await ev("[...document.querySelectorAll('*')].filter(e=>e.getBoundingClientRect().right > window.innerWidth+1).map(e=>e.tagName+'.'+String(e.className).slice(0,40)).slice(0,5).join(' | ') || 'keine'"));
 console.log('Sticky-CTA da:   ', await ev("!!document.querySelector('.sticky-cta') && getComputedStyle(document.querySelector('.sticky-cta')).display"));
-console.log('Menue-Knopf:     ', await ev("getComputedStyle(document.getElementById('menuBtn')).display"));
+// Den Menue-Knopf gibt es nur auf der Startseite.
+console.log('Menue-Knopf:     ', await ev("document.getElementById('menuBtn') ? getComputedStyle(document.getElementById('menuBtn')).display : 'nicht auf dieser Seite'"));
 console.log('Konsolenfehler:  ', fehler.length?fehler.join(' | '):'keine');
 const shot=await cmd('Page.captureScreenshot',{format:'png',captureBeyondViewport:true});
-const fs=await import('node:fs'); fs.writeFileSync('rdvc-mobil.png',Buffer.from(shot.data,'base64'));
-console.log('Screenshot:       rdvc-mobil.png');
+const fs=await import('node:fs'); const name = url.endsWith('index.html') ? 'rdvc-mobil.png' : 'rdvc-mobil-' + url.split('/').pop().replace('.html','') + '.png';
+fs.writeFileSync(name,Buffer.from(shot.data,'base64'));
+console.log('Screenshot:      ', name);
 ws.close(); chrome.kill();

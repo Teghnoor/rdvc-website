@@ -108,10 +108,27 @@ pruefe('Leerraum um Links erhalten',
   await ev('[...document.querySelectorAll("#buchen p.mt-5")].filter(p => p.offsetParent).map(p => p.textContent.replace(/\\s+/g," ").trim()).join(" ")'),
   (v) => /Prefer direct\? Message us on (WhatsApp or on TikTok|TikTok)\./.test(v), true);
 
-if (!nurStartseite) {
-  pruefe('Rechtstext uebersetzt', await ev('document.querySelector(".legal h2").textContent'), (v) => !/[äöüß]|gemäß|Daten(schutz)?erkl/.test(v));
+/* Es gibt drei Seitenarten, nicht zwei: Startseite, Rechtsseiten (.legal) und
+   die Leistungsseiten (.svc). Vorher hing dieser Block an `!nurStartseite` und
+   lief damit auch auf den Leistungsseiten — dort gibt es kein `.legal`, `ev`
+   liefert undefined, und die Pruefung `!/[äöüß]/.test(undefined)` wird WAHR.
+   Eine fehlende Fundstelle haette sich also als bestandene Pruefung gemeldet.
+   Deshalb wird jetzt auf die Fundstelle selbst geprueft. */
+const istRechtsseite = await ev('!!document.querySelector(".legal")');
+const istLeistungsseite = await ev('!!document.querySelector(".svc")');
+
+if (istRechtsseite) {
+  pruefe('Rechtstext uebersetzt', await ev('document.querySelector(".legal h2").textContent'), (v) => typeof v === 'string' && !/[äöüß]|gemäß|Daten(schutz)?erkl/.test(v));
   pruefe('Verbindlichkeits-Hinweis sichtbar', await ev('getComputedStyle(document.querySelector("[data-only-en]")).display'), 'block');
   pruefe('Fliesstext lesbar auf dunkel', await ev('getComputedStyle(document.querySelector(".legal p")).color'), 'rgb(167, 173, 184)');
+}
+
+if (istLeistungsseite) {
+  pruefe('Leistungs-Ueberschrift uebersetzt', await ev('document.querySelector("h1").textContent.replace(/\\s+/g," ").trim()'), (v) => typeof v === 'string' && /Vienna/i.test(v) && !/[äöüß]/.test(v));
+  pruefe('Leistungs-Titel uebersetzt', await ev('document.title'), (v) => typeof v === 'string' && !/Aufbereitung|Innenreinigung|Autopolitur|Keramikversiegelung/.test(v));
+  pruefe('Zwischentitel uebersetzt', await ev('document.querySelector(".svc h2").textContent'), (v) => typeof v === 'string' && !/[äöüß]/.test(v));
+  pruefe('Fliesstext lesbar auf dunkel', await ev('getComputedStyle(document.querySelector(".svc p")).color'), 'rgb(167, 173, 184)');
+  pruefe('Verweis-Liste uebersetzt', await ev('[...document.querySelectorAll(".svc-quer a")].map(a => a.textContent).join(" | ")'), (v) => typeof v === 'string' && v.length > 0 && !/[äöüß]/.test(v));
 }
 
 const en = await ev(SNAP);

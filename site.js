@@ -496,7 +496,100 @@
     'Mikrofasertuch auf einer nassen Fahrzeugflanke':
       'Microfibre cloth on a wet body panel',
     'Fertig aufbereiteter BMW E39 M5':
-      'A finished BMW E39 M5'
+      'A finished BMW E39 M5',
+
+    /* ═════════════════════════════════════════════════════════════════════
+       Leistungsseiten. Die vier .html werden von
+       scripts/baue-leistungsseiten.py erzeugt — wer dort einen Text aendert,
+       muss den Schluessel hier mitaendern, sonst bleibt die Zeile auf
+       Englisch deutsch und pruefe-umschalter.mjs faellt durch.
+       ═════════════════════════════════════════════════════════════════════ */
+
+    /* Verweise in der Paket-Sektion der Startseite */
+    'Mehr zur einzelnen Leistung:': 'More on each service:',
+    'Innenreinigung': 'Interior cleaning',
+    'Autopolitur': 'Paint polishing',
+    'Keramikversiegelung': 'Ceramic coating',
+    'Youngtimer-Aufbereitung': 'Youngtimer detailing',
+
+    /* Bausteine der Vorlage, auf allen vier Seiten gleich */
+    'So läuft der Termin': 'How the appointment works',
+    'Auch gesucht': 'Also looked for',
+    'Termin': 'Appointment',
+    'Fixpreis vor der Abholung': 'Fixed price before we collect the car',
+    'Wir holen das Fahrzeug bei Ihnen ab, bereiten es in unserer Halle auf und bringen es zurück. Sie müssen nicht warten und nicht zweimal fahren. Den Zustandscheck machen wir bei der Abholung, den Fixpreis nennen wir davor.':
+      'We collect the car from you, detail it in our workshop and bring it back. You do not have to wait and you do not have to drive twice. We check the condition when we collect it, and we name the fixed price before that.',
+    'Vier Fragen im Formular, danach melden wir uns mit einem Fixpreis und einem Abholtermin zurück.':
+      'Four questions in the form, then we come back to you with a fixed price and a collection slot.',
+    'Alle vier Pakete auf der Startseite': 'All four packages on the home page',
+
+    /* Innenreinigung */
+    'Innenreinigung Auto Wien mit Hol- und Bringservice | RDVC Garage':
+      'Car Interior Cleaning Vienna with Pick-up and Delivery | RDVC Garage',
+    'Innenreinigung für Ihr Auto in Wien: Polster, Teppiche und Leder intensiv gereinigt. Wir holen das Fahrzeug ab und bringen es zurück. Ab 120 €.':
+      'Interior cleaning for your car in Vienna: upholstery, carpets and leather cleaned in depth. We collect the car and bring it back. From 120 €.',
+    'Innenreinigung für Ihr Auto in Wien': 'Interior cleaning for your car in Vienna',
+    'Wenn der Innenraum wirklich sauber werden soll, reicht Saugen nicht. Polster, Teppiche und Leder werden intensiv gereinigt, nicht nur abgewischt. Was das kostet, steht vor der Abholung fest.':
+      'If the interior is meant to be properly clean, vacuuming is not enough. Upholstery, carpets and leather are cleaned in depth, not just wiped down. What it costs is settled before we collect the car.',
+    'Was bei der Innenreinigung passiert': 'What happens during the interior clean',
+    'Zuerst kommt alles raus, was locker liegt, dann wird gesaugt und abgestaubt. Danach folgt die Intensivreinigung: Polster und Teppiche werden nass gereinigt, Leder wird gereinigt und gepflegt. Innenspiegel und Scheiben innen gehören dazu, weil sie sonst der einzige Teil bleiben, den man beim Einsteigen sieht.':
+      'First everything loose comes out, then the car is vacuumed and dusted. After that comes the deep clean: upholstery and carpets are wet cleaned, leather is cleaned and conditioned. The interior mirror and the inside of the windows are part of it, because otherwise they stay the one thing you see when you get in.',
+    'Warum der Preis erst nach dem Zustandscheck steht':
+      'Why the price is settled after we have seen the car',
+    'Ein Innenraum mit Tierhaaren oder Nikotin ist andere Arbeit als ein Innenraum, der zwei Jahre nur gefahren wurde. Deshalb nennen wir einen Startpreis und legen den Fixpreis fest, sobald wir das Fahrzeug gesehen haben. Kommt etwas dazu, fragen wir vorher, statt es nachher auf die Rechnung zu setzen.':
+      'An interior with pet hair or nicotine is different work from an interior that has simply been driven for two years. That is why we name a starting price and set the fixed price once we have seen the car. If something is added, we ask first instead of putting it on the invoice afterwards.',
+
+    /* Autopolitur */
+    'Autopolitur Wien — Lackaufbereitung in zwei Durchgängen | RDVC Garage':
+      'Car Paint Polishing Vienna — Two Passes on the Paint | RDVC Garage',
+    'Autopolitur in Wien: Politur in zwei Durchgängen gegen Swirls und matte Stellen, Innenreinigung inklusive. Wir holen das Fahrzeug ab und bringen es zurück. Ab 250 €.':
+      'Paint polishing in Vienna: two passes against swirls and dull patches, interior cleaning included. We collect the car and bring it back. From 250 €.',
+    'Autopolitur in Wien': 'Paint polishing in Vienna',
+    'Politur ist der Schritt mit dem sichtbarsten Unterschied. Zwei Durchgänge holen Swirls und matte Stellen aus dem Lack, die Intensivreinigung innen ist dabei.':
+      'Polishing is the step with the most visible difference. Two passes take swirls and dull patches out of the paint, and the interior deep clean is included.',
+    'Zwei Durchgänge, nicht einer': 'Two passes, not one',
+    'Ein Durchgang nimmt die gröbsten Spuren, der zweite arbeitet die Fläche gleichmäßig aus. Deshalb sind es bei uns zwei und nicht einer. Vorher steht immer die Handwäsche, weil Politur auf ungewaschenem Lack Schmutz in die Fläche einarbeitet.':
+      'The first pass takes out the worst marks, the second evens out the surface. That is why we do two and not one. The hand wash always comes first, because polishing unwashed paint works the dirt into the surface.',
+    'Was Politur nicht kann': 'What polishing cannot do',
+    'Politur arbeitet im Klarlack. Kratzer, die durch den Klarlack durchgehen, bleiben sichtbar, und tiefe Steinschläge sind Lackarbeit, keine Politur. Was in Ihrem Fall geht, sagen wir beim Zustandscheck und nicht vorher am Telefon.':
+      'Polishing works in the clear coat. Scratches that go through the clear coat stay visible, and deep stone chips are paint work, not polishing. What is possible in your case we tell you when we check the car, not beforehand on the phone.',
+
+    /* Keramikversiegelung */
+    'Keramikversiegelung Auto Wien — Schutz über Jahre | RDVC Garage':
+      'Ceramic Coating Vienna — Protection That Lasts Years | RDVC Garage',
+    'Keramikversiegelung für Ihr Auto in Wien, zusammen mit der Politur. Zwei bis fünf Jahre Schutz statt sechs Monaten. Wir holen das Fahrzeug ab und bringen es zurück. Ab 699 €.':
+      'Ceramic coating for your car in Vienna, together with the polish. Two to five years of protection instead of six months. We collect the car and bring it back. From 699 €.',
+    'Keramikversiegelung für Ihr Auto in Wien': 'Ceramic coating for your car in Vienna',
+    'Eine normale Versiegelung hält ein halbes Jahr, eine Keramikversiegelung Jahre. Sinnvoll ist sie nur auf korrigiertem Lack, deshalb gibt es sie bei uns zusammen mit der Politur.':
+      'A normal sealant lasts half a year, a ceramic coating lasts years. It only makes sense on corrected paint, which is why we do it together with the polish.',
+    'Das ist der einzige Grund, Keramik zu nehmen: die Haltbarkeit. Eine normale Versiegelung ist nach einem halben Jahr weg, eine Keramikversiegelung hält Jahre.':
+      'That is the one reason to go for ceramic: how long it lasts. A normal sealant is gone after half a year, a ceramic coating lasts years.',
+    'Warum es Keramik bei uns nicht einzeln gibt':
+      'Why we do not sell ceramic on its own',
+    'Eine Versiegelung konserviert den Zustand, in dem der Lack gerade ist. Auf ungeputztem Lack konserviert sie die Swirls mit. Deshalb steckt die Keramik bei uns in RDVC Premium Care, zusammen mit der Politur, und hat keinen eigenen Preis.':
+      'A coating preserves the state the paint is in. On uncorrected paint it preserves the swirls along with it. That is why our ceramic sits inside RDVC Premium Care, together with the polish, and has no separate price.',
+    'Das Fahrzeug bleibt ein bis zwei Tage': 'The car stays for one to two days',
+    'Politur und Versiegelung brauchen Zeit, die Versiegelung zusätzlich Zeit zum Aushärten. Deshalb ist das kein Termin über Mittag. Abholung und Rückgabe stimmen wir vorher ab.':
+      'Polishing and coating take time, and the coating needs time to cure on top of that. So this is not a lunch-break appointment. We agree collection and return in advance.',
+
+    /* Youngtimer */
+    'Youngtimer Aufbereitung Wien — Aufbereitung für Klassiker | RDVC Garage':
+      'Youngtimer Detailing Vienna — Detailing for Classics | RDVC Garage',
+    'Youngtimer- und Oldtimer-Aufbereitung in Wien. Ältere Lacke und gealterte Innenräume brauchen eine andere Hand als ein Neuwagen. Wir holen das Fahrzeug ab und bringen es zurück.':
+      'Youngtimer and classic car detailing in Vienna. Older paint and aged interiors need a different hand than a new car. We collect the car and bring it back.',
+    'Youngtimer': 'Youngtimer',
+    'Youngtimer-Aufbereitung in Wien': 'Youngtimer detailing in Vienna',
+    'Ältere Fahrzeuge sind keine kleineren Neuwagen. Der Lack ist dünner, der Innenraum ist gealtert, und manches lässt sich nicht mehr zurückholen, sondern nur erhalten. Das ist die Arbeit, die wir am liebsten machen.':
+      'Older cars are not smaller new cars. The paint is thinner, the interior has aged, and some things cannot be brought back any more, only kept. This is the work we like doing most.',
+    'Was bei älteren Fahrzeugen anders ist': 'What is different on older cars',
+    'Auf einem dünnen oder nachlackierten Lack ist jeder Durchgang Politur ein Durchgang, den man nicht wiederholen kann. Deshalb wird hier vorsichtiger gearbeitet und vorher gemessen, statt einfach durchzupolieren. Im Innenraum gilt dasselbe: gealtertes Leder und alte Stoffe werden gereinigt und gepflegt, nicht geschrubbt.':
+      'On thin or resprayed paint, every polishing pass is a pass you cannot repeat. So the work here is more careful and we measure first instead of simply polishing through. The same goes for the interior: aged leather and old fabrics are cleaned and conditioned, not scrubbed.',
+    'Erst der Zustandscheck, dann das Paket': 'First the condition check, then the package',
+    'Welches Paket sinnvoll ist, entscheidet der Zustand, nicht das Baujahr. Manchmal ist RDVC Interior Care das Richtige, weil außen alles in Ordnung ist. Manchmal ist es RDVC Premium Care, weil der Lack nach der Politur geschützt bleiben soll. Wir sagen es nach dem Zustandscheck.':
+      'Which package makes sense is decided by the condition, not the year of build. Sometimes RDVC Interior Care is the right one, because the outside is fine. Sometimes it is RDVC Premium Care, because the paint should stay protected after the polish. We tell you after the condition check.',
+    'Das Fahrzeug muss nicht zu uns fahren': 'The car does not have to come to us',
+    'Wir holen es ab und bringen es zurück. Bei Fahrzeugen, die selten bewegt werden, ist das oft der eigentliche Grund, überhaupt einen Termin zu machen.':
+      'We collect it and bring it back. On cars that are rarely moved, that is often the actual reason to book at all.'
   };
 
   function norm(s) { return String(s).replace(/\s+/g, ' ').trim(); }

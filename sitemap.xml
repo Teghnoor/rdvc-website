@@ -1,12 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Nur indexierbare Seiten. impressum.html und datenschutz.html stehen auf
      noindex und gehoeren deshalb nicht hierher. Beim naechsten inhaltlichen
-     Update das lastmod mitziehen. -->
+     Update das lastmod mitziehen.
+
+     Die vier Leistungsseiten werden von scripts/baue-leistungsseiten.py
+     erzeugt. Kommt dort eine Seite dazu, muss sie hier mit eingetragen
+     werden — das Skript schreibt die sitemap.xml absichtlich nicht selbst,
+     damit lastmod nicht bei jedem Lauf springt. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://rdvcgarage.at/</loc>
-    <lastmod>2026-09-14</lastmod>
+    <lastmod>2026-09-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://rdvcgarage.at/innenreinigung-auto-wien.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rdvcgarage.at/autopolitur-wien.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rdvcgarage.at/keramikversiegelung-wien.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rdvcgarage.at/youngtimer-aufbereitung-wien.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
