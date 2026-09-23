@@ -391,6 +391,9 @@
     'UID-Nummer: [PLATZHALTER: ATU ……]': 'VAT ID: [PLACEHOLDER: ATU ……]',
     'Geschäftsführung / Inhaber: [PLATZHALTER: Name]': 'Management / owner: [PLACEHOLDER: name]',
     'Aufsicht & Mitgliedschaften': 'Supervision & memberships',
+    'Gewerbebehörde: Magistratisches Bezirksamt für den 10. Bezirk':
+      'Trade authority: Municipal district office for the 10th district',
+    'Mitglied der Wirtschaftskammer Wien': 'Member of the Vienna Chamber of Commerce',
     'Gewerbebehörde: Magistrat der Stadt Wien [PLATZHALTER: zuständiges Magistratisches Bezirksamt]':
       'Trade authority: Magistrat der Stadt Wien [PLACEHOLDER: competent district office]',
     'Mitglied der Wirtschaftskammer Wien, Fachgruppe [PLATZHALTER]':
