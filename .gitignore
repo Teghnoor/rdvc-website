@@ -1,3 +1,8 @@
 .DS_Store
 *.png
 _material/
+
+# Icons gehoeren ins Repo (Favicon fuer Google, Apple-Touch, JSON-LD-Logo)
+!favicon-*.png
+!apple-touch-icon.png
+!icon-*.png
