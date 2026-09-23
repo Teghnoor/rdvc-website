@@ -67,8 +67,10 @@ pruefe('object-fit auf allen Fotos',
   true);
 pruefe('jedes Bild hat einen Alternativtext',
   bilder.filter(b => b.alt === null || b.alt === undefined).map(b => b.src), (v) => v.length === 0);
+// Gezaehlt wird, was NICHT verzoegert laedt: nur Video-Standbilder (-poster.jpg) duerfen sofort laden.
+// Eine feste Mindestzahl brach, sobald eine Sektion mit Fotos wegfiel.
 pruefe('Fotos laden verzögert (nicht das Hero-Standbild)',
-  bilder.filter(b => b.lazy === 'lazy').length, (v) => v >= 10);
+  bilder.filter(b => b.lazy !== 'lazy').map(b => b.src), (v) => v.every(s => s.endsWith('-poster.jpg')));
 
 console.log('\n── Videos ──────────────────────────────────────────────────────');
 const videos = await ev(`(() => Array.from(document.querySelectorAll('video')).map(v => ({

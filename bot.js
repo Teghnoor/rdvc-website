@@ -119,14 +119,10 @@
       wort: { de: ['kaufen','verkauf','verkauft','zu verkaufen','steht der','preis für den','auto kaufen','abzugeben','km','baujahr'],
               en: ['buy','sell','for sale','is it for sale','purchase','mileage','year'] },
       frage:  { de: 'Verkauft ihr auch Autos?', en: 'Do you sell cars too?' },
-      antwort:{ de: 'Ja. Was gerade abzugeben ist, steht auf der Seite unter „Fahrzeuge". Jedes davon ist ' +
-                    'durch unsere eigene Aufbereitung gegangen.\n\n' +
-                    'Wenn Sie etwas Bestimmtes suchen, schreiben Sie uns — in der Halle steht oft mehr, ' +
-                    'als online zu sehen ist.',
-                en: 'Yes. Whatever is currently available is on the page under “Cars”. Every one of them ' +
-                    'has been through our own detailing.\n\n' +
-                    'If you are after something specific, message us — there is often more in the ' +
-                    'workshop than is listed online.' }
+      antwort:{ de: 'Nein, wir verkaufen keine Autos. Wir bereiten sie auf: Ihres, mit Hol- und ' +
+                    'Bringservice in Wien. Die Pakete und Preise finden Sie oben unter „Leistungen".',
+                en: 'No, we do not sell cars. We detail them: yours, with pick-up and delivery in ' +
+                    'Vienna. Packages and prices are above under “Services”.' }
     },
     {
       id: 'zustand',

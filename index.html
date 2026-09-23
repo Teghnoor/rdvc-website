@@ -29,6 +29,9 @@
   <meta property="og:image:alt" content="Aufbereitetes Fahrzeug bei Nacht vor der Halle von RDVC Garage in Wien">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="96x96" href="favicon-96.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="stylesheet" href="fonts.css">
   <script src="tailwind.js"></script>
   <link rel="stylesheet" href="site.css">
@@ -205,7 +208,7 @@
         "url": "https://rdvcgarage.at/",
         "description": "Autoaufbereitung und Fahrzeugpflege in Wien mit Hol- und Bringservice. Das Fahrzeug wird abgeholt, in der eigenen Halle aufbereitet und zurueckgebracht. Spezialisiert auf Youngtimer und Sammlerfahrzeuge.",
         "image": "https://rdvcgarage.at/bilder/band-poster.jpg",
-        "logo": "https://rdvcgarage.at/favicon.svg",
+        "logo": "https://rdvcgarage.at/icon-512.png",
         "telephone": "+43 677 64732306",
         "email": "office@rdvcgarage.at",
         "address": {
@@ -332,14 +335,6 @@
               "@type": "Answer",
               "text": "Tierhaare, Nikotin, Schimmel oder Bausand kosten Zeit. Wir sehen das beim Zustandscheck vor Ort und nennen den Aufpreis, bevor wir losfahren. Sie koennen dann immer noch nein sagen. Nachtraegliche Positionen auf der Rechnung gibt es bei uns nicht."
             }
-          },
-          {
-            "@type": "Question",
-            "name": "Verkauft ihr auch Autos?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Ja. Was gerade abzugeben ist, steht auf der Seite unter Fahrzeuge. Jedes davon ist durch unsere eigene Aufbereitung gegangen, den Zustand vorher sieht man auf unserem Kanal."
-            }
           }
         ]
       }
@@ -362,7 +357,6 @@
         <a href="#youngtimer" class="hover:text-red transition-colors">Youngtimer</a>
         <a href="#ablauf" class="hover:text-red transition-colors">Ablauf</a>
         <a href="#bewertungen" data-bw-nav class="hover:text-red transition-colors">Bewertungen</a>
-        <a href="#fahrzeuge" class="hover:text-red transition-colors">Fahrzeuge</a>
         <a href="#buchen" class="btn-red px-5 py-2 rounded-full text-sm font-bold">Termin anfragen</a>
       </div>
       <div class="flex items-center gap-2" data-nt>
@@ -379,7 +373,6 @@
     <a href="#youngtimer">Youngtimer</a>
     <a href="#ablauf">Ablauf</a>
     <a href="#bewertungen" data-bw-nav>Bewertungen</a>
-    <a href="#fahrzeuge">Fahrzeuge</a>
     <a href="#buchen" class="btn-red px-5 py-2.5 rounded-full text-center font-bold">Termin anfragen</a>
   </div>
 </header>
@@ -819,88 +812,6 @@
   </div>
 </section>
 
-<!-- ══════════ FAHRZEUGE ZUM VERKAUF ══════════ -->
-<section id="fahrzeuge" class="py-20 md:py-28">
-  <div class="max-w-6xl mx-auto px-5">
-    <div class="flex flex-wrap items-end justify-between gap-6 rv">
-      <div class="max-w-2xl">
-        <p class="kicker text-blood">Aus unserer Halle</p>
-        <h2 class="mt-3 text-3xl md:text-4xl font-extrabold">Fahrzeuge, die wir abgeben.</h2>
-        <div class="rule mt-5"></div>
-        <p class="mt-5 text-slate leading-relaxed">
-          Wir sammeln und wir handeln. Jedes Auto, das hier steht, ist durch unsere
-          eigene Aufbereitung gegangen. Wie es vorher aussah, sehen Sie auf unserem Kanal.
-        </p>
-      </div>
-      <a href="#buchen" class="text-sm font-bold text-blood hover:text-red transition-colors">
-        Fahrzeug anfragen →
-      </a>
-    </div>
-
-    <div class="mt-12 grid md:grid-cols-3 gap-6">
-      <!-- Fahrzeug-Karte, dreimal als Vorlage -->
-      <article class="card card-hover overflow-hidden rv" style="--rvd:.05s">
-        <figure class="foto foto-zoom aspect-[4/3] border-b border-line">
-              <picture>
-                <source srcset="bilder/auto-1.webp" type="image/webp">
-                <img src="bilder/auto-1.jpg" alt="BMW E39 M5 in Avusblau in der Halle" width="1000" height="750" loading="lazy" decoding="async">
-              </picture>
-            </figure>
-        <div class="p-5">
-          <p class="kicker text-steel">Youngtimer</p>
-          <h3 class="mt-1.5 text-lg font-extrabold">BMW E39 M5</h3>
-          <p class="mt-1 text-sm"><span class="tbd">Baujahr · km · Zustand</span></p>
-          <div class="mt-4 pt-4 border-t border-line flex items-center justify-between">
-            <p class="price-num text-xl font-extrabold"><span class="tbd">Preis €</span></p>
-            <a href="#buchen" class="text-sm font-bold text-blood hover:text-red transition-colors">Anfragen →</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="card card-hover overflow-hidden rv" style="--rvd:.12s">
-        <figure class="foto foto-zoom aspect-[4/3] border-b border-line">
-              <picture>
-                <source srcset="bilder/auto-2.webp" type="image/webp">
-                <img src="bilder/auto-2.jpg" alt="BMW E30 Cabrio auf einer Landstraße" width="1000" height="750" loading="lazy" decoding="async">
-              </picture>
-            </figure>
-        <div class="p-5">
-          <p class="kicker text-steel">Youngtimer</p>
-          <h3 class="mt-1.5 text-lg font-extrabold">BMW E30 Cabrio</h3>
-          <p class="mt-1 text-sm"><span class="tbd">Baujahr · km · Zustand</span></p>
-          <div class="mt-4 pt-4 border-t border-line flex items-center justify-between">
-            <p class="price-num text-xl font-extrabold"><span class="tbd">Preis €</span></p>
-            <a href="#buchen" class="text-sm font-bold text-blood hover:text-red transition-colors">Anfragen →</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="card card-hover overflow-hidden rv" style="--rvd:.19s">
-        <figure class="foto foto-zoom aspect-[4/3] border-b border-line">
-              <picture>
-                <source srcset="bilder/auto-3.webp" type="image/webp">
-                <img src="bilder/auto-3.jpg" alt="Schwarzer Mercedes 190E von vorne" width="1000" height="750" loading="lazy" decoding="async">
-              </picture>
-            </figure>
-        <div class="p-5">
-          <p class="kicker text-steel">Youngtimer</p>
-          <h3 class="mt-1.5 text-lg font-extrabold">Mercedes 190E</h3>
-          <p class="mt-1 text-sm"><span class="tbd">Baujahr · km · Zustand</span></p>
-          <div class="mt-4 pt-4 border-t border-line flex items-center justify-between">
-            <p class="price-num text-xl font-extrabold"><span class="tbd">Preis €</span></p>
-            <a href="#buchen" class="text-sm font-bold text-blood hover:text-red transition-colors">Anfragen →</a>
-          </div>
-        </div>
-      </article>
-    </div>
-
-    <p class="mt-6 text-xs text-steel">
-      Verkauf erfolgt als Privatverkauf oder gewerblich je nach Fahrzeug — der Status steht
-      bei jedem Inserat dabei. <span class="tbd">Rechtsform mit Steuerberater klären</span>
-    </p>
-  </div>
-</section>
-
 <!-- ══════════ BUCHEN ══════════ -->
 <section id="buchen" class="py-20 md:py-28 bg-linen">
   <div class="max-w-3xl mx-auto px-5">
@@ -1124,18 +1035,7 @@
         </p>
       </details>
 
-      <details class="faq card p-5 rv" style="--rvd:.3s">
-        <summary class="flex items-center justify-between gap-4 font-bold">
-          Verkauft ihr auch Autos?
-          <svg class="faq-chevron shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8C93A0" stroke-width="2.5" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
-        </summary>
-        <p class="mt-3 text-sm text-slate leading-relaxed">
-          Ja. Was gerade abzugeben ist, steht oben unter „Fahrzeuge“. Jedes davon ist durch
-          unsere eigene Aufbereitung gegangen, den Zustand vorher sehen Sie auf unserem Kanal.
-          Wenn Sie etwas Bestimmtes suchen, sagen Sie Bescheid — wir haben oft mehr in der
-          Halle, als online steht.
-        </p>
-      </details>
+      
     </div>
   </div>
 </section>

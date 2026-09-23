@@ -24,10 +24,12 @@
   }
   setzeTheme(theme, false);
 
+  /* Deutsch ist Standard. Englisch nur, wenn jemand es im Kopf selbst
+     gewaehlt hat. Frueher entschied die Browsersprache — dann las Google
+     (englischer Crawler) die Seite auf Englisch und zeigte in Wien einen
+     englischen Suchtreffer. */
   var lang = lies(SP_LANG);
-  if (lang !== 'de' && lang !== 'en') {
-    lang = /^de\b/i.test(navigator.language || '') ? 'de' : 'en';
-  }
+  if (lang !== 'de' && lang !== 'en') lang = 'de';
   document.documentElement.lang = lang;
 
   function lies(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
@@ -385,8 +387,8 @@
     'Unternehmensdaten': 'Company data',
     'Rechtsform: [PLATZHALTER: GmbH / e.U. / GesbR]':
       'Legal form: [PLACEHOLDER: GmbH / e.U. / GesbR]',
-    'Unternehmensgegenstand: Fahrzeugaufbereitung und -pflege, Handel mit Kraftfahrzeugen':
-      'Business purpose: car detailing and care, trade in motor vehicles',
+    'Unternehmensgegenstand: Fahrzeugaufbereitung und -pflege':
+      'Business purpose: car detailing and care',
     'Freies Gewerbe „Wartung und Pflege von Kraftfahrzeugen"; Fahrzeughandel gesondert anmelden':
       'Unregulated trade „Wartung und Pflege von Kraftfahrzeugen"; the vehicle trade is registered separately',
     'Firmenbuchnummer: [PLATZHALTER: FN ……]': 'Company register number: [PLACEHOLDER: FN ……]',
