@@ -334,8 +334,8 @@
     'Handwäsche und Innenaufbereitung schaffen wir am selben Tag. Politur meist auch, bei starker Verschmutzung einen Tag. Komplettaufbereitung und Keramik brauchen ein bis zwei Tage. Den genauen Zeitraum sagen wir bei der Zusage, nicht erst bei der Abholung.':
       'A hand wash and an interior detail we manage the same day. A polish usually as well, one day if the car is heavily soiled. A full detail and ceramic take one to two days. We name the exact window when we confirm, not at pick-up.',
     'Was passiert, wenn beim Transport etwas passiert?': 'What happens if something goes wrong in transit?',
-    'Wir dokumentieren den Zustand bei der Übernahme mit Fotos, Sie bekommen sie sofort. Für die Zeit, in der das Fahrzeug bei uns ist, sind wir versichert.':
-      'We document the condition at handover with photos and send them to you straight away. For the time the car is with us, we are insured.',
+    'Wir dokumentieren den Zustand bei der Übernahme mit Fotos, Sie bekommen sie sofort.':
+      'We document the condition at handover with photos and send them to you straight away.',
     'Versicherungsdetails ergänzen': 'add insurance details',
     'Mein Auto ist alt und der Lack empfindlich. Geht das trotzdem?':
       'My car is old and the paint is delicate. Is that still possible?',
