@@ -8,8 +8,8 @@
    Formular meldet ehrlich, dass der Versand nicht eingerichtet ist. Das ist
    Absicht: ein Knopf, der ins Leere fuehrt, ist schlimmer als kein Knopf. */
 window.RDVC_KONTAKT = {
-  whatsapp: '',
-  telefon:  '',
+  whatsapp: '4367764732306',
+  telefon:  '+43 677 64732306',
   tiktok:   'https://www.tiktok.com/@rdvc.garage',
 
   /* ── Google-Unternehmensprofil ──────────────────────────────────────

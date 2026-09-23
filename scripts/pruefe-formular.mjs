@@ -60,13 +60,25 @@ await ev("document.getElementById('fEmail').value='max@beispiel.at'");
 await ev("document.getElementById('btnNext').click()");
 pruef((await ev("document.getElementById('formError').textContent")).includes('Datenverarbeitung'),'Fehlende Zustimmung wird abgewiesen');
 
-// 8. Absenden ohne Endpunkt darf NICHT faelschlich Erfolg melden
+// 8. Absenden: mit WhatsApp-Nummer in kontakt.js muss wa.me aufgehen und
+//    Erfolg gemeldet werden; ohne Nummer darf KEIN falscher Erfolg kommen.
+await ev("window.__wa=null; window.open=function(u){window.__wa=u; return null;}");
+const hatWa = await ev("!!(window.RDVC_KONTAKT && window.RDVC_KONTAKT.whatsapp)");
 await ev("document.getElementById('fDsgvo').checked=true");
 await ev("document.getElementById('btnNext').click()"); await warte(500);
-pruef(await ev("document.getElementById('formSuccess').classList.contains('hidden')"),
-      'Ohne Endpunkt wird KEIN falscher Erfolg gemeldet');
-pruef((await ev("document.getElementById('formError').textContent")).includes('noch nicht eingerichtet'),
-      'Stattdessen ehrlicher Hinweis', await ev("document.getElementById('formError').textContent"));
+if (hatWa) {
+  const wa = await ev("window.__wa || ''");
+  pruef(wa.startsWith('https://wa.me/' + await ev("window.RDVC_KONTAKT.whatsapp.replace(/[^0-9]/g,'')")),
+        'WhatsApp oeffnet mit der hinterlegten Nummer', wa.slice(0, 40));
+  pruef(decodeURIComponent(wa).includes('Max Mustermann'), 'Nachricht enthaelt die Formulardaten');
+  pruef(!(await ev("document.getElementById('formSuccess').classList.contains('hidden')")),
+        'Erfolg wird angezeigt');
+} else {
+  pruef(await ev("document.getElementById('formSuccess').classList.contains('hidden')"),
+        'Ohne Endpunkt wird KEIN falscher Erfolg gemeldet');
+  pruef((await ev("document.getElementById('formError').textContent")).includes('noch nicht eingerichtet'),
+        'Stattdessen ehrlicher Hinweis', await ev("document.getElementById('formError').textContent"));
+}
 
 console.log('\nKonsolenfehler:', fehler.length?fehler.join(' | '):'keine');
 ws.close(); chrome.kill();

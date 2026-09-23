@@ -377,6 +377,8 @@
     '[PLATZHALTER: Straße Hausnummer]': '[PLACEHOLDER: street and number]',
     '[PLATZHALTER: PLZ] Wien, Österreich': '[PLACEHOLDER: postcode] Vienna, Austria',
     'Telefon: [PLATZHALTER: +43 …]': 'Phone: [PLACEHOLDER: +43 …]',
+    'Telefon:': 'Phone:',
+    'E-Mail: [PLATZHALTER: termin@…] · Telefon:': 'Email: [PLACEHOLDER: termin@…] · Phone:',
     'E-Mail: [PLATZHALTER: termin@…]': 'Email: [PLACEHOLDER: termin@…]',
     'Unternehmensdaten': 'Company data',
     'Rechtsform: [PLATZHALTER: GmbH / e.U. / GesbR]':
